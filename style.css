@@ -56,7 +56,7 @@
 }
 /*Fin style NavBar -----------------------------------------------------*/
 
-/*Style Commun --------*/
+/*Style nouveau site --------*/
 #bodyform {
   margin: 0;
   min-height: 100vh;
@@ -269,9 +269,9 @@
 #buttonForm:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-.saison > input {
-  width: initial !important;
-  height: initial !important;
+.container .saison > input {
+  width: initial;
+  height: initial;
 }
 .error {
   color: red;
@@ -279,4 +279,37 @@
 .container > fieldset {
   margin: 15px 0 0 0;
   border: none;
+}
+/* fin style nouveau site ------------------------------------------------------*/
+#bodycroix {
+  display: grid;
+  grid-template-columns: 175px 1fr 1fr 1fr;
+  grid-template-rows: 90px 1fr 1fr 1fr;
+  grid-template-areas:
+    "navbar titrec titrec titrec "
+    "navbar formc formc formc"
+    "navbar formc formc formc"
+    "navbar stat stat stat";
+  margin: 0;
+  min-height: 100vh;
+}
+.gridCroix:nth-child(1) {
+  grid-area: navbar;
+}
+.gridCroix:nth-child(2) {
+  grid-area: titrec;
+  background-color: lawngreen;
+}
+.gridCroix:nth-child(2) > h1 {
+  text-align: center;
+}
+.gridCroix:nth-child(3) {
+  grid-area: formc;
+  background-color: lightcoral;
+  display: flex;
+  text-align: center;
+}
+.gridCroix:nth-child(4) {
+  grid-area: stat;
+  background-color: lightskyblue;
 }

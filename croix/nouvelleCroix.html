@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenue</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body id="bodycroix">
+    <div class="gridCroix">
+      <div id="openclose">
+        <button id="buttonOpenClose">Menu</button>
+      </div>
+      <div id="navbar">
+        <ul>
+          <li class="buttonNav"><a href="/index.html">Accueil</a></li>
+          <li class="buttonNav"><a href="">Sites</a></li>
+          <li class="buttonNav"><a href="">Topos</a></li>
+          <li class="buttonNav"><a href="nouvelleCroix.html">Croix</a></li>
+          <li class="buttonNav">
+            <a href="/formulaire site/nouveausite.html">Nouveau Site</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gridCroix">
+      <h1>Nouvelle Croix</h1>
+    </div>
+    <div class="gridCroix">
+      <h3>Quelle croix as tu fais</h3>
+      <form action="">
+        <fieldset>
+          <legend>Sur quel site ?</legend>
+          <select name="" id="choixSite">
+            <option value="">choisir le site</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Cotation</legend>
+          <select name="" id="CotationC">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          <select name="" id="CotationL">
+            <option value="a">a</option>
+            <option value="a+">a+</option>
+            <option value="b">b</option>
+            <option value="b+">b</option>
+            <option value="c">c</option>
+            <option value="c+">c+</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Profil</legend>
+          <select name="" id="profil">
+            <option value="dalle">dalle</option>
+            <option value="vertical">vertical</option>
+            <option value="devers">devers</option>
+            <option value="surplomb">surplomb</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Longeur</legend>
+          <label for="longeur">Longeur de la voie</label>
+          <input type="number" name="longeur" id="longeur" min="1" max="50" />
+        </fieldset>
+        <fieldset>
+          <legend>Type de rocher</legend>
+          <select name="" id="rocher">
+            <option value="calcaire">calcaire</option>
+            <option value="gneiss">gneiss</option>
+            <option value="granit">granit</option>
+            <option value="molasse">molasse</option>
+            <option value="dolomie">dolomie</option>
+            <option value="quartzite">quartzite</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Coché:</legend>
+          <label for="avue">A vue</label>
+          <input type="checkbox" name="avue" id="avue" />
+          <label for="flash">flash</label>
+          <input type="checkbox" name="flash" id="flash" />
+          <label for="essai">essai</label>
+          <select name="" id="essai">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="gridCroix"></div>
+
+    <script src="nouvelleCroix.js"></script>
+  </body>
+</html>
