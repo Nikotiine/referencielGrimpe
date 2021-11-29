@@ -40,9 +40,10 @@
             id="site"
             placeholder="Ex: Buoux"
             name="nomsite"
+            required
           /><br />
           <label for="Emplacement">Emplacement</label>
-          <select name="Region" id="Emplacement">
+          <select name="Region" id="Emplacement" required>
             <option value="">Indique le temps de trajet</option>
             <option value="Autour de la maison">Autour de la maison</option>
             <option value="Entre 2 et 3 heures">Entre 2 et 3 heures</option>
@@ -55,6 +56,7 @@
             id="hauteur"
             placeholder="en metres"
             name="hauteur"
+            required
           /><br />
           <label for="approche">Temps d'approche</label>
           <input
@@ -62,6 +64,7 @@
             name="approche"
             id="approche"
             placeholder="En minutes"
+            required
           /><br />
           <label for="typeapproche">Type d'approche</label>
           <select name="typeapproche" id="typeapproche">
@@ -84,7 +87,7 @@
           </fieldset>
           <br />
           <label for="equipement">Equipement</label>
-          <select name="equipement" id="equipement">
+          <select name="equipement" id="equipement" required>
             <option value="">Ca engage comment ?</option>
             <option value="Rapproché">Rapproche</option>
             <option value="Normal">Normal</option>
@@ -117,25 +120,53 @@
                 <span>Position parking</span> <br />
                 <label for="gpsoui">latitude</label>
                 <input
-                  type="text"
+                  type="number"
                   id="gpsoui"
                   placeholder="45,20531"
+                  name="latitude"
+                  step="any"
+                  min="-90"
+                  max="90"
+                  style="width: 100px"
                   required
                 />
                 <label for="gpsoui2">longitude</label>
                 <input
-                  type="text"
+                  type="number"
                   id="gpsoui2"
                   placeholder="5,66515"
+                  name="longitude"
+                  step="any"
+                  min="-180"
+                  max="180"
+                  style="width: 100px"
                   required
                 />
               </div>
               <div id="gps2">
                 <span>Position gps du squatt</span> <br />
                 <label for="gpsnon">latitude</label>
-                <input type="text" id="gpsnon" placeholder="45,20531" />
+                <input
+                  type="number"
+                  id="gpsnon"
+                  placeholder="45,20531"
+                  name="latitude2"
+                  step="any"
+                  min="-90"
+                  max="90"
+                  style="width: 100px"
+                />
                 <label for="gpsnon2">longitude</label>
-                <input type="text" id="gpsnon2" placeholder="5,66515" />
+                <input
+                  type="number"
+                  id="gpsnon2"
+                  placeholder="5,66515"
+                  step="any"
+                  min="-180"
+                  max="180"
+                  style="width: 100px"
+                  name="longitude2"
+                />
               </div>
             </div>
           </fieldset>

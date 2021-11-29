@@ -105,9 +105,9 @@ formulaire.addEventListener("submit", (e) => {
   const eauPotable = document.getElementById("eaupotable").checked;
   const riviere = document.getElementById("rivlac").checked;
   const resau = document.getElementById("reseau").checked;
-  const regexlatitude = /^[+-]?(([1-8]?[0-9])(\,[0-9]{1,6})?|90(\.0{1,6})?)$/;
-  const regexlongitude =
-    /^[+-]?((([1-9]?[0-9]|1[0-7][0-9])(\,[0-9]{1,6})?)|180(\.0{1,6})?)$/;
+  //const regexlatitude = /^[+-]?(([1-8]?[0-9])(\,[0-9]{1,6})?|90(\.0{1,6})?)$/;
+  //const regexlongitude =
+  //  /^[+-]?((([1-9]?[0-9]|1[0-7][0-9])(\,[0-9]{1,6})?)|180(\.0{1,6})?)$/;
   /*let saison1 = labelCheck(document.getElementById("printemps"));
   let saison2 = labelCheck(document.getElementById("ete"));
   let saison3 = labelCheck(document.getElementById("automne"));
@@ -117,12 +117,12 @@ formulaire.addEventListener("submit", (e) => {
   let reseau = labelCheck(document.getElementById("reseau"));
   let eaupotable = labelCheck(document.getElementById("eaupotable")); // classique : nommer les variables js en camelCase : eauPotable / eauPapotable
   let eaupapotable = labelCheck(document.getElementById("rivlac"));*/
-  let longitude = document.getElementById("gpsoui2").value;
-  let latitude = document.getElementById("gpsoui").value;
-  let latitude2 = document.getElementById("gpsnon").value;
-  let longitude2 = document.getElementById("gpsnon2").value;
+  const longitude = document.getElementById("gpsoui2").value;
+  const latitude = document.getElementById("gpsoui").value;
+  const latitude2 = document.getElementById("gpsnon").value;
+  const longitude2 = document.getElementById("gpsnon2").value;
 
-  if (!regexlatitude.test(latitude) || !regexlongitude.test(longitude)) {
+  /*if (!regexlatitude.test(latitude) || !regexlongitude.test(longitude)) {
     document.getElementById("gpsoui").style.border = "2px solid red";
     document.getElementById("gpsoui2").style.border = "2px solid red";
     return;
@@ -136,9 +136,10 @@ formulaire.addEventListener("submit", (e) => {
   } else {
     document.getElementById("gpsnon").style.border = "2px solid #63ff91";
     document.getElementById("gpsnon2").style.border = "2px solid #63ff91";
-  }
-  const gps1 = { type: "Point", coordinates: [longitude, latitude] };
-  const gps2 = { type: "Point", coordinates: [longitude2, latitude2] };
+  }*/
+  const point = { type: "Point", coordinates: [latitude, longitude] };
+  const point2 = { type: "Point", coordinates: [latitude2, longitude2] };
+  //const gps2 = { type: "Point", coordinates: [latitude2, longitude2] };
   /*document.querySelector(".detailSite").className = "detailSite SiteOk";
   document.getElementById(
     "newsite"
@@ -180,8 +181,8 @@ formulaire.addEventListener("submit", (e) => {
     approchType: typeappro,
     equipment: equipement,
     nearHome: localisation,
-    positionPark: gps1,
-    postionSquatt: gps2,
+    positionPark: point,
+    positionSQuatt: point2,
     hiver: hiver,
     printemps: printemps,
     ete: ete,
