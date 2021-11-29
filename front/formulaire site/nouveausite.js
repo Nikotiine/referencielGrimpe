@@ -196,11 +196,16 @@ formulaire.addEventListener("submit", (e) => {
     ouest: ouest,
   };
   console.log(data);
-  fetch("http://localhost:3000/spot/POST", {
+  fetch("http://localhost:3000/spot/", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { Accept: "application/json", "Content-Type": "application/json" },
-  });
+  })
+    .then((res) => res.json())
+    .then(
+      (res) =>
+        (document.getElementById("reponse").innerHTML = `<h2>${res.data}</h2>`)
+    );
 });
 /*let niko = "";
   if (eaupotable.checked === true) {

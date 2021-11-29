@@ -331,3 +331,11 @@
   width: 200px;
   height: 45px;
 }
+#reponse > h2 {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border: 1px groove black;
+  background-color: #63fff1;
+  margin: 0 80px;
+  transition: 1s;
+}
