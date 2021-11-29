@@ -1,0 +1,333 @@
+/*style Nav bar ---------------------*/
+.openclose {
+  width: 10%;
+  position: fixed;
+  height: 20px;
+}
+#buttonOpenClose {
+  width: 130px;
+  margin: 15px 10px;
+  height: 35px;
+  left: 10px;
+  background-color: rgba(135, 206, 250, 0.308);
+  opacity: 0.6;
+  border-radius: 20px;
+}
+#buttonOpenClose:hover {
+  width: 130px;
+  margin: 15px 10px;
+  height: 35px;
+  left: 10px;
+  background-color: lightskyblue;
+  transition: 0.4s;
+  opacity: 1;
+}
+#navbar {
+  width: 10%;
+  height: auto;
+  margin-top: 70px;
+  position: fixed;
+  left: -300px;
+  background-color: rgba(135, 206, 250, 0.5);
+  transition: 500ms;
+  border-radius: 20px;
+}
+
+#navbar > ul {
+  font-family: cursive;
+  font-size: 19px;
+  padding: 0;
+}
+#navbar > ul > li > a {
+  text-decoration: none;
+  color: black;
+}
+#navbar > ul > li > a:hover {
+  text-decoration: none;
+  color: rgb(206, 39, 9);
+}
+.buttonNav {
+  margin: 30% 10%;
+  display: flex;
+
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+/*Fin style NavBar -----------------------------------------------------*/
+
+/*Style nouveau site --------*/
+#bodyform {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 175px 1fr 1fr 1fr;
+  grid-template-rows: 90px 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "navbar titre titre autre "
+    "navbar form form autre"
+    "navbar form form autre"
+    "navbar form form autre"
+    "navebar done done autre";
+  background-image: url("formulaire site/img/IMG_3202.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.magrille:nth-child(1) {
+  grid-area: titre;
+  background-color: rgba(135, 206, 250, 0.404);
+  text-align: center;
+  border-radius: 25px;
+  margin: 0 10%;
+}
+.magrille:nth-child(1) > h1 {
+  text-align: center;
+}
+
+.magrille:nth-child(2) {
+  grid-area: navbar;
+}
+.magrille:nth-child(3) {
+  grid-area: form;
+  text-align: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+.container > label {
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-decoration: underline;
+}
+.container > p > span {
+  text-decoration: underline;
+  font-size: 20px;
+}
+.container > p > input {
+  margin-top: 15px;
+  width: 150px;
+  height: 15px;
+}
+.container > select {
+  width: 150px;
+  height: 20px;
+}
+.container > span {
+  text-decoration: underline;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.container2 > span {
+  text-decoration: underline;
+  font-size: 20px;
+}
+.container2 > input {
+  margin-top: 10px;
+}
+.container > input[type="submit"] {
+  margin-top: 25px;
+  border-radius: 5px;
+  height: 20px;
+}
+.container2 {
+  flex-wrap: wrap;
+  border: none;
+  margin-top: 0;
+}
+#align {
+  display: flex;
+  align-items: center;
+}
+#align > label {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.magrille:nth-child(3) > form {
+  background-color: rgba(198, 233, 253, 0.5);
+  margin: 5% 10%;
+  padding: 5px;
+}
+.magrille:nth-child(3) > form > fieldset {
+  border-color: #63ff91;
+}
+.magrille:nth-child(3) > form > p > input {
+  margin: 5px 0px;
+}
+.magrille:nth-child(3) > form > p > select {
+  margin: 5px 0;
+  padding: 1px;
+}
+
+.magrille:nth-child(3) > form > div > h4 {
+  margin: 5px auto 5px auto;
+}
+.magrille:nth-child(4) {
+  grid-area: autre;
+
+  text-align: center;
+  position: relative;
+}
+.magrille:nth-child(4)::after {
+  content: "";
+
+  opacity: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+.magrille:nth-child(5) {
+  grid-area: done;
+}
+#confort {
+  width: 50%;
+  margin: 0 auto;
+}
+#confort {
+  font-size: 20px;
+}
+#newsite {
+  margin-top: 25%;
+  font-size: 20px;
+}
+.SiteOk {
+  color: black;
+  grid-area: autre;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-self: flex-start;
+  max-height: fit-content;
+  margin-top: 30px;
+  border: 1px solid black;
+  transition: 1s;
+}
+.SiteOk::after {
+  content: "";
+  background-color: lightgray;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  transition: 1s;
+}
+.container-gps {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: none;
+}
+#gps > span {
+  color: red;
+  text-align: left;
+}
+.lieu {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+}
+
+#gps2 {
+  display: none;
+  margin-top: 15px;
+}
+#gps2 > span {
+  color: red;
+}
+#buttonForm {
+  border-radius: 20px;
+  height: 25px;
+  width: 85px;
+  opacity: 0, 6;
+  box-shadow: 0 0 5px 5px #63ff91;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: lightskyblue;
+}
+
+#buttonForm:active {
+  transform: translateY(2px);
+}
+#buttonForm:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.container .saison > input {
+  width: initial;
+  height: initial;
+}
+.error {
+  color: red;
+}
+.container > fieldset {
+  margin: 15px 0 0 0;
+  border: none;
+}
+/* fin style nouveau site ------------------------------------------------------*/
+#bodycroix {
+  display: grid;
+  grid-template-columns: 175px 1fr 1fr 1fr;
+  grid-template-rows: 90px 1fr 1fr 1fr;
+  grid-template-areas:
+    "navbar titrec titrec titrec "
+    "navbar formc formc formc"
+    "navbar formc formc formc"
+    "navbar stat stat stat";
+  margin: 0;
+  min-height: 100vh;
+}
+.gridCroix:nth-child(1) {
+  grid-area: navbar;
+}
+.gridCroix:nth-child(2) {
+  grid-area: titrec;
+  background-color: lawngreen;
+}
+.gridCroix:nth-child(2) > h1 {
+  text-align: center;
+}
+.gridCroix:nth-child(3) {
+  grid-area: formc;
+  background-color: lightcoral;
+  display: flex;
+  text-align: center;
+}
+.FlexContainerCroix {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+}
+.FlexContainerCroix > div > fieldset > legend {
+  font-size: 24px;
+}
+.gridCroix:nth-child(4) {
+  grid-area: stat;
+  background-color: lightskyblue;
+}
+.FlexContainerRow {
+  display: flex;
+  flex-direction: row;
+}
+#remarque {
+  width: 200px;
+  height: 45px;
+}
