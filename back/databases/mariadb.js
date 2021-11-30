@@ -30,7 +30,15 @@ async function newSpot(name) {
   await dataSite.create(name);
 }
 
-module.exports = { newSpot };
+//module.exports = { newSpot };
+/*async function siteDispo() {
+  await dataSite.findAll({});
+}*/
+async function siteDispo() {
+  return await dataSite.findAll();
+}
+
+module.exports = { siteDispo, newSpot };
 
 (async () => {
   try {

@@ -339,3 +339,20 @@
   margin: 0 80px;
   transition: 1s;
 }
+/*-----------------------------------------------sitedisplay--------------------------------*/
+#bodysite {
+  display: grid;
+  grid-template-columns: 175px 1fr 1fr 1fr;
+  grid-template-rows: 90px 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "navbar title title title"
+    "navbar corps corps corps"
+    "navbar corps corps corps"
+    "navbar corps corps corps"
+    "navbar corps corps corps";
+}
+#siteDisplay {
+  display: flex;
+  grid-area: corps;
+  flex-direction: column;
+}
