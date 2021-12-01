@@ -1,6 +1,6 @@
 const buttonnav = document.getElementById("buttonOpenClose");
 const navbar = document.getElementById("navbar");
-const siteDisPlay = document.getElementById("siteDisplay");
+const siteDisPlay = document.getElementById("SiteDisplay");
 buttonnav.addEventListener("click", () => {
   if (navbar.style.left === "10px") {
     navbar.style.left = "-300px";
@@ -20,8 +20,15 @@ const fetchSpot = async () => {
 
 const spotDisplay = async () => {
   await fetchSpot();
-  siteDisPlay.innerHTML = listSpot.map(
-    (nomdusite) => `<p>${nomdusite.spotName},hauteur${nomdusite.heightRout}</p>`
-  );
+  siteDisPlay.innerHTML = listSpot
+    .map(
+      (nomdusite) =>
+        `<tr><td>${nomdusite.spotName}</td><td>${nomdusite.nearHome}</td>
+        <td>${nomdusite.heightRout}</td><td>${nomdusite.approchTime}</td>
+        <td>${nomdusite.approchType}</td><td>${nomdusite.equipment}</td>
+        <td>${nomdusite.hiver}</td><td>${nomdusite.positionPark}</td>
+        </tr>`
+    )
+    .join("");
 };
 spotDisplay();

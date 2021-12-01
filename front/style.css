@@ -351,8 +351,11 @@
     "navbar corps corps corps"
     "navbar corps corps corps";
 }
-#siteDisplay {
+#tableausite {
   display: flex;
   grid-area: corps;
   flex-direction: column;
+}
+#SiteDisplay {
+  text-align: center;
 }
