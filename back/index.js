@@ -4,6 +4,7 @@ const cors = require("cors");
 const { newSpot } = require("./databases/mariadb");
 const { siteDispo } = require("./databases/mariadb");
 const { showIndex } = require("./databases/mariadb");
+const { delelteSite } = require("./databases/mariadb");
 require("./databases/mariadb");
 app.use(express.json());
 app.use(cors());
@@ -16,7 +17,11 @@ app.get("/spot/", (req, res) => {
 app.get("/spot/:id", (req, res) => {
   showIndex(req.params.id).then((index) => res.send(index));
 });
-
+app.delete("/spot/:id", (req, res) => {
+  delelteSite(req.params.id)
+    .then((sup) => res.send(sup))
+    .then(res.json({ data: "site supprime" }));
+});
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");
 });

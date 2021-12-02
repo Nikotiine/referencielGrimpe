@@ -349,7 +349,7 @@
     "navbar corps corps corps"
     "navbar corps corps corps"
     "navbar corps corps corps"
-    "navbar corps corps corps";
+    "navbar del del del";
 }
 #tableausite {
   display: flex;
@@ -359,7 +359,9 @@
 #SiteDisplay {
   text-align: center;
 }
-
+#SiteDisplay > tr > td > input {
+  color: red;
+}
 #detailSpot {
   text-align: center;
   display: flex;
@@ -369,4 +371,19 @@
   display: flex;
   flex-direction: column;
   justify-items: center;
+}
+#confirmDelete {
+  grid-area: del;
+  display: flex;
+  justify-content: center;
+}
+.confirmation {
+  text-align: center;
+  border: 2px groove red;
+  padding: 30px;
+  display: none;
+}
+.confirmation > input {
+  margin: 0 30px;
+  width: 60px;
 }

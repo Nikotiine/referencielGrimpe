@@ -40,8 +40,10 @@ async function siteDispo() {
 async function showIndex(id) {
   return await dataSite.findByPk(id);
 }
-
-module.exports = { siteDispo, newSpot, showIndex };
+async function delelteSite(ni) {
+  return await dataSite.destroy({ where: { id: ni } });
+}
+module.exports = { siteDispo, newSpot, showIndex, delelteSite };
 
 (async () => {
   try {

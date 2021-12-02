@@ -14,6 +14,7 @@ const detail = async () => {
 
 const niko = async () => {
   await detail();
-  ficheSite.innerHTML = `<h1>${showSpot.spotName}</h1><p>hauteur des voies:${showSpot.heightRout}</br>temps d'approche:${showSpot.approchTime}`;
+  ficheSite.innerHTML = `<h1>${showSpot.spotName}</h1><p>hauteur des voies:${showSpot.heightRout}
+  </br>temps d'approche:${showSpot.approchTime}`;
 };
 niko();
