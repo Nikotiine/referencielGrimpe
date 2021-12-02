@@ -37,8 +37,11 @@ async function newSpot(name) {
 async function siteDispo() {
   return await dataSite.findAll();
 }
+async function showIndex(id) {
+  return await dataSite.findByPk(id);
+}
 
-module.exports = { siteDispo, newSpot };
+module.exports = { siteDispo, newSpot, showIndex };
 
 (async () => {
   try {

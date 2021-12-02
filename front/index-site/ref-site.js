@@ -20,13 +20,23 @@ const fetchSpot = async () => {
 
 const spotDisplay = async () => {
   await fetchSpot();
+  //const bestSaison =(saison)=>{}
+
   siteDisPlay.innerHTML = listSpot
     .map(
       (nomdusite) =>
-        `<tr><td>${nomdusite.spotName}</td><td>${nomdusite.nearHome}</td>
+        `<tr><td><a href="detailsite.html?id=${nomdusite.id}">${
+          nomdusite.spotName
+        }</a></td><td>${nomdusite.nearHome}</td>
         <td>${nomdusite.heightRout}</td><td>${nomdusite.approchTime}</td>
         <td>${nomdusite.approchType}</td><td>${nomdusite.equipment}</td>
-        <td>${nomdusite.hiver}</td><td>${nomdusite.positionPark}</td>
+        <td>${nomdusite.hiver ? "hiver/" : ""}${nomdusite.ete ? "ete/" : ""}${
+          nomdusite.automne ? "automne/" : ""
+        }${nomdusite.printemps ? "printemps" : ""}</td><td>${
+          nomdusite.positionPark ? nomdusite.positionPark.coordinates[0] : ""
+        } / ${
+          nomdusite.positionPark ? nomdusite.positionPark.coordinates[1] : ""
+        }</td><td><input type="button" value="&#9760"></td>
         </tr>`
     )
     .join("");

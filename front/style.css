@@ -359,3 +359,14 @@
 #SiteDisplay {
   text-align: center;
 }
+
+#detailSpot {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#bodydetail {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
