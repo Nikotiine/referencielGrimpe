@@ -9,6 +9,17 @@
   </head>
   <body id="bodydetail">
     <div id="detailSpot"></div>
+    <form action="" method="PUT" id="modif">
+      <label for="site">nom du site</label>
+      <input type="text" name="nomsite" id="site" placeholder="entrez le nom" />
+      <label for="hauteur">hauteur des voies</label>
+      <input type="number" name="hauteur" id="hauteur" />
+      <label for="appro">approche</label>
+      <input type="number" name="tempsappro" id="appro" />
+      <input type="button" value="valide modification" onclick="modifok()" />
+      <input type="button" value="annuler" onclick="annule()" />
+    </form>
+    <div id="reponse"></div>
     <script src="detailsite.js"></script>
   </body>
 </html>

@@ -43,7 +43,10 @@ async function showIndex(id) {
 async function delelteSite(ni) {
   return await dataSite.destroy({ where: { id: ni } });
 }
-module.exports = { siteDispo, newSpot, showIndex, delelteSite };
+async function modifSite(body, spotid) {
+  return await dataSite.update(body, { where: { id: spotid } });
+}
+module.exports = { siteDispo, newSpot, showIndex, delelteSite, modifSite };
 
 (async () => {
   try {

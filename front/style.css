@@ -378,12 +378,32 @@
   justify-content: center;
 }
 .confirmation {
+  grid-area: title;
   text-align: center;
   border: 2px groove red;
-  padding: 30px;
+
   display: none;
+  justify-content: center;
 }
 .confirmation > input {
   margin: 0 30px;
   width: 60px;
+}
+#modif {
+  display: none;
+  flex-direction: column;
+  grid-area: modif;
+}
+#bodydetail {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "navbar detail modif"
+    "navbar detail modif"
+    "navbar detail modif"
+    "navbar detail modif";
+}
+#detailSpot {
+  grid-area: detail;
 }

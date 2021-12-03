@@ -16,7 +16,6 @@ const fetchSpot = async () => {
   await fetch("http://localhost:3000/spot/")
     .then((res) => res.json())
     .then((data) => (listSpot = data));
-  console.log(listSpot);
 };
 
 const spotDisplay = async () => {
@@ -48,15 +47,27 @@ const spotDisplay = async () => {
     .join("");
 };
 spotDisplay();
+const delok = document.getElementById("deleteYes");
+const nodel = document.getElementById("deleteNone");
 
 function momo(popo) {
   //let popo = event.target.name;
-  fetch("http://localhost:3000/spot/" + popo, { method: "DELETE" })
-    .then((res) => res.json())
-    .then(
-      (res) =>
-        (document.getElementById("confirmDelete").innerHTML = `<h3>${res.data}`)
-    );
+  const validesupp = document.querySelector(".confirmation");
+  validesupp.style.display = "flex";
+  delok.addEventListener("click", () => {
+    fetch("http://localhost:3000/spot/" + popo, { method: "DELETE" })
+      .then((res) => res.json())
+      .then(
+        (res) =>
+          (document.getElementById(
+            "confirmDelete"
+          ).innerHTML = `<h3>${res.data}`)
+      );
+    location.reload();
+  });
+  nodel.addEventListener("click", () => {
+    validesupp.style.display = "none";
+  });
 }
 
 /*if (valide.target.id === true) {
