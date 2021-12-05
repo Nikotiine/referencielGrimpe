@@ -392,18 +392,26 @@
 #modif {
   display: none;
   flex-direction: column;
-  grid-area: modif;
+  grid-area: detail;
 }
 #bodydetail {
   display: grid;
   grid-template-columns: 120px 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "navbar detail modif"
-    "navbar detail modif"
-    "navbar detail modif"
-    "navbar detail modif";
+    "navbar detail a"
+    "navbar detail carte"
+    "navbar detail b"
+    "navbar c b";
 }
 #detailSpot {
   grid-area: detail;
+}
+#map {
+  height: 300px;
+  width: 500px;
+  grid-area: carte;
+}
+#modif > .container > fieldset {
+  margin: 0;
 }
