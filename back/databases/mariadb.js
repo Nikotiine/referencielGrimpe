@@ -24,6 +24,8 @@ const dataSite = sequelize.define("climbingSpot", {
   sud: { type: DataTypes.BOOLEAN },
   est: { type: DataTypes.BOOLEAN },
   ouest: { type: DataTypes.BOOLEAN },
+  niveau: { type: DataTypes.STRING },
+  tailleSite: { type: DataTypes.STRING },
 });
 
 async function newSpot(name) {

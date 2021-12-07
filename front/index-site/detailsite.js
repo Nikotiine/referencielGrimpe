@@ -2,10 +2,10 @@ const buttonnav = document.getElementById("buttonOpenClose");
 const navbar = document.getElementById("navbar");
 
 buttonnav.addEventListener("click", () => {
-  if (navbar.style.left === "10px") {
-    navbar.style.left = "-300px";
+  if (navbar.style.display === "block") {
+    navbar.style.display = "none";
   } else {
-    navbar.style.left = "10px";
+    navbar.style.display = "block";
   }
 });
 //-----------------------------navbar--------------------------------
@@ -24,21 +24,24 @@ const detail = async () => {
 
 const vueSite = async () => {
   await detail();
-  ficheSite.innerHTML = `<h1>${showSpot.spotName}</h1></br><h2>Localistaion: ${
-    showSpot.nearHome
-  }</h2>
-  <p>hauteur des voies: ${showSpot.heightRout}
-  </br>temps d'approche: ${showSpot.approchTime}</br>
-  type d'approche: ${showSpot.approchType}</br>
-  Exposition: ${showSpot.est ? "Est " : ""}${showSpot.sud ? "Sud " : ""}${
-    showSpot.ouest ? "Ouest " : ""
-  }${showSpot.nord ? "Nord" : ""}</br>
-  Saison conseillée: ${showSpot.printemps ? "Printemps " : ""}${
+  ficheSite.innerHTML = `<h1>${showSpot.spotName}</h1></br>
+  <p>Localisation: <span>${showSpot.nearHome}</span></br>
+  Saison conseillée: <span>${showSpot.printemps ? "Printemps " : ""}${
     showSpot.ete ? "Ete " : ""
-  }${showSpot.automne ? "Automne " : ""}${showSpot.hiver ? "Hiver " : ""}</br>
-  Type d'equipement: ${showSpot.equipment}</br>
+  }${showSpot.automne ? "Automne " : ""}${
+    showSpot.hiver ? "Hiver " : ""
+  }</span></br>
+  Exposition:<span> ${showSpot.est ? "Est " : ""}${showSpot.sud ? "Sud " : ""}${
+    showSpot.ouest ? "Ouest " : ""
+  }${showSpot.nord ? "Nord" : ""}</span></br></p>
 
-  </p>
+  <p>Taille du site: <span>${showSpot.tailleSite}</span></br>
+  Ticket d'entrée: <span>${showSpot.niveau}</span></br>
+  hauteur des voies: <span>${showSpot.heightRout} metres</span></br>
+  Type d'equipement: <span>${showSpot.equipment}</span></p>
+  <p>temps d'approche:<span> ${showSpot.approchTime} minutes</span></br>
+  type d'approche: <span>${showSpot.approchType}</span></p>
+  
   <p>Geoloc du parking: ${
     showSpot.positionPark ? showSpot.positionPark.coordinates[0] : ""
   } , ${showSpot.positionPark ? showSpot.positionPark.coordinates[1] : ""}
@@ -116,13 +119,7 @@ const modifok = () => {
     },
   })
     .then((res) => res.json())
-    .then(
-      (res) =>
-        (document.getElementById("reponse").innerHTML = `<h2>${res.data}</h2>`)
-    );
-  setTimeout(function () {
-    window.location.reload();
-  }, 2000);
+    .then((res) => valideFormulaire());
 };
 const annule = () => {
   formModif.style.display = "none";
@@ -209,4 +206,12 @@ function initMap(lat, lon) {
 // Fonction pour mettre un marker
 function setMarker(lat, lon) {
   L.marker([lat, lon]).addTo(macarte);
+}
+function valideFormulaire() {
+  var x = document.getElementById("reponse3");
+  x.className = "show";
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+    window.location.reload();
+  }, 3000);
 }

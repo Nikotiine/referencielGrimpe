@@ -3,10 +3,10 @@ const navbar = document.getElementById("navbar");
 const siteDisPlay = document.getElementById("SiteDisplay");
 
 buttonnav.addEventListener("click", () => {
-  if (navbar.style.left === "10px") {
-    navbar.style.left = "-300px";
+  if (navbar.style.display === "block") {
+    navbar.style.display = "none";
   } else {
-    navbar.style.left = "10px";
+    navbar.style.display = "block";
   }
 });
 //----------------------------------navbar----------------------------------------
@@ -29,14 +29,14 @@ const spotDisplay = async () => {
           nomdusite.spotName
         }</a></td><td>${nomdusite.nearHome}</td>
         <td>${nomdusite.heightRout}</td><td>${nomdusite.approchTime}</td>
-        <td>${nomdusite.approchType}</td><td>${nomdusite.equipment}</td>
+        <td>${nomdusite.nord ? "Nord " : ""}${nomdusite.sud ? "Sud " : ""}${
+          nomdusite.est ? "Est " : ""
+        }${nomdusite.ouest ? "Ouest" : ""}</td><td>${nomdusite.equipment}</td>
         <td>${nomdusite.hiver ? "hiver/" : ""}${nomdusite.ete ? "ete/" : ""}${
           nomdusite.automne ? "automne/" : ""
         }${nomdusite.printemps ? "printemps" : ""}</td><td>${
-          nomdusite.positionPark ? nomdusite.positionPark.coordinates[0] : ""
-        } / ${
-          nomdusite.positionPark ? nomdusite.positionPark.coordinates[1] : ""
-        }</td><td><input type="button" onclick="momo(${
+          nomdusite.tailleSite
+        }</td><td>${nomdusite.niveau}<td><input type="button" onclick="momo(${
           nomdusite.id
         })" value="delete" name="${nomdusite.id}" title="Supprimer le site ${
           nomdusite.spotName
@@ -47,29 +47,30 @@ const spotDisplay = async () => {
     .join("");
 };
 spotDisplay();
-const delok = document.getElementById("deleteYes");
-const nodel = document.getElementById("deleteNone");
 
 function momo(popo) {
   //let popo = event.target.name;
   const validesupp = document.querySelector(".confirmation");
-  validesupp.style.display = "flex";
+  const delok = document.getElementById("deleteYes");
+  const delNO = document.getElementById("deleteNone");
+  validesupp.style.display = "block";
   delok.addEventListener("click", () => {
     fetch("http://localhost:3000/spot/" + popo, { method: "DELETE" })
       .then((res) => res.json())
-      .then(
-        (res) =>
-          (document.getElementById(
-            "confirmDelete"
-          ).innerHTML = `<h3>${res.data}`)
-      );
-    location.reload();
+      .then((res) => valideFormulaire());
   });
-  nodel.addEventListener("click", () => {
+  delNO.addEventListener("click", () => {
     validesupp.style.display = "none";
   });
 }
-
+function valideFormulaire() {
+  var x = document.getElementById("reponse2");
+  x.className = "show";
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+    window.location.reload();
+  }, 3000);
+}
 /*if (valide.target.id === true) {
     fetch("http://localhost:3000/spot/" + popo, { method: "DELETE" })
       .then((res) => res.json())

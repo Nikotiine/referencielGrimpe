@@ -14,30 +14,18 @@
 
     <div id="navbar">
       <ul>
-        <li class="buttonNav"><a href="/index.html">Accueil</a></li>
+        <li class="buttonNav"><a href="/index.html">&#9758 Accueil</a></li>
 
-        <li class="buttonNav"><a href="">Sites</a></li>
-        <li class="buttonNav"><a href="">Topos</a></li>
-        <li class="buttonNav"><a href="croix/nouvelleCroix.html">Croix</a></li>
+        <li class="buttonNav"><a href="">&#9758 Sites</a></li>
+        <li class="buttonNav"><a href="">&#9758 Topos</a></li>
+        <li class="buttonNav"><a href="croix/nouvelleCroix.html">&#9758 Croix</a></li>
         <li class="buttonNav">
-          <a href="/formulaire site/nouveausite.html">Nouveau Site</a>
+          <a href="/formulaire site/nouveausite.html">&#9758 Nouveau Site</a>
         </li>
       </ul>
     </div>
-    <div class="confirmation">
-      <h1>Voulez vous vraiment suprimmer ce site ?</h1>
-      <input
-        type="button"
-        value="oui"
-        style="background-color: green"
-        id="deleteYes"
-        onclick=""
-      /><input
-        type="button"
-        value="non"
-        style="background-color: red"
-        id="deleteNone"
-      />
+    <div id="ref-site-title">
+      <h1>Liste des sites</h1>
     </div>
 
     <div id="tableausite">
@@ -47,15 +35,22 @@
           <th>temps de route</th>
           <th>Hauteur des voie</th>
           <th>Temps d'approche</th>
-          <th>Type d'approche</th>
+          <th>Exposition</th>
           <th>Equipé</th>
           <th>saison</th>
-          <th>position gps parking</th>
+          <th>Nombre de ligne</th>
+          <th>Ticket d'entree</th>
+          <th id="trash" ></th>
         </thead>
         <tbody id="SiteDisplay"></tbody>
       </table>
     </div>
-    <div id="confirmDelete"></div>
+    <div class="confirmation">
+      <h1>Voulez vous vraiment suprimmer ce site ?</h1>
+      <input type="button" value="oui" id="deleteYes" />
+      <input type="button" value="non" id="deleteNone" />
+      <div id="reponse2">Formulaire supprimé</div>
+    </div>
     <script src="ref-site.js"></script>
   </body>
 </html>

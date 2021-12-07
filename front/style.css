@@ -1,3 +1,51 @@
+@font-face {
+  font-family: "Copperlate gothic";
+  src: url("./Copperplate\ Gothic\ Light\ Regular.ttf");
+}
+/*-----------------------------------keyFrames toast---------------------------------------------*/
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
 /*style Nav bar ---------------------*/
 .openclose {
   width: 10%;
@@ -6,31 +54,35 @@
 }
 #buttonOpenClose {
   width: 130px;
-  margin: 15px 10px;
+  margin: 15px 0px 10px 10px;
   height: 35px;
-  left: 10px;
+
   background-color: rgba(135, 206, 250, 0.308);
   opacity: 0.6;
   border-radius: 20px;
+  position: fixed;
+  font-family: "copperlate gothic";
 }
 #buttonOpenClose:hover {
   width: 130px;
-  margin: 15px 10px;
+  margin: 15px 0px 10px 10px;
   height: 35px;
-  left: 10px;
+
   background-color: lightskyblue;
   transition: 0.4s;
   opacity: 1;
 }
 #navbar {
-  width: 10%;
+  width: fit-content;
   height: auto;
   margin-top: 70px;
   position: fixed;
-  left: -300px;
-  background-color: rgba(135, 206, 250, 0.5);
+  display: none;
+  background-color: lightskyblue;
   transition: 500ms;
   border-radius: 20px;
+  min-width: fit-content;
+  left: 12px;
 }
 
 #navbar > ul {
@@ -41,6 +93,8 @@
 #navbar > ul > li > a {
   text-decoration: none;
   color: black;
+  font-family: "copperlate gothic";
+  font-size: 15px;
 }
 #navbar > ul > li > a:hover {
   text-decoration: none;
@@ -59,30 +113,40 @@
 /*Style nouveau site --------*/
 #bodyform {
   margin: 0;
-  min-height: 100vh;
+  min-height: fit-content;
   display: grid;
-  grid-template-columns: 175px 1fr 1fr 1fr;
+  grid-template-columns: 175px 1fr 1fr;
   grid-template-rows: 90px 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "navbar titre titre autre "
-    "navbar form form autre"
-    "navbar form form autre"
-    "navbar form form autre"
-    "navebar done done autre";
+    "navbar titre titre  "
+    "navbar form form "
+    "navbar form form "
+    "navbar form form "
+    "navebar done done ";
   background-image: url("formulaire site/img/IMG_3202.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  font-family: "copperlate gothic";
+  grid-auto-rows: minmax(100px, auto);
 }
 .magrille:nth-child(1) {
   grid-area: titre;
-  background-color: rgba(135, 206, 250, 0.404);
-  text-align: center;
-  border-radius: 25px;
-  margin: 0 10%;
+
+  display: block;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 320px;
 }
 .magrille:nth-child(1) > h1 {
   text-align: center;
+  border: 1px solid black;
+  margin: 10px 36% 0 22%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 1px 1px #000000;
+  background-color: lightskyblue;
 }
 
 .magrille:nth-child(2) {
@@ -92,6 +156,18 @@
   grid-area: form;
   text-align: center;
 }
+.magrille:nth-child(3) > form {
+  width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  background-color: rgba(198, 233, 253, 0.7);
+  margin: 2% 0% 0 20%;
+  padding: 5px;
+  box-shadow: 0px 0px 1px 1px #000000;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -100,39 +176,41 @@
 }
 .container > label {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: underline;
 }
 .container > p > span {
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 15px;
 }
-.container > p > input {
-  margin-top: 15px;
-  width: 150px;
-  height: 15px;
+.container > input {
+  border-color: black;
 }
 .container > select {
   width: 150px;
   height: 20px;
+  border-color: black;
+  border-style: inset;
+  border-width: 2px;
 }
 .container > span {
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 10px;
 }
 .container2 > span {
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 15px;
 }
 .container2 > input {
-  margin-top: 10px;
+  margin-top: 0px;
 }
 .container > input[type="submit"] {
   margin-top: 25px;
   border-radius: 5px;
   height: 20px;
 }
+
 .container2 {
   flex-wrap: wrap;
   border: none;
@@ -147,10 +225,11 @@
   flex-direction: row;
   align-items: baseline;
 }
-.magrille:nth-child(3) > form {
-  background-color: rgba(198, 233, 253, 0.5);
-  margin: 5% 10%;
-  padding: 5px;
+#niveau {
+  margin-bottom: 10px;
+}
+#nombreVoie {
+  margin-bottom: 10px;
 }
 .magrille:nth-child(3) > form > fieldset {
   border-color: #63ff91;
@@ -183,49 +262,21 @@
   position: absolute;
   z-index: -1;
 }
-.magrille:nth-child(5) {
+/*.magrille:nth-child(5) {
   grid-area: done;
-}
+}*/
 #confort {
   width: 50%;
   margin: 0 auto;
 }
 #confort {
-  font-size: 20px;
+  font-size: 15px;
 }
 #newsite {
   margin-top: 25%;
-  font-size: 20px;
+  font-size: 15px;
 }
-.SiteOk {
-  color: black;
-  grid-area: autre;
-  position: relative;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-self: flex-start;
-  max-height: fit-content;
-  margin-top: 30px;
-  border: 1px solid black;
-  transition: 1s;
-}
-.SiteOk::after {
-  content: "";
-  background-color: lightgray;
-  background-size: cover;
-  background-repeat: no-repeat;
 
-  opacity: 0.6;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  transition: 1s;
-}
 .container-gps {
   margin-top: 5px;
   display: flex;
@@ -233,29 +284,44 @@
   flex-wrap: wrap;
   border: none;
 }
-#gps > span {
-  color: red;
-  text-align: left;
+.container-gps > div > input {
+  border-color: black;
+}
+#gps > p {
+  text-align: center;
+  margin: 0 0 10px;
+  text-decoration: underline;
+}
+#gps2 > p {
+  text-align: center;
+  margin: 0 0 10px;
+  text-decoration: underline;
 }
 .lieu {
   display: flex;
   flex-direction: row;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #gps2 {
   display: none;
   margin-top: 15px;
 }
-#gps2 > span {
-  color: red;
+#gps > input {
+  margin-bottom: 10px;
+}
+#gps > label {
+  text-decoration: underline;
+}
+#gps2 > label {
+  text-decoration: underline;
 }
 #buttonForm {
   border-radius: 20px;
   height: 25px;
   width: 85px;
   opacity: 0, 6;
-  box-shadow: 0 0 5px 5px #63ff91;
+
   border: none;
   background-color: rgba(0, 0, 0, 0.5);
   color: lightskyblue;
@@ -275,10 +341,83 @@
   color: red;
 }
 .container > fieldset {
-  margin: 15px 0 0 0;
+  margin: 0;
   border: none;
+  padding: 5px;
+}
+.container > fieldset > legend {
+  text-decoration: underline;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+#reponse {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -150px;
+  background-color: #333;
+  color: #58d5e9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0 5px 5px #58d5e9;
+}
+
+#reponse.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 /* fin style nouveau site ------------------------------------------------------*/
+
+/* -------------------------style feuille de croix--------------------*/
 #bodycroix {
   display: grid;
   grid-template-columns: 175px 1fr 1fr 1fr;
@@ -331,30 +470,59 @@
   width: 200px;
   height: 45px;
 }
-#reponse > h2 {
-  text-align: center;
-  color: rgb(0, 0, 0);
-  border: 1px groove black;
-  background-color: #63fff1;
-  margin: 0 80px;
-  transition: 1s;
-}
-/*-----------------------------------------------sitedisplay--------------------------------*/
+/* ---------fin croix----------------------*/
+/*-----------------------------------------------ref-site--------------------------------*/
 #bodysite {
   display: grid;
-  grid-template-columns: 175px 1fr 1fr 1fr;
+  grid-template-columns: 175px 1fr 1fr 13%;
   grid-template-rows: 90px 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "navbar title title title"
-    "navbar corps corps corps"
-    "navbar corps corps corps"
-    "navbar corps corps corps"
-    "navbar del del del";
+    "navbar title title a"
+    "navbar corps corps a"
+    "navbar corps corps a"
+    "navbar corps corps a"
+    "navbar del del a";
+  font-family: "copperlate gothic";
+  font-size: 13px;
+  background-image: url("/formulaire site/img/refsite.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
 }
+#ref-site-title {
+  grid-area: title;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+}
+#ref-site-title > h1 {
+  border: 1px solid black;
+  margin: 10px 35%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 1px 1px #000000;
+  background-color: lightskyblue;
+}
+
 #tableausite {
   display: flex;
   grid-area: corps;
   flex-direction: column;
+  border-bottom: 1px solid black;
+  margin-left: 50px;
+  background-color: #fffaface;
+  height: fit-content;
+  width: fit-content;
+}
+#tableausite > table > thead > tr > th {
+  border: 1px solid black;
+  padding: 10px;
+  font-style: italic;
+}
+#tableausite > table {
+  border-collapse: collapse;
 }
 #SiteDisplay {
   text-align: center;
@@ -362,56 +530,142 @@
 #SiteDisplay > tr > td > input {
   color: red;
 }
+#SiteDisplay > tr > td {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding: 3px 10px;
+}
+#SiteDisplay > tr > td > a {
+  text-decoration: underline;
+  color: #b10303;
+}
 #detailSpot {
   text-align: center;
   display: flex;
   flex-direction: column;
 }
-#bodydetail {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-}
-#confirmDelete {
-  grid-area: del;
-  display: flex;
-  justify-content: center;
+
+#trash {
+  background-image: url("./formulaire site/img/trash.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .confirmation {
-  grid-area: title;
+  grid-area: del;
   text-align: center;
-  border: 2px groove red;
-
+  box-shadow: 0 0 5px 5px #58d5e9;
   display: none;
   justify-content: center;
+  background-color: #d9d9d9de;
+  color: #3c8591;
+  border-radius: 20px;
+  margin: 10px auto;
 }
+
 .confirmation > input {
   margin: 0 30px;
   width: 60px;
+
+  background-color: #d9d9d9de;
+  border-radius: 13px;
+}
+.confirmation > input:hover {
+  background-color: lightskyblue;
+  transition: 0.5s;
 }
 #modif {
   display: none;
   flex-direction: column;
   grid-area: detail;
 }
+#reponse2 {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -160px;
+  background-color: #333;
+  color: #58d5e9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0 5px 5px #58d5e9;
+}
+
+#reponse2.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/*-----------------------------------detailsite-----------------------------------*/
 #bodydetail {
   display: grid;
-  grid-template-columns: 120px 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 175px 1fr 1fr;
+  grid-template-rows: 90px 1fr 1fr 1fr;
   grid-template-areas:
-    "navbar detail a"
+    "navbar titleD titleD"
     "navbar detail carte"
-    "navbar detail b"
+    "navbar detail carte"
     "navbar c b";
+  margin: 0;
+  font-family: "copperlate gothic";
+  font-size: 13px;
+}
+#detailTitle {
+  grid-area: titleD;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+}
+#detailTitle > h1 {
+  border: 1px solid black;
+  margin: 10px 40% 0 25%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 1px 1px #000000;
+  background-color: lightskyblue;
 }
 #detailSpot {
   grid-area: detail;
+  text-align: justify;
+}
+#detailSpot > p > span {
+  color: red;
 }
 #map {
   height: 300px;
   width: 500px;
   grid-area: carte;
+  margin-top: 20%;
 }
 #modif > .container > fieldset {
   margin: 0;
+}
+#reponse3 {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -160px;
+  background-color: #333;
+  color: #58d5e9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0 5px 5px #58d5e9;
+}
+
+#reponse3.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }

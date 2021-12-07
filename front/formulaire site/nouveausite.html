@@ -13,21 +13,21 @@
     </div>
     <div class="magrille">
       <div id="openclose">
-        <button id="buttonOpenClose">Menu</button>
+        <button id="buttonOpenClose">&#9776 Menu</button>
       </div>
       <div id="navbar">
         <ul>
-          <li class="buttonNav"><a href="/index.html">Accueil</a></li>
+          <li class="buttonNav"><a href="/index.html">&#9758 Accueil</a></li>
 
           <li class="buttonNav">
-            <a href="/index-site/ref-site.html">Sites</a>
+            <a href="/index-site/ref-site.html">&#9758 Sites</a>
           </li>
-          <li class="buttonNav"><a href="">Topos</a></li>
+          <li class="buttonNav"><a href="">&#9758 Topos</a></li>
           <li class="buttonNav">
-            <a href="/croix/nouvelleCroix.html">Croix</a>
+            <a href="/croix/nouvelleCroix.html">&#9758 Croix</a>
           </li>
           <li class="buttonNav">
-            <a href="formulaire site/nouveausite.html">Nouveau Site</a>
+            <a href="formulaire site/nouveausite.html">&#9758 Nouveau Site</a>
           </li>
         </ul>
       </div>
@@ -48,8 +48,8 @@
           <select name="Region" id="Emplacement" required>
             <option value="">Indique le temps de trajet</option>
             <option value="Autour de la maison">Autour de la maison</option>
-            <option value="Entre 2 et 3 heures">Entre 2 et 3 heures</option>
-            <option value="Entre 3 et 5 heures ">Entre 3 et 5 heures</option>
+            <option value="Entre 2 et 3 heures">Entre 2 et 3 heures de route</option>
+            <option value="Entre 3 et 5 heures ">Entre 3 et 5 heures de route</option>
             <option value="Bien plus loin">Bien plus loin</option></select
           ><br />
           <label for="hauteur">Hauteur moyenne des voies</label>
@@ -74,8 +74,34 @@
             <option value="Montée legere">Montee legere</option>
             <option value="Ca monte bien !">Montée raide</option>
             <option value="Ca va c'est plat">C'est plat</option>
-            <option value="En descente">En descente</option></select
-          ><br />
+            <option value="En descente">En descente</option>
+          </select>
+
+          <br />
+          <label for="equipement">Equipement</label>
+          <select name="equipement" id="equipement" required>
+            <option value="">Ca engage comment ?</option>
+            <option value="Rapproché">Rapproche</option>
+            <option value="Normal">Normal</option>
+            <option value="Engagé">Engagé</option>
+            <option value="Exposé">Exposé</option>
+          </select></br>
+          <label for="nombreVoie">Nombres de voies ?</label>
+          <select name="nombreVoie" id="nombreVoie" required>
+            <option value="">Taille du site</option>
+            <option value="- de 25">Moins de 25 voies</option>
+            <option value="entre 25 et 50">Entre 25 et 50 voies</option>
+            <option value="environ 100">100 voies</option>
+            <option value="+ que 150">Plus de 150 voies</option>
+          </select>
+          <label for="niveau">Ticket d'entree</label>
+          <select name="niveau" id="niveau" required>
+            <option value="">Niveau mini du site</option>
+            <option value="Y a du 4">4 Sup</option>
+            <option value="Y a du 5 -">5 moins</option>
+            <option value="5c mini">5 sup</option>
+            <option value="6a ou b mini">6 a/b</option>
+          </select>
           <fieldset>
             <legend>Expostion</legend>
             <label for="nord">Nord</label>
@@ -87,15 +113,6 @@
             <label for="ouest">Ouest</label>
             <input type="checkbox" name="ouest" id="ouest" />
           </fieldset>
-          <br />
-          <label for="equipement">Equipement</label>
-          <select name="equipement" id="equipement" required>
-            <option value="">Ca engage comment ?</option>
-            <option value="Rapproché">Rapproche</option>
-            <option value="Normal">Normal</option>
-            <option value="Engagé">Engagé</option>
-            <option value="Exposé">Exposé</option>
-          </select>
           <fieldset class="saison">
             <legend>Meilleure Saison</legend>
             <label for="printemps">Primtemps</label>
@@ -107,20 +124,20 @@
             <label for="hiver">Hiver</label>
             <input type="checkbox" name="hiver" id="hiver" />
           </fieldset>
-          <fieldset>
-            <div class="container2">
+          <fieldset class="container2">
+            
               <legend>Parking adapté</legend>
               <label for="poui">oui</label>
               <input type="radio" name="paark" id="poui" checked />
               <label for="pnon">non</label>
               <input type="radio" name="paark" id="pnon" />
-            </div>
+            
           </fieldset>
           <fieldset class="container-gps">
-            <div class="container-gps">
+           
               <div id="gps">
-                <span>Position parking</span> <br />
-                <label for="gpsoui">latitude</label>
+                <p>Position parking</p>
+                <label for="gpsoui">latitude:</label>
                 <input
                   type="number"
                   id="gpsoui"
@@ -132,7 +149,7 @@
                   style="width: 100px"
                   required
                 />
-                <label for="gpsoui2">longitude</label>
+                <label for="gpsoui2">longitude:</label>
                 <input
                   type="number"
                   id="gpsoui2"
@@ -146,8 +163,8 @@
                 />
               </div>
               <div id="gps2">
-                <span>Position gps du squatt</span> <br />
-                <label for="gpsnon">latitude</label>
+                <p>Position gps du squatt</p>
+                <label for="gpsnon">latitude:</label>
                 <input
                   type="number"
                   id="gpsnon"
@@ -158,7 +175,7 @@
                   max="90"
                   style="width: 100px"
                 />
-                <label for="gpsnon2">longitude</label>
+                <label for="gpsnon2">longitude:</label>
                 <input
                   type="number"
                   id="gpsnon2"
@@ -170,7 +187,7 @@
                   name="longitude2"
                 />
               </div>
-            </div>
+           
           </fieldset>
           <fieldset class="container2">
             <legend>Confort parking</legend>
@@ -186,6 +203,7 @@
               <input type="checkbox" name="reseau" id="reseau" />
             </div>
           </fieldset>
+         
           <input type="submit" value="Valider" id="buttonForm" />
         </div>
       </form>
@@ -193,9 +211,7 @@
 
     <div class="magrille"></div>
     <div class="magrille">
-      <div id="reponse">
-        <h2></h2>
-      </div>
+      <div id="reponse">Formulaire validé</div>
     </div>
 
     <script src="nouveausite.js"></script>
