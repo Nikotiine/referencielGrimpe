@@ -50,17 +50,29 @@ spotDisplay();
 
 function momo(popo) {
   //let popo = event.target.name;
-  const validesupp = document.querySelector(".confirmation");
+  const modal = document.getElementById("myModal");
   const delok = document.getElementById("deleteYes");
   const delNO = document.getElementById("deleteNone");
-  validesupp.style.display = "block";
+  const span = document.getElementsByClassName("close")[0];
+  modal.style.display = "block";
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
   delok.addEventListener("click", () => {
     fetch("http://localhost:3000/spot/" + popo, { method: "DELETE" })
       .then((res) => res.json())
-      .then((res) => valideFormulaire());
+      .then((res) => {
+        modal.style.display = "none";
+        valideFormulaire();
+      });
   });
   delNO.addEventListener("click", () => {
-    validesupp.style.display = "none";
+    modal.style.display = "none";
   });
 }
 function valideFormulaire() {
@@ -69,7 +81,7 @@ function valideFormulaire() {
   setTimeout(function () {
     x.className = x.className.replace("show", "");
     window.location.reload();
-  }, 3000);
+  }, 2000);
 }
 /*if (valide.target.id === true) {
     fetch("http://localhost:3000/spot/" + popo, { method: "DELETE" })

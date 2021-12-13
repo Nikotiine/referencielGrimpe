@@ -20,7 +20,7 @@
         <li class="buttonNav"><a href="">&#9758 Topos</a></li>
         <li class="buttonNav"><a href="croix/nouvelleCroix.html">&#9758 Croix</a></li>
         <li class="buttonNav">
-          <a href="/formulaire site/nouveausite.html">&#9758 Nouveau Site</a>
+          <a href="/formulaire site/new-spot.html">&#9758 Nouveau Site</a>
         </li>
       </ul>
     </div>
@@ -29,6 +29,7 @@
     </div>
 
     <div id="tableausite">
+      <input type="button" value="Nouveau" id="btnNew" onclick="location.href='/formulaire site/nouveausite.html';" >
       <table>
         <thead>
           <th>Site</th>
@@ -40,17 +41,26 @@
           <th>saison</th>
           <th>Nombre de ligne</th>
           <th>Ticket d'entree</th>
-          <th id="trash" ></th>
+          <th>Sup.</th> 
         </thead>
         <tbody id="SiteDisplay"></tbody>
       </table>
+      
     </div>
-    <div class="confirmation">
-      <h1>Voulez vous vraiment suprimmer ce site ?</h1>
+    
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Etes vous sur de vouloir supprimer ?</p>
+
+    
+
       <input type="button" value="oui" id="deleteYes" />
       <input type="button" value="non" id="deleteNone" />
-      <div id="reponse2">Formulaire supprimé</div>
     </div>
+      
+    </div>
+    <div id="reponse2">Formulaire supprimé</div>
     <script src="ref-site.js"></script>
   </body>
 </html>

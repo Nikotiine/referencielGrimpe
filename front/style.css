@@ -2,6 +2,10 @@
   font-family: "Copperlate gothic";
   src: url("./Copperplate\ Gothic\ Light\ Regular.ttf");
 }
+@font-face {
+  font-family: "grammatika";
+  src: url(./Grammatika-Regular.otf);
+}
 /*-----------------------------------keyFrames toast---------------------------------------------*/
 @-webkit-keyframes fadein {
   from {
@@ -109,246 +113,111 @@
   padding: 0;
 }
 /*Fin style NavBar -----------------------------------------------------*/
-
+input[type="button"] {
+  cursor: pointer;
+}
 /*Style nouveau site --------*/
-#bodyform {
-  margin: 0;
-  min-height: fit-content;
-  display: grid;
-  grid-template-columns: 175px 1fr 1fr;
-  grid-template-rows: 90px 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    "navbar titre titre  "
-    "navbar form form "
-    "navbar form form "
-    "navbar form form "
-    "navebar done done ";
-  background-image: url("formulaire site/img/IMG_3202.png");
-  background-repeat: no-repeat;
+@font-face {
+  font-family: "copperplate";
+  src: url(/Copperplate\ Gothic\ Light\ Regular.ttf);
+}
+@font-face {
+  font-family: "grammatika";
+  src: url(/Grammatika-Regular.otf);
+}
+#bodyNewsite {
+  background-image: url("/formulaire site/img/IMG_3202.png");
   background-size: cover;
-  background-attachment: fixed;
-  font-family: "copperlate gothic";
-  grid-auto-rows: minmax(100px, auto);
-}
-.magrille:nth-child(1) {
-  grid-area: titre;
-
-  display: block;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 320px;
-}
-.magrille:nth-child(1) > h1 {
-  text-align: center;
-  border: 1px solid black;
-  margin: 10px 36% 0 22%;
-  border-radius: 15px;
-  box-shadow: 0px 0px 1px 1px #000000;
-  background-color: lightskyblue;
-}
-
-.magrille:nth-child(2) {
-  grid-area: navbar;
-}
-.magrille:nth-child(3) {
-  grid-area: form;
-  text-align: center;
-}
-.magrille:nth-child(3) > form {
-  width: 45%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  min-width: 320px;
-  background-color: rgba(198, 233, 253, 0.7);
-  margin: 2% 0% 0 20%;
-  padding: 5px;
-  box-shadow: 0px 0px 1px 1px #000000;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-repeat: no-repeat;
   margin: 0;
+  font-family: "grammatika";
+  background-attachment: fixed;
 }
-.container > label {
-  margin-bottom: 10px;
-  font-size: 15px;
-  text-decoration: underline;
-}
-.container > p > span {
-  text-decoration: underline;
-  font-size: 15px;
-}
-.container > input {
-  border-color: black;
-}
-.container > select {
-  width: 150px;
-  height: 20px;
-  border-color: black;
-  border-style: inset;
-  border-width: 2px;
-}
-.container > span {
-  text-decoration: underline;
-  font-size: 15px;
-  margin-top: 10px;
-}
-.container2 > span {
-  text-decoration: underline;
-  font-size: 15px;
-}
-.container2 > input {
-  margin-top: 0px;
-}
-.container > input[type="submit"] {
-  margin-top: 25px;
-  border-radius: 5px;
-  height: 20px;
-}
-
-.container2 {
-  flex-wrap: wrap;
-  border: none;
-  margin-top: 0;
-}
-#align {
-  display: flex;
-  align-items: center;
-}
-#align > label {
+#divNavbar {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
-}
-#niveau {
-  margin-bottom: 10px;
-}
-#nombreVoie {
-  margin-bottom: 10px;
-}
-.magrille:nth-child(3) > form > fieldset {
-  border-color: #63ff91;
-}
-.magrille:nth-child(3) > form > p > input {
-  margin: 5px 0px;
-}
-.magrille:nth-child(3) > form > p > select {
-  margin: 5px 0;
-  padding: 1px;
-}
-
-.magrille:nth-child(3) > form > div > h4 {
-  margin: 5px auto 5px auto;
-}
-.magrille:nth-child(4) {
-  grid-area: autre;
-
-  text-align: center;
-  position: relative;
-}
-.magrille:nth-child(4)::after {
-  content: "";
-
-  opacity: 1;
+  justify-content: space-around;
+  background-color: rgba(255, 251, 251, 0.601);
+  position: fixed;
   top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
 }
-/*.magrille:nth-child(5) {
-  grid-area: done;
-}*/
-#confort {
-  width: 50%;
+
+#divNavbar > div > p > a {
+  text-decoration: none;
+  color: black;
+}
+.fullBody {
+  margin: 0;
+  text-align: center;
+}
+.fullBody > h1 {
+  margin-top: 95px;
+  font-family: "copperplate";
+  text-decoration: underline;
+}
+#divForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
   margin: 0 auto;
 }
-#confort {
-  font-size: 15px;
-}
-#newsite {
-  margin-top: 25%;
-  font-size: 15px;
-}
-
-.container-gps {
-  margin-top: 5px;
+.infoImpotant {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  border: none;
+  margin-bottom: 10px;
 }
-.container-gps > div > input {
-  border-color: black;
+.infoImpotant > input {
+  margin: 0 auto;
 }
-#gps > p {
-  text-align: center;
-  margin: 0 0 10px;
+.infoImpotant > select {
+  margin: 0 auto;
+}
+input[type="text"],
+input[type="number"],
+select {
+  width: 50%;
+  min-width: 150px;
+  max-width: 200px;
+  box-sizing: border-box;
+  padding: 4px;
+}
+#divForm > form > fieldset > label {
+  margin: 6px 0;
   text-decoration: underline;
 }
-#gps2 > p {
-  text-align: center;
-  margin: 0 0 10px;
+#divForm > form > fieldset > div > p {
+  margin: 6px 0;
   text-decoration: underline;
 }
-.lieu {
+#divForm > form > fieldset {
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.507);
+}
+#divForm > form > fieldset > legend {
+  background-color: white;
+  font-family: "copperplate";
+  text-decoration: underline;
+}
+.infoPark {
   display: flex;
-  flex-direction: row;
-  font-size: 15px;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-
 #gps2 {
   display: none;
-  margin-top: 15px;
-}
-#gps > input {
-  margin-bottom: 10px;
-}
-#gps > label {
-  text-decoration: underline;
-}
-#gps2 > label {
-  text-decoration: underline;
 }
 #buttonForm {
-  border-radius: 20px;
+  margin: 25px 0;
+  border-radius: 9px;
+  width: 75px;
   height: 25px;
-  width: 85px;
-  opacity: 0, 6;
-
-  border: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: lightskyblue;
-}
-
-#buttonForm:active {
-  transform: translateY(2px);
-}
-#buttonForm:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.container .saison > input {
-  width: initial;
-  height: initial;
-}
-.error {
-  color: red;
-}
-.container > fieldset {
-  margin: 0;
-  border: none;
-  padding: 5px;
-}
-.container > fieldset > legend {
-  text-decoration: underline;
-  font-size: 15px;
-  margin-bottom: 10px;
+  border-color: darkturquoise;
+  cursor: pointer;
 }
 #reponse {
   visibility: hidden;
@@ -372,49 +241,65 @@
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
+/**********************************************responsive*************************************/
+@media screen and (max-width: 800px) {
+  #gps {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    bottom: 30px;
-    opacity: 1;
+  #gps2 {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .confort {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .confort > input {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 800px) {
+  .saison {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 450px) {
+  .exposition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #divForm {
+    width: 100%;
+  }
+  .home > p {
+    display: none;
+  }
+  .home {
+    background-image: url("/formulaire site/img/home-png-20047-32x32.ico");
+    width: 30px;
+    margin-top: 9px;
+    background-repeat: no-repeat;
+  }
+  input[type="checkbox"] {
+    transform: scale(1.8);
+  }
+  .exposition > label,
+  .saison > label,
+  .confort > label,
+  #gps > label,
+  #gps2 > label {
+    margin: 6px 0 3px 0;
   }
 }
 
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
 /* fin style nouveau site ------------------------------------------------------*/
 
 /* -------------------------style feuille de croix--------------------*/
@@ -511,10 +396,27 @@
   grid-area: corps;
   flex-direction: column;
   border-bottom: 1px solid black;
-  margin-left: 50px;
+  margin: 0 auto;
   background-color: #fffaface;
   height: fit-content;
   width: fit-content;
+  position: relative;
+}
+#btnNew {
+  position: absolute;
+  top: -35px;
+  right: 0;
+  border-radius: 10px;
+  opacity: 0.5;
+  width: 74px;
+  height: 30px;
+  font-size: 12px;
+  text-align: center;
+}
+#btnNew:hover {
+  opacity: 1;
+  transition: 500ms;
+  background-color: #87cefab8;
 }
 #tableausite > table > thead > tr > th {
   border: 1px solid black;
@@ -526,6 +428,7 @@
 }
 #SiteDisplay {
   text-align: center;
+  font-family: "grammatika";
 }
 #SiteDisplay > tr > td > input {
   color: red;
@@ -550,6 +453,70 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: 500ms;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 30% auto;
+  border: 1px groove lightskyblue;
+  width: 30%;
+  height: 150px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.modal-content p {
+  text-align: center;
+  font-size: 30px;
+}
+
+.close {
+  color: #aaa;
+  position: relative;
+  float: right;
+  cursor: pointer;
+  font-size: 50px;
+  padding: 0 10px 0 0;
+  font-weight: bold;
+}
+#deleteNone {
+  position: absolute;
+  right: 28%;
+  border-radius: 5px;
+  height: 25px;
+  width: 60px;
+  bottom: 3%;
+  opacity: 0.5;
+}
+#deleteYes {
+  position: absolute;
+  left: 25%;
+  border-radius: 5px;
+  height: 25px;
+  width: 60px;
+  bottom: 3%;
+  opacity: 0.5;
+}
+#deleteNone:hover {
+  opacity: 1;
+  transition: 500ms;
+  text-decoration: underline;
+}
+#deleteYes:hover {
+  opacity: 1;
+  transition: 500ms;
+  text-decoration: underline;
 }
 .confirmation {
   grid-area: del;

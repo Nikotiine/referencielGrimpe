@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body id="bodyNewsite">
+      <header> 
+          <div id="divNavbar">    
+           <div class="home" ><p><a href="/index.html">Accueil</a></p></div>
+           <div><p><a href="/index-site/ref-site.html">Sites</a></p></div>
+           <div><p><a href="/croix/nouvelleCroix.html">Croix</a></p></div>
+           <div><p><a href="/formulaire site/new-spot.html">Nouveau site</a></p></div>
+           <div><p>Topo</p></div>
+         </div>
+      </header>
+      <div class="fullBody">
+          
+          <h1>Nouveau Site</h1>
+          
+         
+          <div id="divForm">
+              
+              <form method="post">
+                  <fieldset class="infoImpotant">
+                      <legend>Information sur le site</legend>
+                <label for="site">Nom du site</label>
+                <input
+                  type="text"
+                  id="site"
+                  placeholder="Ex: Buoux"
+                  name="nomsite"
+                  required
+                />
+                <label for="Emplacement">Emplacement</label>
+                <select name="Region" id="Emplacement" required>
+                  <option value="">Indique le temps de trajet</option>
+                  <option value="Autour de la maison">Autour de la maison</option>
+                  <option value="Entre 2 et 3 heures">Entre 2 et 3 heures de route</option>
+                  <option value="Entre 3 et 5 heures ">Entre 3 et 5 heures de route</option>
+                  <option value="Bien plus loin">Bien plus loin</option></select
+                >
+                <label for="hauteur">Hauteur moyenne des voies</label>
+                <input
+                  type="number"
+                  id="hauteur"
+                  placeholder="en metres"
+                  name="hauteur"
+                  required
+                />
+                <label for="approche">Temps d'approche</label>
+                <input
+                  type="number"
+                  name="approche"
+                  id="approche"
+                  placeholder="En minutes"
+                  required
+                />
+                <label for="typeapproche">Type d'approche</label>
+                <select name="typeapproche" id="typeapproche">
+                  <option value="">type d'approche</option>
+                  <option value="Montée legere">Montee legere</option>
+                  <option value="Ca monte bien !">Montée raide</option>
+                  <option value="Ca va c'est plat">C'est plat</option>
+                  <option value="En descente">En descente</option>
+                </select>
+      
+                
+                <label for="equipement">Equipement</label>
+                <select name="equipement" id="equipement" required>
+                  <option value="">Ca engage comment ?</option>
+                  <option value="Rapproché">Rapproche</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Engagé">Engagé</option>
+                  <option value="Exposé">Exposé</option>
+                </select>
+
+                <label for="nombreVoie">Nombres de voies ?</label>
+                <select name="nombreVoie" id="nombreVoie" required>
+                  <option value="">Taille du site</option>
+                  <option value="- de 25">Moins de 25 voies</option>
+                  <option value="entre 25 et 50">Entre 25 et 50 voies</option>
+                  <option value="environ 100">100 voies</option>
+                  <option value="+ que 150">Plus de 150 voies</option>
+                </select>
+
+                <label for="niveau">Ticket d'entree</label>
+                <select name="niveau" id="niveau" required>
+                  <option value="">Niveau mini du site</option>
+                  <option value="Y a du 4">4 Sup</option>
+                  <option value="Y a du 5 -">5 moins</option>
+                  <option value="5c mini">5 sup</option>
+                  <option value="6a ou b mini">6 a/b</option>
+                </select>
+             
+                  <div class="exposition">
+                      <p>Exposition</p>
+                  <label for="nord">Nord</label>
+                  <input type="checkbox" name="nord" id="nord" />
+                  <label for="sud">Sud</label>
+                  <input type="checkbox" name="sud" id="sud" />
+                  <label for="est">Est</label>
+                  <input type="checkbox" name="est" id="est" />
+                  <label for="ouest">Ouest</label>
+                  <input type="checkbox" name="ouest" id="ouest" />
+                </div>
+                  <div class="saison">
+                      <p>Meilleure saison</p>
+                  <label for="printemps">Primtemps</label>
+                  <input type="checkbox" name="printemps" id="printemps" />
+                  <label for="ete">Eté</label>
+                  <input type="checkbox" name="ete" id="ete" />
+                  <label for="automne">Automne</label>
+                  <input type="checkbox" name="automne" id="automne" />
+                  <label for="hiver">Hiver</label>
+                  <input type="checkbox" name="hiver" id="hiver" />
+                </div>
+                </fieldset>
+                <fieldset class="infoPark">
+                    <legend>info parking</legend>
+                    <div id="choixPark">
+                    <label for="poui">oui</label>
+                    <input type="radio" name="paark" id="poui" checked />
+                    <label for="pnon">non</label>
+                    <input type="radio" name="paark" id="pnon" />
+                </div>
+                    <div id="gps">
+                        <p>Position parking</p>
+                       <label for="gpsoui">latitude:</label>
+                        <input
+                          type="number"
+                          id="gpsoui"
+                          placeholder="45,20531"
+                          name="latitude"
+                          step="any"
+                          min="-90"
+                          max="90"
+                          style="width: 100px"
+                          required
+                        />
+                    
+                    
+                        <label for="gpsoui2">longitude:</label>
+                        <input
+                          type="number"
+                          id="gpsoui2"
+                          placeholder="5,66515"
+                          name="longitude"
+                          step="any"
+                          min="-180"
+                          max="180"
+                          style="width: 100px"
+                          required
+                        />
+                    
+                      </div>
+                      <div id="gps2">
+                        <p>Position gps du squatt</p>
+                        <label for="gpsnon">latitude:</label>
+                        <input
+                          type="number"
+                          id="gpsnon"
+                          placeholder="45,20531"
+                          name="latitude2"
+                          step="any"
+                          min="-90"
+                          max="90"
+                          style="width: 100px"
+                        />
+                        <label for="gpsnon2">longitude:</label>
+                        <input
+                          type="number"
+                          id="gpsnon2"
+                          placeholder="5,66515"
+                          step="any"
+                          min="-180"
+                          max="180"
+                          style="width: 100px"
+                          name="longitude2"
+                        />
+                      </div>
+                     
+            <div class="confort" >
+                <p>Confort parking</p>
+              <label for="toilette">Toilettes pratiques</label>
+              <input type="checkbox" name="toiletteA" id="toiletteA" />
+
+              <label for="eaupotable">Eau potable pas loin</label>
+              <input type="checkbox" name="eaupotable" id="eaupotable" />
+              <label for="rivlac">Riviere ou lac</label>
+              <input type="checkbox" name="rivlac" id="rivlac" />
+              <label for="reseau">4g ok</label>
+              <input type="checkbox" name="reseau" id="reseau" />
+              
+
+            </div>
+                  
+                </fieldset>
+                <input type="submit" value="Valider" id="buttonForm" />
+
+
+
+                
+
+              </form>
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+      
+            <div id="reponse">Formulaire validé</div>      
+    
+        </div>
+        <script src="new.js"></script>
+  </body>
+</html>
