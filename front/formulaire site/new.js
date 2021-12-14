@@ -2,7 +2,17 @@ const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const formulaire = document.querySelector("form");
 const parking1 = document.getElementById("poui");
 const parking2 = document.getElementById("pnon");
-
+const navbar = document.getElementById("divNavbar");
+function goHome() {
+  window.location.href = "/index.html";
+}
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 68) {
+    navbar.style.opacity = "0.9";
+  } else {
+    navbar.style.opacity = "0.6";
+  }
+});
 parking1.addEventListener("input", (e) => {
   if (e.target.checked === true) {
     document.getElementById("gps2").style.display = "none";
@@ -10,8 +20,8 @@ parking1.addEventListener("input", (e) => {
 });
 parking2.addEventListener("input", (e) => {
   if (e.target.checked === true) {
-    document.getElementById("gps").style.display = "block";
-    document.getElementById("gps2").style.display = "block";
+    document.getElementById("gps").style.display = "flex";
+    document.getElementById("gps2").style.display = "flex";
   }
 });
 
