@@ -266,7 +266,7 @@ select {
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 /**********************************************responsive*************************************/
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 1200px) {
   #gps,
   #gps2 {
     flex-direction: column;
@@ -295,7 +295,7 @@ select {
 }
 @media screen and (max-width: 720px) {
   #gps,
-  #gps {
+  #gps2 {
     margin-right: 20%;
   }
 }
@@ -378,7 +378,16 @@ select {
   }
   #divForm > form > fieldset > div#gps > p,
   #divForm > form > fieldset > div#gps2 > p {
-    margin: 6px 0;
+    margin: 10px 20%;
+  }
+  #divForm > form > fieldset > .confort > p {
+    margin: 10px 0 10px 35%;
+  }
+  #gps {
+    margin-left: 0;
+  }
+  #divNavbar {
+    z-index: 1;
   }
 }
 
