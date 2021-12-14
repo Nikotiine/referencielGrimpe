@@ -2,7 +2,7 @@ const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const formulaire = document.querySelector("form");
 const parking1 = document.getElementById("poui");
 const parking2 = document.getElementById("pnon");
-const navbar = document.getElementById("divNavbar");
+const navbar = document.querySelector(".divNavbar");
 function goHome() {
   window.location.href = "/index.html";
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="liste.css" />
+  </head>
+  <body id="listeSites">
+    <header>
+      <div class="divNavbar">
+        <div class="home" onclick="goHome()">
+          <p><a href="/index.html">Accueil</a></p>
+        </div>
+        <div>
+          <p><a href="/index-site/ref-site.html">Sites</a></p>
+        </div>
+        <div>
+          <p><a href="/croix/nouvelleCroix.html">Croix</a></p>
+        </div>
+        <div>
+          <p><a href="/formulaire site/new-spot.html">Nouveau site</a></p>
+        </div>
+        <div><p>Topo</p></div>
+      </div>
+    </header>
+    <div class="fullBody">
+      <h1>Liste des sites</h1>
+      <div id="tableausite">
+        <table>
+          <thead>
+            <th>Site</th>
+            <th class="hidden320">temps de route</th>
+            <th>Hauteur des voie</th>
+            <th>Temps d'approche</th>
+            <th>Exposition</th>
+            <th class="hidden320">Equipé</th>
+            <th class="hidden320">saison</th>
+            <th class="hidden">Nombre de ligne</th>
+            <th class="hidden">Ticket d'entree</th>
+            <th class="hidden">Sup.</th>
+          </thead>
+          <tbody id="SiteDisplay"></tbody>
+        </table>
+      </div>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Etes vous sur de vouloir supprimer ?</p>
+
+          <input type="button" value="oui" id="deleteYes" />
+          <input type="button" value="non" id="deleteNone" />
+        </div>
+      </div>
+      <div id="reponse2">Formulaire supprimé</div>
+    </div>
+    <script src="./liste-site.js"></script>
+  </body>
+</html>

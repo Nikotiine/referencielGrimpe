@@ -50,7 +50,7 @@
     opacity: 0;
   }
 }
-/*style Nav bar ---------------------*/
+/*--------------------------style Nav bar ----------------------------------------------------------*/
 .openclose {
   width: 10%;
   position: fixed;
@@ -112,11 +112,14 @@
   text-align: center;
   padding: 0;
 }
-/*Fin style NavBar -----------------------------------------------------*/
+/*----------------------------------Fin style NavBar -----------------------------------------------------*/
+
+/*--------*******************CSS New-Spot*************************** --------*/
+
 input[type="button"] {
   cursor: pointer;
 }
-/*Style nouveau site --------*/
+
 @font-face {
   font-family: "copperplate";
   src: url(/Copperplate\ Gothic\ Light\ Regular.ttf);
@@ -133,7 +136,7 @@ input[type="button"] {
   font-family: "grammatika";
   background-attachment: fixed;
 }
-#divNavbar {
+.divNavbar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -145,7 +148,7 @@ input[type="button"] {
   font-size: 20px;
 }
 
-#divNavbar > div > p > a {
+.divNavbar > div > p > a {
   text-decoration: none;
   color: black;
 }
@@ -265,7 +268,7 @@ select {
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-/**********************************************responsive*************************************/
+/*******************************---------------responsive New-Spot--------*********************************/
 @media screen and (max-width: 1200px) {
   #gps,
   #gps2 {
@@ -390,10 +393,10 @@ select {
     z-index: 1;
   }
 }
+/**************------------fin responsive New-Spot----------------------------*************************/
+/***************-------------------Fin Css New-spot --------------------****************************-*/
 
-/* fin style nouveau site ------------------------------------------------------*/
-
-/* -------------------------style feuille de croix--------------------*/
+/* -------------------------style feuille de croix --------------------*/
 #bodycroix {
   display: grid;
   grid-template-columns: 175px 1fr 1fr 1fr;
