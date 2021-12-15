@@ -389,7 +389,7 @@ select {
   #gps {
     margin-left: 0;
   }
-  #divNavbar {
+  .divNavbar {
     z-index: 1;
   }
 }
