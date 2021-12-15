@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Copperlate gothic";
-  src: url("./Copperplate\ Gothic\ Light\ Regular.ttf");
+  src: url("./asset/Copperplate\ Gothic\ Light\ Regular.ttf");
 }
 @font-face {
   font-family: "grammatika";
-  src: url(./Grammatika-Regular.otf);
+  src: url("./asset/Grammatika-Regular.otf");
 }
 /*-----------------------------------keyFrames toast---------------------------------------------*/
 @-webkit-keyframes fadein {
@@ -120,16 +120,8 @@ input[type="button"] {
   cursor: pointer;
 }
 
-@font-face {
-  font-family: "copperplate";
-  src: url(/Copperplate\ Gothic\ Light\ Regular.ttf);
-}
-@font-face {
-  font-family: "grammatika";
-  src: url(/Grammatika-Regular.otf);
-}
 #bodyNewsite {
-  background-image: url("/formulaire site/img/IMG_3202.png");
+  background-image: url("./asset/img/IMG_3202.png");
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
@@ -337,7 +329,7 @@ select {
     display: none;
   }
   .home {
-    background-image: url("/formulaire site/img/home-png-20047-32x32.ico");
+    background-image: url("./asset/img/home-png-20047-32x32.ico");
     width: 30px;
     margin-top: 9px;
     background-repeat: no-repeat;
@@ -463,7 +455,7 @@ select {
     "navbar del del a";
   font-family: "copperlate gothic";
   font-size: 13px;
-  background-image: url("/formulaire site/img/refsite.png");
+  background-image: url("./asset/img/refsite.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
