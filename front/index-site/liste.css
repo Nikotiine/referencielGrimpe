@@ -33,7 +33,7 @@
 #listeSites {
   margin: 0;
   background-repeat: no-repeat;
-  background-image: url("/formulaire site/img/refsite.png");
+  background-image: url("/asset/img/refsite.png");
   background-size: cover;
   background-attachment: fixed;
 }
