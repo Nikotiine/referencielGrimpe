@@ -442,103 +442,35 @@ select {
   height: 45px;
 }
 /* ---------fin croix----------------------*/
-/*-----------------------------------------------ref-site--------------------------------*/
-#bodysite {
-  display: grid;
-  grid-template-columns: 175px 1fr 1fr 13%;
-  grid-template-rows: 90px 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    "navbar title title a"
-    "navbar corps corps a"
-    "navbar corps corps a"
-    "navbar corps corps a"
-    "navbar del del a";
-  font-family: "copperlate gothic";
-  font-size: 13px;
-  background-image: url("./asset/img/refsite.png");
+/**************************************-------------------Liste-site----------------------************/
+#listeSites {
+  margin: 0;
   background-repeat: no-repeat;
+  background-image: url("/asset/img/refsite.png");
   background-size: cover;
   background-attachment: fixed;
-  margin: 0;
-}
-#ref-site-title {
-  grid-area: title;
-  text-align: center;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  min-width: 320px;
-}
-#ref-site-title > h1 {
-  border: 1px solid black;
-  margin: 10px 35%;
-  border-radius: 15px;
-  box-shadow: 0px 0px 1px 1px #000000;
-  background-color: lightskyblue;
 }
 
 #tableausite {
   display: flex;
-  grid-area: corps;
-  flex-direction: column;
-  border-bottom: 1px solid black;
-  margin: 0 auto;
-  background-color: #fffaface;
-  height: fit-content;
-  width: fit-content;
-  position: relative;
-}
-#btnNew {
-  position: absolute;
-  top: -35px;
-  right: 0;
-  border-radius: 10px;
-  opacity: 0.5;
-  width: 74px;
-  height: 30px;
-  font-size: 12px;
-  text-align: center;
-}
-#btnNew:hover {
-  opacity: 1;
-  transition: 500ms;
-  background-color: #87cefab8;
-}
-#tableausite > table > thead > tr > th {
-  border: 1px solid black;
-  padding: 10px;
-  font-style: italic;
+  justify-content: center;
 }
 #tableausite > table {
+  border: 1px solid black;
   border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.603);
 }
-#SiteDisplay {
-  text-align: center;
-  font-family: "grammatika";
-}
-#SiteDisplay > tr > td > input {
-  color: red;
-}
-#SiteDisplay > tr > td {
+#tableausite > table > thead > tr > th {
+  border-bottom: 1px solid black;
   border-right: 1px solid black;
-  border-left: 1px solid black;
-  padding: 3px 10px;
 }
-#SiteDisplay > tr > td > a {
-  text-decoration: underline;
-  color: #b10303;
+#tableausite > table > tbody > tr > td {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: 5px;
 }
-#detailSpot {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-#trash {
-  background-image: url("./formulaire site/img/trash.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+#btnDel {
+  border-radius: 6px;
 }
 .modal {
   display: none;
@@ -604,34 +536,6 @@ select {
   transition: 500ms;
   text-decoration: underline;
 }
-.confirmation {
-  grid-area: del;
-  text-align: center;
-  box-shadow: 0 0 5px 5px #58d5e9;
-  display: none;
-  justify-content: center;
-  background-color: #d9d9d9de;
-  color: #3c8591;
-  border-radius: 20px;
-  margin: 10px auto;
-}
-
-.confirmation > input {
-  margin: 0 30px;
-  width: 60px;
-
-  background-color: #d9d9d9de;
-  border-radius: 13px;
-}
-.confirmation > input:hover {
-  background-color: lightskyblue;
-  transition: 0.5s;
-}
-#modif {
-  display: none;
-  flex-direction: column;
-  grid-area: detail;
-}
 #reponse2 {
   visibility: hidden;
   min-width: 250px;
@@ -654,6 +558,63 @@ select {
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
+.showLogo {
+  display: none;
+}
+/***************************************-----------------------responsive--------------------*********************/
+@media screen and (max-width: 800px) {
+  .hidden {
+    display: none;
+  }
+  #tableausite > table > tbody > tr > .showLogo {
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hidden600 {
+    display: none;
+  }
+}
+@media screen and (max-width: 450px) {
+  .hidden320 {
+    display: none;
+  }
+  #btnDel {
+    width: 35px;
+    background-image: url("/asset/img/remove3.png");
+    font-size: 0;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  #expoLogo {
+    width: 5px;
+    height: 10px;
+    font-size: 0;
+    background-image: url("/asset/img/boussole.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  #hikkingTime {
+    padding: 0 20px;
+    height: 10px;
+    font-size: 0;
+    background-image: url("/asset/img/hiking-solid.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .modal-content {
+    width: 100%;
+    margin: 60% auto;
+  }
+}
+/********************-------------------Fin responsive Liste-sites----------------*******/
+/***************************-------------------fin liste-sites----------------**********************/
 
 /*-----------------------------------detailsite-----------------------------------*/
 #bodydetail {

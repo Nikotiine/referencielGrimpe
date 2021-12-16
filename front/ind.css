@@ -1,0 +1,28 @@
+.divNavbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(255, 251, 251);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+}
+
+.divNavbar > div > p > a {
+  text-decoration: none;
+  color: black;
+}
+/**************************************/
+
+#bodyindex {
+  margin: 0;
+  text-align: center;
+  background-image: url("/asset/img/maintenance-g0a5386551_1920.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}

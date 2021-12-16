@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/index-site/liste.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <script
+      src="https://kit.fontawesome.com/7418775852.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body id="listeSites">
     <header>
@@ -31,15 +35,16 @@
         <table>
           <thead>
             <th>Site</th>
-            <th class="hidden320">temps de route</th>
+            <th class="hidden320 hidden600">temps de route</th>
             <th>Hauteur des voie</th>
-            <th>Temps d'approche</th>
-            <th>Exposition</th>
+            <th id="hikkingTime">Temps d'approche</th>
+            <th id="expoLogo">Exposition</th>
             <th class="hidden320">Equipé</th>
-            <th class="hidden320">saison</th>
+            <th class>saison</th>
             <th class="hidden">Nombre de ligne</th>
             <th class="hidden">Ticket d'entree</th>
-            <th class="hidden">Sup.</th>
+
+            <th>Supp.</th>
           </thead>
           <tbody id="SiteDisplay"></tbody>
         </table>
