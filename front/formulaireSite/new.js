@@ -15,13 +15,13 @@ window.addEventListener("scroll", () => {
 });
 parking1.addEventListener("input", (e) => {
   if (e.target.checked === true) {
-    document.getElementById("gps2").style.display = "none";
+    document.querySelector(".gps2").style.display = "none";
   }
 });
 parking2.addEventListener("input", (e) => {
   if (e.target.checked === true) {
-    document.getElementById("gps").style.display = "flex";
-    document.getElementById("gps2").style.display = "flex";
+    document.querySelector(".gps").style.display = "flex";
+    document.querySelector(".gps2").style.display = "flex";
   }
 });
 

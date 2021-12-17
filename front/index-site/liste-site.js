@@ -29,7 +29,7 @@ const spotDisplay = async () => {
   siteDisPlay.innerHTML = listSpot
     .map(
       (nomdusite) =>
-        `<tr><td><a href="detailsite.html?id=${nomdusite.id}">${
+        `<tr><td><a href="ficheSite.html?id=${nomdusite.id}">${
           nomdusite.spotName
         }</a></td><td class="hidden320 hidden600">${nomdusite.nearHome}</td>
         <td>${nomdusite.heightRout}</td><td>${nomdusite.approchTime}</td>

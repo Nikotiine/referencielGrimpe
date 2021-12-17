@@ -1,0 +1,59 @@
+.fullBody {
+  margin: 0;
+  text-align: center;
+}
+.fullBody > h1 {
+  margin-top: 95px;
+  font-family: "copperplate";
+  text-decoration: underline;
+}
+.divNavbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(255, 251, 251);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+}
+
+.divNavbar > div > p > a {
+  text-decoration: none;
+  color: black;
+}
+
+/***************************************************/
+#map {
+  height: 400px;
+  width: 600px;
+  grid-area: carte;
+}
+#flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#detailSpot > div > input {
+  margin-top: 8%;
+  border-radius: 8px;
+}
+/**************$------------responsive*************************/
+@media screen and (max-width: 1000px) {
+  #map {
+    height: 300px;
+    width: 500px;
+  }
+}
+@media screen and (max-width: 780px) {
+  #flexContainer {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 450px) {
+  #map {
+    width: 100%;
+    height: 250px;
+  }
+}
