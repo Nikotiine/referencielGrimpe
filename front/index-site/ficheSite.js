@@ -3,10 +3,8 @@ function goHome() {
   window.location.href = "/index.html";
 }
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 68) {
+  if (!window.scrollY > 68) {
     navbar.style.opacity = "0.9";
-  } else {
-    navbar.style.opacity = "0.6";
   }
 });
 // --------------------------- Fetch Get ---------------------------------------------------
@@ -35,7 +33,7 @@ const vueSite = async () => {
     showSpot.ouest ? "Ouest " : ""
   }${showSpot.nord ? "Nord" : ""}</span></br></p>
 
-  <p>Taille du site: <span>${showSpot.tailleSite}</span></br>
+  <p>Taille du site: <span>${showSpot.tailleSite} voies</span></br>
   Ticket d'entrée: <span>${showSpot.niveau}</span></br>
   hauteur des voies: <span>${showSpot.heightRout} metres</span></br>
   Type d'equipement: <span>${showSpot.equipment}</span></p>
@@ -50,11 +48,15 @@ const vueSite = async () => {
   } , ${
     showSpot.positionSQuatt ? showSpot.positionSQuatt.coordinates[1] : "-----"
   }
-  <br>Confort du squatt: ${
+  <br><div>Confort du squatt: <ul><li>${
     showSpot.commodite ? "Toilettes pratiques " : "Toilettes galeres"
-  } ${showSpot.freshWater ? "Eau potable a proximite " : " "} ${
+  }</li><li>${
+    showSpot.freshWater ? "Eau potable a proximite " : " "
+  }</li><li> ${
     showSpot.eauPasLoin ? "Riviere ou lac a proximite " : " "
-  } ${showSpot.reseau ? "4g a balle" : "Pas assez de reseau"}<div>
+  }</li><li> ${
+    showSpot.reseau ? "4g a balle" : "Pas assez de reseau"
+  }</li></ul></div><div>
   <input type="button" value="modifier" onclick="modifsite(${
     showSpot.id
   })" name="${showSpot.id}" title="modifier la page du site"></div>`;

@@ -6,6 +6,7 @@ const { siteDispo } = require("./databases/mariadb");
 const { showIndex } = require("./databases/mariadb");
 const { delelteSite } = require("./databases/mariadb");
 const { modifSite } = require("./databases/mariadb");
+const { newUser } = require("./databases/userCreat");
 require("./databases/mariadb");
 app.use(express.json());
 app.use(cors());
@@ -27,6 +28,11 @@ app.put("/spot/:id", (req, res) => {
   modifSite(req.body, req.params.id).then(
     res.json({ data: "formulaire modifié" })
   );
+});
+app.post("/newuser/", (req, res) => {
+  newUser(req.body)
+    .then((users) => res.send(users))
+    .catch((err) => res.send(err));
 });
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");

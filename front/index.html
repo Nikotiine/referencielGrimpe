@@ -9,7 +9,7 @@
   </head>
   <body id="bodyindex">
     <header>
-      <div class="divNavbar">
+      <div class="divNavbar isHidden">
         <div class="home" onclick="goHome()">
           <p><a href="/index.html">Accueil</a></p>
         </div>
@@ -25,7 +25,49 @@
         <div><p>Topo</p></div>
       </div>
     </header>
+    <div class="fullBody">
+      <div>
+        <div>
+          <form action="" class="isFlexCollum" id="login">
+            <div>
+              <label for="usr">utilsateur</label>
+              <input type="text" name="user" id="usr" />
+            </div>
+            <div>
+              <label for="psw">mot de passe</label>
+              <input type="password" name="passw" id="psw" />
+            </div>
+            <div><input type="submit" value="Se connecter" /></div>
+            <div>
+              <input
+                type="button"
+                value="nouvel utilisateur"
+                onclick="affiche()"
+              />
+            </div>
+          </form>
+        </div>
 
+        <div>
+          <form action="" class="isHidden isFlexCollum" id="userCreat">
+            <div>
+              <label for="newUser">Entree votre pseudo</label>
+              <input type="text" name="pseudo" id="newUser" />
+            </div>
+            <div>
+              <label for="userpassword">Entrez votre mdp</label>
+              <input type="password" name="password" id="userpassword" />
+            </div>
+            <input type="submit" value="valide nouvel utilisateur" />
+            <input
+              type="button"
+              value="revenir a la connection"
+              onclick="connection()"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="navbar.js"></script>
   </body>
 </html>

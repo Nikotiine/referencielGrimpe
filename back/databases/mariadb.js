@@ -49,10 +49,11 @@ async function modifSite(body, spotid) {
   return await dataSite.update(body, { where: { id: spotid } });
 }
 module.exports = { siteDispo, newSpot, showIndex, delelteSite, modifSite };
-
+const { creatUser } = require("./userCreat");
 (async () => {
   try {
     await sequelize.authenticate();
+    await creatUser.sync({ alter: true });
     await dataSite.sync({ alter: true });
     console.log("Connection mariadb ok.");
   } catch (error) {

@@ -75,11 +75,16 @@ input[type="button"] {
   width: 100%;
   height: 60px;
   font-size: 20px;
+  opacity: 0.6;
+}
+.divNavbar:hover {
+  opacity: 1;
 }
 
 .divNavbar > div > p > a {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 .fullBody {
   margin: 0;
@@ -326,59 +331,7 @@ select {
 /***************-------------------Fin Css New-spot --------------------****************************-*/
 
 /* -------------------------style feuille de croix --------------------*/
-#bodycroix {
-  display: grid;
-  grid-template-columns: 175px 1fr 1fr 1fr;
-  grid-template-rows: 90px 1fr 1fr 1fr;
-  grid-template-areas:
-    "navbar titrec titrec titrec "
-    "navbar formc formc formc"
-    "navbar formc formc formc"
-    "navbar stat stat stat";
-  margin: 0;
-  min-height: 100vh;
-}
-.gridCroix:nth-child(1) {
-  grid-area: navbar;
-}
-.gridCroix:nth-child(2) {
-  grid-area: titrec;
-  background-color: lawngreen;
-}
-.gridCroix:nth-child(2) > h1 {
-  text-align: center;
-}
-.gridCroix:nth-child(3) {
-  grid-area: formc;
-  background-color: lightcoral;
-  display: flex;
-  text-align: center;
-}
-.FlexContainerCroix {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-  justify-content: center;
-  justify-items: center;
-}
-.FlexContainerCroix > div > fieldset > legend {
-  font-size: 24px;
-}
-.gridCroix:nth-child(4) {
-  grid-area: stat;
-  background-color: lightskyblue;
-}
-.FlexContainerRow {
-  display: flex;
-  flex-direction: row;
-}
-#remarque {
-  width: 200px;
-  height: 45px;
-}
-/* ---------fin croix----------------------*/
+
 /**************************************-------------------Liste-site----------------------************/
 .listeSites {
   margin: 0;
@@ -386,6 +339,7 @@ select {
   background-image: url("/asset/img/refsite.png");
   background-size: cover;
   background-attachment: fixed;
+  font-family: "grammatika";
 }
 
 #tableausite {
@@ -400,6 +354,7 @@ select {
 #tableausite > table > thead > tr > th {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+  padding: 7px 5px 0 5px;
 }
 #tableausite > table > tbody > tr > td {
   border-bottom: 1px solid black;
@@ -568,8 +523,12 @@ select {
   margin: 8% 0 8% 0;
   border-radius: 8px;
 }
+#detailSpot > div > ul {
+  list-style-type: none;
+}
 #detailSpot {
   background-color: rgba(255, 255, 255, 0.61);
+  padding: 10px;
 }
 #reponse3 {
   visibility: hidden;
@@ -614,13 +573,13 @@ select {
     width: 500px;
   }
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
   #flexContainer {
     flex-direction: column-reverse;
   }
   #map {
     width: 80%;
-    margin-top: 15px;
+    margin: 15px 0 20px 0;
   }
   #detailSpot {
     width: 80%;
@@ -630,7 +589,6 @@ select {
   #map {
     width: 100%;
     height: 250px;
-    margin-top: 15px;
   }
   #detailSpot {
     width: 100%;
