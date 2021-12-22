@@ -27,5 +27,12 @@ async function newUser(userdata) {
     })
     .catch((err) => {});*/
 }
-
-module.exports = { creatUser, newUser };
+async function loginUser(login) {
+  return await creatUser.findOne({
+    where: {
+      userName: login.userName,
+      userPass: login.userPass,
+    },
+  });
+}
+module.exports = { creatUser, newUser, loginUser };

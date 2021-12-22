@@ -7,6 +7,7 @@ const { showIndex } = require("./databases/mariadb");
 const { delelteSite } = require("./databases/mariadb");
 const { modifSite } = require("./databases/mariadb");
 const { newUser } = require("./databases/userCreat");
+const { loginUser } = require("./databases/userCreat");
 require("./databases/mariadb");
 app.use(express.json());
 app.use(cors());
@@ -30,17 +31,26 @@ app.put("/spot/:id", (req, res) => {
   );
 });
 app.post("/newuser/", (req, res) => {
-  newUser(req.body).then((patate) => {
+  newUser(req.body).then((user) => {
     //res.send(patate);
-    console.log(patate);
-    const [result, created] = patate;
+
+    const [result, created] = user;
     if (created === true) {
       res.json({ data: "Utilisateur enregisté" });
     } else {
-      res.json({ data: "Pseudo deja utilise" });
+      res.status(400).json({ data: "deja utiliser" });
     }
   });
   //.catch((err) => res.send(err));
+});
+app.post("/login/", (req, res) => {
+  loginUser(req.body).then((login) => {
+    if (login === null) {
+      res.status(400).json({ data: "faux" });
+    } else {
+      res.json({ data: "ok" });
+    }
+  });
 });
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");
