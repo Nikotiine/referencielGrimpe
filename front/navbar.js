@@ -1,7 +1,13 @@
 const navbar = document.querySelector(".divNavbar");
+const user = document.getElementById("newUser");
+const password = document.getElementById("userpassword").value;
+const newusersData = document.getElementById("userCreat");
+const login = document.getElementById("login");
+
 function goHome() {
   window.location.href = "/index.html";
 }
+
 window.addEventListener("scroll", () => {
   if (window.scrollY > 68) {
     navbar.style.opacity = "0.9";
@@ -9,8 +15,7 @@ window.addEventListener("scroll", () => {
     navbar.style.opacity = "0.6";
   }
 });
-const newusersData = document.getElementById("userCreat");
-const login = document.getElementById("login");
+
 function affiche() {
   newusersData.classList.remove("isHidden");
   login.classList.add("isHidden");
@@ -22,11 +27,9 @@ function connection() {
 const formulaire = document.getElementById("userCreat");
 formulaire.addEventListener("submit", (e) => {
   e.preventDefault();
-  const user = document.getElementById("newUser").value;
-  const password = document.getElementById("userpassword").value;
 
   const userdata = {
-    userName: user,
+    userName: user.value,
     userPass: password,
   };
 
@@ -36,6 +39,20 @@ formulaire.addEventListener("submit", (e) => {
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then((res) => res.json())
-    .then((res) => console.log("ok"))
-    .catch((err) => console.log("pasok"));
+    .then((res) => toto(res))
+    .catch((err) => {
+      console.log(err);
+    });
 });
+
+function toto(res) {
+  if (res.data == "Utilisateur enregisté") {
+    document.getElementById("niko").innerHTML = `<p>${res.data}</p>`;
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  } else {
+    document.getElementById("niko").innerHTML = `<p>${res.data}</p>`;
+    user.value = "";
+  }
+}

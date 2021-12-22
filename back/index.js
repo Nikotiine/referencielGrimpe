@@ -30,9 +30,17 @@ app.put("/spot/:id", (req, res) => {
   );
 });
 app.post("/newuser/", (req, res) => {
-  newUser(req.body)
-    .then((users) => res.send(users))
-    .catch((err) => res.send(err));
+  newUser(req.body).then((patate) => {
+    //res.send(patate);
+    console.log(patate);
+    const [result, created] = patate;
+    if (created === true) {
+      res.json({ data: "Utilisateur enregisté" });
+    } else {
+      res.json({ data: "Pseudo deja utilise" });
+    }
+  });
+  //.catch((err) => res.send(err));
 });
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");

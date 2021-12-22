@@ -1,3 +1,4 @@
+//const e = require("express");
 const res = require("express/lib/response");
 const { Sequelize, DataTypes, Models } = require("sequelize");
 const sequelize = new Sequelize("grimper", "root", "root", {
@@ -11,11 +12,20 @@ const creatUser = sequelize.define("user", {
   admin: { type: DataTypes.BOOLEAN },
 });
 async function newUser(userdata) {
-  creatUser
-    .findOrCreate({
-      where: { userName: userdata.userName, userPass: userdata.userPass },
+  return await creatUser.findOrCreate({
+    where: { userName: userdata.userName },
+    defaults: { userPass: userdata.userPass },
+  });
+  /* .then((user) => {
+      const [result, created] = user;
+      console.log(created);
+      if (created === true) {
+        res.json({ data: "ok" });
+      } else {
+        res.json({ data: "pasok" });
+      }
     })
-    .then((res) => res.send(res))
-    .catch((err) => res.send(err));
+    .catch((err) => {});*/
 }
+
 module.exports = { creatUser, newUser };
