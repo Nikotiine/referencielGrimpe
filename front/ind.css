@@ -78,21 +78,25 @@
   text-align: end;
   justify-content: space-between;
 }
-.isFlexCollum > form > div > input {
-  margin: 10px 0;
+.isFlexCollum > form > fieldset > div > input {
+  margin: 10px 10px;
 }
 .isFlexCollum > form {
   background-color: rgba(255, 255, 255, 0.56);
   margin: auto;
 }
-.isTopLeft {
-  margin-right: 80%;
+.isCenter {
+  text-align: center;
 }
 
 .isFlex {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.isOnclick {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .fullBody {
   margin: 0;

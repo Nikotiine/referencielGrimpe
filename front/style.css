@@ -50,7 +50,125 @@
     opacity: 0;
   }
 }
+/*************************CSS index-------------------------*/
+#bodyindex {
+  margin: 0;
+  text-align: center;
+  background-image: url("/asset/img/index.png");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.isFlexCollum {
+  display: flex;
+  flex-direction: column;
+  margin: 20% 0 0 0;
+  text-align: end;
+  justify-content: space-between;
+}
+.isFlexCollum > form > fieldset > div > input {
+  margin: 10px 10px;
+}
+.isFlexCollum > form {
+  background-color: rgba(255, 255, 255, 0.56);
+  margin: auto;
+}
+.isCenter {
+  text-align: center;
+}
 
+.isFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.isOnclick {
+  text-decoration: underline;
+  cursor: pointer;
+  color: greenyellow;
+}
+.fullBody {
+  margin: 0;
+  text-align: center;
+}
+.isHidden {
+  display: none;
+}
+#resFalse {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -150px;
+  background-color: #333;
+  color: #58d5e9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0 5px 5px #58d5e9;
+}
+
+#resFalse.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+#resTrue {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -150px;
+  background-color: #333;
+  color: #58d5e9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0 5px 5px #58d5e9;
+}
+
+#resTrue.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+#badLog {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -150px;
+  background-color: #333;
+  color: #58d5e9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0 5px 5px #58d5e9;
+}
+
+#badLog.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+#logged > h3 {
+  color: white;
+  background-color: black;
+  width: 20%;
+}
+/*************************fin CSS index---------------------------*/
 /*--------*******************CSS New-Spot*************************** --------*/
 
 input[type="button"] {
@@ -115,6 +233,7 @@ input[type="button"] {
 }
 input[type="text"],
 input[type="number"],
+input[type="password"],
 select {
   width: 50%;
   min-width: 150px;
@@ -172,7 +291,7 @@ select {
 .gps {
   margin-left: 14px;
 }
-#buttonForm {
+.styleButton {
   margin: 25px 0;
   border-radius: 9px;
   width: 75px;
@@ -331,7 +450,7 @@ select {
 /***************-------------------Fin Css New-spot --------------------****************************-*/
 
 /* -------------------------style feuille de croix --------------------*/
-
+/*************-----------------fin croix*************************/
 /**************************************-------------------Liste-site----------------------************/
 .listeSites {
   margin: 0;
@@ -508,7 +627,7 @@ select {
 /********************-------------------Fin responsive Liste-sites----------------*******/
 /***************************-------------------fin liste-sites----------------**********************/
 
-/***************************************************/
+/*****************************************----fiche sites---------------**********/
 #map {
   height: 400px;
   width: 600px;
@@ -593,4 +712,40 @@ select {
   #detailSpot {
     width: 100%;
   }
+}
+/***************************-------------------fin fiche-sites----------------**********************/
+
+/*********************--------------------------home------------**************/
+#bodyHome {
+  margin: 0;
+  text-align: center;
+  background-attachment: fixed;
+  background-image: url("/asset/img/index.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.isConnectBtn {
+  border-color: black;
+  width: 40%;
+}
+#homeUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#homeUser > p {
+  margin-left: 10px;
+}
+.isFlexRaw {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.marginTop {
+  margin-top: 10%;
+}
+.isSpaceAround {
+  justify-content: space-around;
 }

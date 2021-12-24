@@ -1,7 +1,7 @@
 const navbar = document.querySelector(".divNavbar");
 const user = document.getElementById("newUser");
 const password = document.getElementById("userpassword");
-const newusersData = document.getElementById("userCreat");
+
 const login = document.getElementById("login");
 const formulaire = document.getElementById("userCreat");
 const loginUser = document.getElementById("usr");
@@ -9,27 +9,17 @@ const loginPass = document.getElementById("psw");
 const logged = document.getElementById("logged");
 const registerButton = document.getElementById("register");
 const connectionBtn = document.getElementById("btnConnection");
-function goHome() {
-  window.location.href = "/index.html";
-}
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 68) {
-    navbar.style.opacity = "0.9";
-  } else {
-    navbar.style.opacity = "0.6";
-  }
-});
+const newusr = document.getElementById("newUsr");
 
 function affiche() {
-  newusersData.classList.remove("isHidden");
-  login.classList.add("isHidden");
+  newusr.classList.remove("isHidden");
+  logged.classList.add("isHidden");
   registerButton.classList.add("isHidden");
   connectionBtn.classList.remove("isHidden");
 }
 function connection() {
-  newusersData.classList.add("isHidden");
-  login.classList.remove("isHidden");
+  newusr.classList.add("isHidden");
+  logged.classList.remove("isHidden");
   registerButton.classList.remove("isHidden");
   connectionBtn.classList.add("isHidden");
 }
@@ -38,6 +28,11 @@ formulaire.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const userdata = {
+    firstName: document.getElementById("firstName").value,
+    lastName: document.getElementById("lastName").value,
+    age: document.getElementById("age").value,
+    sex: document.querySelector('input[type="radio"]:checked').value,
+
     userName: user.value,
     userPass: password.value,
   };
@@ -80,6 +75,7 @@ function falseUser() {
   }, 2000);
 }
 //--------------------------------------------------fin POST newUser---------------------************************
+let data = [];
 
 //-------------------------------------------Autentification----------------------****************************
 login.addEventListener("submit", (e) => {
@@ -88,29 +84,35 @@ login.addEventListener("submit", (e) => {
     userName: loginUser.value,
     userPass: loginPass.value,
   };
+  sendLogin(loginData);
+});
 
+function sendLogin(loginData) {
   fetch("http://localhost:3000/login/", {
     method: "POST",
     body: JSON.stringify(loginData),
-    headers: { Accept: "application/json", "Content-Type": "application/json" },
-  }).then((res) => loginTest(res));
-});
-function loginTest(res) {
-  console.log(res);
-  if (res.ok === true) {
-    loginOk(res);
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    testLogin(res);
+  });
+}
+
+function testLogin(res) {
+  if (!res.ok) {
+    wrongLogin();
   } else {
-    badId();
+    res.json().then((data) => goToIndex(data));
   }
 }
-function loginOk() {
-  navbar.classList.remove("isHidden");
-  login.classList.add("isHidden");
 
-  logged.innerHTML = `<h3 class="isFlexCollum">bienvenue copain</h3>`;
+function goToIndex(data) {
+  window.location.href = `/acceuil/home.html?id=${data.id}`;
 }
 
-function badId() {
+function wrongLogin() {
   const toast = document.getElementById("badLog");
   toast.className = "show";
   setTimeout(function () {

@@ -40,3 +40,17 @@ body {
   height: 100%;
   background-attachment: fixed;
 }
+.isFlexRaw {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.localStore > p {
+  margin-left: 10px;
+}
+.isOnclick {
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+}

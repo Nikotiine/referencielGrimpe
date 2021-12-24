@@ -9,12 +9,16 @@ const sequelize = new Sequelize("grimper", "root", "root", {
 const creatUser = sequelize.define("user", {
   userName: { type: DataTypes.STRING },
   userPass: { type: DataTypes.STRING },
+  firstName: { type: DataTypes.STRING },
+  lastName: { type: DataTypes.STRING },
+  age: { type: DataTypes.INTEGER },
+  sex: { type: DataTypes.STRING },
   admin: { type: DataTypes.BOOLEAN },
 });
 async function newUser(userdata) {
   return await creatUser.findOrCreate({
     where: { userName: userdata.userName },
-    defaults: { userPass: userdata.userPass },
+    defaults: userdata,
   });
   /* .then((user) => {
       const [result, created] = user;
@@ -35,4 +39,7 @@ async function loginUser(login) {
     },
   });
 }
-module.exports = { creatUser, newUser, loginUser };
+async function showUser(userId) {
+  return await creatUser.findByPk(userId);
+}
+module.exports = { creatUser, newUser, loginUser, showUser };

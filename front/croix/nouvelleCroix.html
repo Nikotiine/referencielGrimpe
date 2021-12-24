@@ -10,8 +10,16 @@
   <body>
     <header>
       <div class="divNavbar">
-        <div class="home" onclick="goHome()">
-          <p><a href="/index.html">Accueil</a></p>
+        <div class="isFlexRaw">
+          <div>
+            <img
+              src="/asset/img/deco.png"
+              alt="deconnexion"
+              height="40px"
+              onclick="deco()"
+            />
+          </div>
+          <div class="localStore"></div>
         </div>
         <div>
           <p><a href="/index-site/liste-sites.html">Sites</a></p>
@@ -124,5 +132,6 @@
         </select>
       </div>
     </div>
+    <script src="./nouvelleCroix.js"></script>
   </body>
 </html>

@@ -5,93 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bienvenue</title>
-    <link rel="stylesheet" href="ind.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body id="bodyindex">
-    <header>
-      <div class="divNavbar isHidden">
-        <div class="home" onclick="goHome()">
-          <p><a href="/index.html">Accueil</a></p>
-        </div>
-        <div>
-          <p><a href="/index-site/liste-sites.html">Sites</a></p>
-        </div>
-        <div>
-          <p><a href="/croix/nouvelleCroix.html">Croix</a></p>
-        </div>
-        <div>
-          <p><a href="/formulaireSite/new-spot.html">Nouveau site</a></p>
-        </div>
-        <div><p>Topo</p></div>
-      </div>
-    </header>
     <div class="fullBody">
-      <div class="isTopLeft isFlex" id="register">
-        <p>Pas encore de compte ?</p>
-        <input type="button" value="S'enregistrer" onclick="affiche()" />
-      </div>
-      <div class="isHidden isTopLeft isFlex" id="btnConnection">
-        <p>Revenir la page de connection</p>
-        <input type="button" value="se connecter" onclick="connection()" />
-      </div>
       <div>
         <div id="logged" class="isFlexCollum">
           <form action="" id="login">
-            <div>
-              <label for="usr">utilsateur</label>
-              <input type="text" name="user" id="usr" required />
-            </div>
-            <div>
-              <label for="psw">mot de passe</label>
-              <input type="password" name="passw" id="psw" required />
-            </div>
-            <div>
-              <input type="submit" value="Se connecter" />
-            </div>
+            <fieldset>
+              <legend class="isCenter">Identifiant de connection</legend>
+              <div>
+                <label for="usr">utilsateur</label>
+                <input type="text" name="user" id="usr" required />
+              </div>
+              <div>
+                <label for="psw">mot de passe</label>
+                <input type="password" name="passw" id="psw" required />
+              </div>
+              <div>
+                <input
+                  type="submit"
+                  value="Connection"
+                  class="isConnectBtn styleButton"
+                />
+              </div>
+            </fieldset>
           </form>
         </div>
+        <div class="isFlex" id="register">
+          <p>
+            <a class="isOnclick" onclick="affiche()">Pas encore de compte ?</a>
+          </p>
+        </div>
 
-        <div>
-          <form action="" class="isHidden isFlexCollum" id="userCreat">
-            <div>
-              <label for="firstName">Prenom</label>
-              <input type="text" name="firstName" id="firstName" />
-            </div>
-            <div>
-              <label for="lastName">nom</label
-              ><input type="text" name="lastName" id="lastName" />
-            </div>
-            <div>
-              <label for="age">age</label
-              ><input type="date" name="age" id="age" />
-            </div>
-            <div>
-              <p>Genre</p>
-              <label for="male">homme</label
-              ><input type="radio" name="sex" id="male" value="homme" />
-              <label for="women">femme</label
-              ><input type="radio" name="sex" id="women" value="femme" />
-              <label for="yel">Yel</label
-              ><input type="radio" name="sex" id="yel" value="yel" />
-            </div>
-            <div>
-              <label for="newUser">Creez votre pseudo</label>
-              <input type="text" name="pseudo" id="newUser" />
-            </div>
-            <div>
-              <label for="userpassword">Entrez votre mdp</label>
-              <input type="password" name="password" id="userpassword" />
-            </div>
-            <div>
-              <input type="submit" value="valide nouvel utilisateur" />
-            </div>
+        <div class="isFlexCollum isHidden" id="newUsr">
+          <form action="" id="userCreat">
+            <fieldset>
+              <legend class="isCenter">Creer votre compte</legend>
+              <div>
+                <label for="firstName">Prenom</label>
+                <input type="text" name="firstName" id="firstName" />
+              </div>
+              <div>
+                <label for="lastName">nom</label
+                ><input type="text" name="lastName" id="lastName" />
+              </div>
+              <div>
+                <label for="age">age</label
+                ><input type="number" name="age" id="age" max="99" />
+              </div>
+              <div>
+                <p class="isCenter">Genre</p>
+                <label for="male">homme</label
+                ><input type="radio" name="sex" id="male" value="homme" />
+                <label for="women">femme</label
+                ><input type="radio" name="sex" id="women" value="femme" />
+                <label for="yel">Non defini</label
+                ><input type="radio" name="sex" id="yel" value="autre" />
+              </div>
+              <div>
+                <label for="newUser">Creez votre pseudo</label>
+                <input type="text" name="pseudo" id="newUser" required />
+              </div>
+              <div>
+                <label for="userpassword">Entrez votre mdp</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="userpassword"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="submit"
+                  value="valide"
+                  class="styleButton isConnectBtn"
+                />
+              </div>
+            </fieldset>
           </form>
+        </div>
+        <div class="isHidden isFlex" id="btnConnection">
+          <p>
+            <a class="isOnclick" onclick="connection()"
+              >Revenir la page de connection</a
+            >
+          </p>
         </div>
       </div>
     </div>
     <div id="resTrue">Nouveau membre enregistré</div>
     <div id="resFalse">Pseudo deja utilisé , merci d'en choisir un autre</div>
     <div id="badLog">Pseudo ou mot de passe erroné</div>
-    <script src="navbar.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

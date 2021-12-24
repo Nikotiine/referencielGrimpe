@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body id="bodyHome">
+    <header>
+      <div class="divNavbar">
+        <div class="isFlexRaw">
+          <div>
+            <img
+              src="/asset/img/deco.png"
+              alt="deconnexion"
+              height="40px"
+              onclick="deco()"
+            />
+          </div>
+          <div id="homeUser"></div>
+        </div>
+
+        <div>
+          <p><a href="/index-site/liste-sites.html">Sites</a></p>
+        </div>
+        <div>
+          <p><a href="/croix/nouvelleCroix.html">Croix</a></p>
+        </div>
+        <div>
+          <p><a href="/formulaireSite/new-spot.html">Nouveau site</a></p>
+        </div>
+        <div><p>Topo</p></div>
+      </div>
+    </header>
+    <div class="fullBody">
+      <div class="isFlexRaw marginTop isSpaceAround">
+        <div class="isFlex">
+          <div><h4>Carnet de bord</h4></div>
+          <div id="carnetDeBord"></div>
+        </div>
+
+        <div class="isFlex">
+          <div><h4>Dernier site ajouté</h4></div>
+          <div id="lastSpot"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/acceuil/home.js"></script>
+  </body>
+</html>
