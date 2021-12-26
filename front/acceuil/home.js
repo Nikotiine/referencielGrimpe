@@ -17,7 +17,7 @@ const userLog = async () => {
 const ficheUser = async () => {
   await userLog();
   const dataDate = userData.createdAt;
-  const date = dataDate.slice(0, 9);
+  const date = dataDate.slice(0, 10);
 
   homeUser.innerHTML = `
   <p>${userData.userName}</p>`;
