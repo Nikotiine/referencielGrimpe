@@ -26,13 +26,14 @@ const ficheUser = async () => {
   await routlog();
   const dataDate = userData.createdAt;
   const date = dataDate.slice(0, 10);
-  const { count, rows } = routData.data;
-  console.log(rows);
+  const count = routData.data;
+  console.log(count);
   homeUser.innerHTML = `
   <p>${userData.userName}</p>`;
   carnetDeBord.innerHTML = `<div><h4>Salut ${userData.firstName}<h4></div>
   <div>membre depuis ${date} </div>
-  <div><p>Tu as realisé "${count}" voies</br>Ta meuilleure perf est "$ {}"</br>Ici des statistiques .....`;
+  <div><p>Tu as realisé "${count}" <a href="/acceuil/dashboard.html">voies</a></br>
+  Ta meuilleure perf est "$ {}"</br>Ici des statistiques .....`;
   localStorage.setItem("prenom", userData.userName);
   localStorage.setItem("id", userData.id);
 };

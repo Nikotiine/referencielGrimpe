@@ -7,7 +7,6 @@ const essai = document.getElementById("essais");
 const spot = document.getElementById("nomSite");
 let listSpot = [];
 
-console.log(listSpot);
 prenom.innerHTML = `<p><a class="isOnclick" onclick="homePage(sendId)">${localS}</a></p>`;
 function deco() {
   window.location.href = "/index.html";
@@ -59,7 +58,7 @@ formulaireCroix.addEventListener("submit", (e) => {
     routHeight: document.getElementById("longueur").value,
     commentaires: document.getElementById("remarque").value,
     userId: sendId,
-    climbingSpotId: spot.value,
+    spotId: spot.value,
   };
 
   fetch("http://localhost:3000/croix/", {

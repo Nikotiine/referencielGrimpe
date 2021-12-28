@@ -2,12 +2,12 @@
 const res = require("express/lib/response");
 const { croixCreat } = require("./croixCreat");
 const { Sequelize, DataTypes, Models } = require("sequelize");
-const sequelize = new Sequelize("grimper", "root", "root", {
+const sequelize = new Sequelize("grimpniko", "root", "root", {
   host: "localhost",
   dialect: "mariadb",
 });
 
-const creatUser = sequelize.define("user", {
+const creatUser = sequelize.define("users", {
   userName: { type: DataTypes.STRING },
   userPass: { type: DataTypes.STRING },
   firstName: { type: DataTypes.STRING },

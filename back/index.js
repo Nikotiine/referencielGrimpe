@@ -11,6 +11,7 @@ const { loginUser } = require("./databases/userCreat");
 const { showUser } = require("./databases/userCreat");
 const { newCroix } = require("./databases/croixCreat");
 const { showRout } = require("./databases/croixCreat");
+const { getRout } = require("./databases/croixCreat");
 require("./databases/mariadb");
 app.use(express.json());
 app.use(cors());
@@ -75,6 +76,10 @@ app.get("/rout/:id", (req, res) => {
     res.json({ data: rout });
   });
 });
+app.get("/getcroix/:id", (req, res) => {
+  getRout(req.params.id).then((data) => res.json(data));
+});
+
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");
 });
