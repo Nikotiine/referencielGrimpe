@@ -1,5 +1,6 @@
 //const e = require("express");
 const res = require("express/lib/response");
+const { croixCreat } = require("./croixCreat");
 const { Sequelize, DataTypes, Models } = require("sequelize");
 const sequelize = new Sequelize("grimper", "root", "root", {
   host: "localhost",
@@ -15,6 +16,7 @@ const creatUser = sequelize.define("user", {
   sex: { type: DataTypes.STRING },
   admin: { type: DataTypes.BOOLEAN },
 });
+
 async function newUser(userdata) {
   return await creatUser.findOrCreate({
     where: { userName: userdata.userName },
@@ -42,4 +44,6 @@ async function loginUser(login) {
 async function showUser(userId) {
   return await creatUser.findByPk(userId);
 }
+//creatUser.hasMany(croixCreat);
+//croixCreat.belongsTo(creatUser);
 module.exports = { creatUser, newUser, loginUser, showUser };

@@ -4,6 +4,7 @@ const summerLogo = '<i class="fas fa-sun"></i>';
 const fallLogo = '<i class="fab fa-canadian-maple-leaf"></i>';
 const siteDisPlay = document.getElementById("SiteDisplay");
 let listSpot = [];
+
 const navbar = document.querySelector(".divNavbar");
 function goHome() {
   window.location.href = "/index.html";

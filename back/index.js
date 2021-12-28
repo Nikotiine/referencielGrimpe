@@ -9,6 +9,8 @@ const { modifSite } = require("./databases/mariadb");
 const { newUser } = require("./databases/userCreat");
 const { loginUser } = require("./databases/userCreat");
 const { showUser } = require("./databases/userCreat");
+const { newCroix } = require("./databases/croixCreat");
+const { showRout } = require("./databases/croixCreat");
 require("./databases/mariadb");
 app.use(express.json());
 app.use(cors());
@@ -55,6 +57,23 @@ app.post("/login/", (req, res) => {
 });
 app.get("/userId/:id", (req, res) => {
   showUser(req.params.id).then((id) => res.send(id));
+});
+app.post("/croix/", (req, res) => {
+  newCroix(req.body).then((dataCroix) => {
+    const [result, created] = dataCroix;
+    if (created === true) {
+      res.json({ data: "Utilisateur enregisté" });
+    } else {
+      res.status(400).json({ data: "deja utiliser" });
+    }
+  });
+});
+app.get("/rout/:id", (req, res) => {
+  showRout(req.params.id).then((rout) => {
+    //const { count, rows } = rout;
+    //res.json({ data: count });
+    res.json({ data: rout });
+  });
 });
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");

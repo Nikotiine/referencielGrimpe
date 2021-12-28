@@ -3,6 +3,8 @@ const sequelize = new Sequelize("grimper", "root", "root", {
   host: "localhost",
   dialect: "mariadb",
 });
+const { creatUser } = require("./userCreat");
+const { croixCreat } = require("./croixCreat");
 const dataSite = sequelize.define("climbingSpot", {
   spotName: { type: DataTypes.STRING },
   heightRout: { type: DataTypes.INTEGER },
@@ -48,11 +50,21 @@ async function delelteSite(ni) {
 async function modifSite(body, spotid) {
   return await dataSite.update(body, { where: { id: spotid } });
 }
-module.exports = { siteDispo, newSpot, showIndex, delelteSite, modifSite };
-const { creatUser } = require("./userCreat");
+dataSite.hasMany(croixCreat, {
+  onUpdate: "CASCADE",
+  onDelete: "CASCADE",
+});
+croixCreat.belongsTo(dataSite);
+creatUser.hasMany(croixCreat, {
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+croixCreat.belongsTo(creatUser);
 (async () => {
   try {
     await sequelize.authenticate();
+    //await sequelize.sync({ alter: true });
+    await croixCreat.sync({ alter: true });
     await creatUser.sync({ alter: true });
     await dataSite.sync({ alter: true });
     console.log("Connection mariadb ok.");
@@ -60,3 +72,4 @@ const { creatUser } = require("./userCreat");
     console.error("Unable to connect to the database:", error);
   }
 })();
+module.exports = { siteDispo, newSpot, showIndex, delelteSite, modifSite };

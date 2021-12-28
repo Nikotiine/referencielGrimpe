@@ -39,9 +39,10 @@
         <form action="">
           <fieldset>
             <legend>Info sur la voie</legend>
-            <select name="Spotname" id="nomSite">
-              <option value="">Choisi ton site</option>
-            </select>
+            <div>
+              <label for="nomSite">Choisi ton site</label>
+              <select name="" id="nomSite"></select>
+            </div>
             <div>
               <label for="rout">Nom de la voie</label>
               <input
@@ -90,6 +91,7 @@
                 placeholder="En combien"
                 min="2"
                 max="15"
+                value="0"
                 disabled
               />
             </div>
