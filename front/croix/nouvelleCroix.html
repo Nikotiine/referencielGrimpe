@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="coix.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
-  <body>
+  <body id="bodyCroix">
     <header>
       <div class="divNavbar">
         <div class="isFlexRaw">
@@ -33,9 +33,10 @@
         <div><p>Topo</p></div>
       </div>
     </header>
-    <h1>Nouvelle Croix</h1>
+
     <div class="fullBody">
-      <div class="divForm">
+      <div class="isFlex marginTop divForm">
+        <h1>Nouvelle Croix</h1>
         <form action="">
           <fieldset>
             <legend>Info sur la voie</legend>
@@ -54,8 +55,16 @@
             </div>
             <div>
               <label for="degre">Cotation</label>
-              <input type="number" name="degre" id="degre" min="2" max="9" />
-              <select name="degreL" id="degreL">
+              <select name="degre" id="degre" class="maxWidth50">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+              <select name="degreL" id="degreL" class="maxWidth50">
                 <option value="a">a</option>
                 <option value="a+">a+</option>
                 <option value="b">b</option>
@@ -64,13 +73,16 @@
                 <option value="c+">c+</option>
               </select>
             </div>
-            <select name="profil" id="profil">
-              <option value="">Profil de la voie</option>
-              <option value="dalle">dalle</option>
-              <option value="vertical">vertical</option>
-              <option value="devers">devers</option>
-              <option value="surplomb">surplomb</option>
-            </select>
+            <div>
+              <label for="profil">Profil de la voie</label>
+              <select name="profil" id="profil">
+                <option value="">Choisir</option>
+                <option value="dalle">dalle</option>
+                <option value="vertical">vertical</option>
+                <option value="devers">devers</option>
+                <option value="surplomb">surplomb</option>
+              </select>
+            </div>
             <div>
               <p>realisation</p>
               <label for="avue">A vue</label>
@@ -92,6 +104,7 @@
                 min="2"
                 max="15"
                 value="0"
+                class="maxWidth50"
                 disabled
               />
             </div>
@@ -128,16 +141,8 @@
           <input type="submit" value="Cochée X" />
         </form>
       </div>
-      <div class="canertCroix">
-        <h2>Ton carnet de croix</h2>
-        <select name="orderCroix" id="ordreCroix">
-          <option value="">Classées par</option>
-          <option value="routName">Par nom</option>
-          <option value="spotRout">Par lieux</option>
-          <option value="dateRout">Par date</option>
-          <option value="difRoute">Par difficulé</option>
-        </select>
-      </div>
+      <div id="newCroix">Nouvelle croix enregistré</div>
+      <div id="alreadyCroix">Croix deja cochée</div>
     </div>
     <script src="./nouvelleCroix.js"></script>
   </body>

@@ -29,7 +29,7 @@ const ficheUser = async () => {
   const count = routData.data;
   console.log(count);
   homeUser.innerHTML = `
-  <p>${userData.userName}</p>`;
+  <p class="isOnclick">${userData.userName}</p>`;
   carnetDeBord.innerHTML = `<div><h4>Salut ${userData.firstName}<h4></div>
   <div>membre depuis ${date} </div>
   <div><p>Tu as realisé "${count}" <a href="/acceuil/dashboard.html">voies</a></br>

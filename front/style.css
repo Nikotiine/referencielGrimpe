@@ -88,7 +88,7 @@
 .isOnclick {
   text-decoration: underline;
   cursor: pointer;
-  color: greenyellow;
+  color: rgb(0, 0, 0);
 }
 .fullBody {
   margin: 0;
@@ -450,6 +450,19 @@ select {
 /***************-------------------Fin Css New-spot --------------------****************************-*/
 
 /* -------------------------style feuille de croix --------------------*/
+#bodyCroix {
+  background-image: url("/asset/img/Toutes\ les\ photos\ -\ 1\ sur\ 1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  margin: 0;
+}
+.maxWidth50 {
+  max-width: 50px;
+  min-width: 25px;
+}
 /*************-----------------fin croix*************************/
 /**************************************-------------------Liste-site----------------------************/
 .listeSites {
@@ -748,4 +761,7 @@ select {
 }
 .isSpaceAround {
   justify-content: space-around;
+}
+.localStore > p {
+  margin-left: 10px;
 }

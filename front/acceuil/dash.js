@@ -19,14 +19,12 @@ const findSpot = async () => {
   await fetch("http://localhost:3000/getcroix/" + sendId)
     .then((res) => res.json())
     .then((data) => (spotname = data));
-  console.log(spotname);
+  dash.innerHTML = spotname.map(
+    (spo) => `<p>site: ${spo.spot.spotName}</br>voie: ${spo.routName}</p>`
+  );
 };
+findSpot();
 
-const dashboard = async () => {
-  findSpot();
-  console.log(spotname);
-};
-dashboard();
 /*const routlog = async () => {
   await fetch("http://localhost:3000/rout/" + sendId)
     .then((res) => res.json())
