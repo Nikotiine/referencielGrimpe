@@ -1,8 +1,29 @@
-const { DataTypes, Models } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const { database } = require("./config");
-const { creatUser } = require("./userCreat");
-const { croixCreat } = require("./croixCreat");
-module;
+
+const creatUser = database.define("users", {
+  userName: { type: DataTypes.STRING },
+  userPass: { type: DataTypes.STRING },
+  firstName: { type: DataTypes.STRING },
+  lastName: { type: DataTypes.STRING },
+  age: { type: DataTypes.INTEGER },
+  sex: { type: DataTypes.STRING },
+  admin: { type: DataTypes.BOOLEAN },
+});
+
+const croixCreat = database.define("croix", {
+  routName: { type: DataTypes.STRING },
+  routCotation1: { type: DataTypes.INTEGER },
+  routCotation2: { type: DataTypes.STRING },
+  routProfil: { type: DataTypes.STRING },
+  realisation: { type: DataTypes.STRING },
+  essai: { type: DataTypes.INTEGER },
+  degaines: { type: DataTypes.INTEGER },
+  effort: { type: DataTypes.STRING },
+  routHeight: { type: DataTypes.INTEGER },
+  commentaires: { type: DataTypes.STRING },
+});
+
 const dataSite = database.define("spot", {
   spotName: { type: DataTypes.STRING },
   heightRout: { type: DataTypes.INTEGER },
@@ -28,26 +49,6 @@ const dataSite = database.define("spot", {
   tailleSite: { type: DataTypes.STRING },
 });
 
-async function newSpot(name) {
-  await dataSite.create(name);
-}
-
-//module.exports = { newSpot };
-/*async function siteDispo() {
-  await dataSite.findAll({});
-}*/
-async function siteDispo() {
-  return await dataSite.findAll();
-}
-async function showIndex(id) {
-  return await dataSite.findByPk(id);
-}
-async function delelteSite(ni) {
-  return await dataSite.destroy({ where: { id: ni } });
-}
-async function modifSite(body, spotid) {
-  return await dataSite.update(body, { where: { id: spotid } });
-}
 dataSite.hasMany(croixCreat, {
   onUpdate: "CASCADE",
   onDelete: "CASCADE",
@@ -58,23 +59,5 @@ creatUser.hasMany(croixCreat, {
   onUpdate: "CASCADE",
 });
 croixCreat.belongsTo(creatUser);
-(async () => {
-  try {
-    await database.authenticate();
-    //await sequelize.sync({ alter: true });
-    await croixCreat.sync({ alter: true });
-    await creatUser.sync({ alter: true });
-    await dataSite.sync({ alter: true });
-    console.log("Connection mariadb ok.");
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-})();
-module.exports = {
-  dataSite,
-  siteDispo,
-  newSpot,
-  showIndex,
-  delelteSite,
-  modifSite,
-};
+
+module.exports = { dataSite, croixCreat, creatUser };

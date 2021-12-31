@@ -1,24 +1,4 @@
-const { Sequelize, DataTypes, Models } = require("sequelize");
-const { creatUser } = require("./userCreat");
-const { dataSite } = require("./mariadb");
-
-const sequelize = new Sequelize("grimpniko", "root", "root", {
-  host: "localhost",
-  dialect: "mariadb",
-});
-
-const croixCreat = sequelize.define("croix", {
-  routName: { type: DataTypes.STRING },
-  routCotation1: { type: DataTypes.INTEGER },
-  routCotation2: { type: DataTypes.STRING },
-  routProfil: { type: DataTypes.STRING },
-  realisation: { type: DataTypes.STRING },
-  essai: { type: DataTypes.INTEGER },
-  degaines: { type: DataTypes.INTEGER },
-  effort: { type: DataTypes.STRING },
-  routHeight: { type: DataTypes.INTEGER },
-  commentaires: { type: DataTypes.STRING },
-});
+const { croixCreat } = require("./models");
 
 async function newCroix(croixdata) {
   return await croixCreat.findOrCreate({
@@ -40,4 +20,4 @@ async function getRout(userid) {
     where: { userId: userid },
   });
 }
-module.exports = { newCroix, croixCreat, showRout, getRout };
+module.exports = { newCroix, showRout, getRout };
