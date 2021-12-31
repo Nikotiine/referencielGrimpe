@@ -1,12 +1,9 @@
-const { Sequelize, DataTypes, Models } = require("sequelize");
-const sequelize = new Sequelize("grimpniko", "root", "root", {
-  host: "localhost",
-  dialect: "mariadb",
-});
+const { DataTypes, Models } = require("sequelize");
+const { database } = require("./config");
 const { creatUser } = require("./userCreat");
 const { croixCreat } = require("./croixCreat");
 module;
-const dataSite = sequelize.define("spot", {
+const dataSite = database.define("spot", {
   spotName: { type: DataTypes.STRING },
   heightRout: { type: DataTypes.INTEGER },
   approchTime: { type: DataTypes.INTEGER },
@@ -63,7 +60,7 @@ creatUser.hasMany(croixCreat, {
 croixCreat.belongsTo(creatUser);
 (async () => {
   try {
-    await sequelize.authenticate();
+    await database.authenticate();
     //await sequelize.sync({ alter: true });
     await croixCreat.sync({ alter: true });
     await creatUser.sync({ alter: true });

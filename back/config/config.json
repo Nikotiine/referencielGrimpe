@@ -19,5 +19,12 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+  "dev": {
+    "username": "root",
+    "password": "root",
+    "database": "grimpniko",
+    "host": "localhost",
+    "dialect": "mariadb"
   }
 }
