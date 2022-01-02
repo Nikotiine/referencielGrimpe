@@ -1,6 +1,19 @@
 const navbar = document.querySelector(".divNavbar");
-function goHome() {
+const prenom = document.querySelector(".localStore");
+const localS = localStorage.getItem("prenom");
+const sendId = localStorage.getItem("id");
+(() => {
+  if (localS === null) {
+    window.location.href = "/index.html";
+  }
+})();
+prenom.innerHTML = `<p><a class="isOnclick" onclick="homePage(sendId)">${localS}</a></p>`;
+function deco() {
   window.location.href = "/index.html";
+  localStorage.clear();
+}
+function homePage(sendId) {
+  window.location.href = "/acceuil/home.html?id=" + sendId;
 }
 window.addEventListener("scroll", () => {
   if (!window.scrollY > 68) {
@@ -9,19 +22,15 @@ window.addEventListener("scroll", () => {
 });
 // --------------------------- Fetch Get ---------------------------------------------------
 let rechercheId = window.location.search;
-console.log(rechercheId);
+
 const id = rechercheId.slice(4);
 const ficheSite = document.getElementById("detailSpot");
 let showSpot = [];
 
-const detail = async () => {
+(async () => {
   await fetch("http://localhost:3000/spot/" + id)
     .then((res) => res.json())
-    .then((data) => (showSpot = data));
-};
-
-const vueSite = async () => {
-  await detail();
+    .then((data) => (showSpot = data.data));
   ficheSite.innerHTML = `<h1>${showSpot.spotName}</h1></br>
   <p>Localisation: <span>${showSpot.nearHome}</span></br>
   Saison conseillée: <span>${showSpot.printemps ? "Printemps " : ""}${
@@ -36,7 +45,8 @@ const vueSite = async () => {
   <p>Taille du site: <span>${showSpot.tailleSite} voies</span></br>
   Ticket d'entrée: <span>${showSpot.niveau}</span></br>
   hauteur des voies: <span>${showSpot.heightRout} metres</span></br>
-  Type d'equipement: <span>${showSpot.equipment}</span></p>
+  Type d'equipement: <span>${showSpot.equipment}</span></br>
+  Type de Rocher: <span>"type de rocher"</span></p>
   <p>temps d'approche:<span> ${showSpot.approchTime} minutes</span></br>
   type d'approche: <span>${showSpot.approchType}</span></p>
   
@@ -61,8 +71,7 @@ const vueSite = async () => {
     showSpot.id
   })" name="${showSpot.id}" title="modifier la page du site"></div>`;
   coordonees();
-};
-vueSite();
+})();
 
 //------------------------------------------------fin-------fetch get---------------------------------->>>>>>
 //----------------------------------carte gps--------------------------->>>>>
@@ -155,7 +164,7 @@ const modifok = () => {
     niveau: document.getElementById("niveau").value,
     tailleSite: document.getElementById("nombreVoie").value,
   };
-  console.log(datam);
+
   fetch("http://localhost:3000/spot/" + id, {
     method: "PUT",
     body: JSON.stringify(datam),

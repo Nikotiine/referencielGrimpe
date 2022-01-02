@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="divNavbar">
+        <div class="isFlexRaw">
+          <div>
+            <img
+              src="/asset/img/deco.png"
+              alt="deconnexion"
+              height="40px"
+              onclick="deco()"
+            />
+          </div>
+          <div class="localStore"></div>
+        </div>
+        <div>
+          <p><a href="/index-site/liste-sites.html">Sites</a></p>
+        </div>
+        <div>
+          <p><a href="/croix/croix.html">Croix</a></p>
+        </div>
+
+        <div><p>Topo</p></div>
+      </div>
+    </header>
+    <div class="fullBody">
+      <div class="marginTop divForm">
+        <h1>Nouvelle Croix</h1>
+        <form action="">
+          <fieldset>
+            <legend>Info sur la voie</legend>
+            <div>
+              <label for="nomSite">Choisi ton site</label>
+              <select name="" id="nomSite"></select>
+              <span
+                ><a href="/formulaireSite/new-spot.html"
+                  >Creer nouveau site</a
+                ></span
+              >
+            </div>
+            <div>
+              <label for="routName">Nom de la voie</label>
+              <select name="" id="routeName"></select>
+              <span
+                ><a href="/croix/nouvelleVoie.html"
+                  >Creer nouvelle voie</a
+                ></span
+              >
+            </div>
+            <input type="button" value="Suivant" onclick="addNewCroix()" />
+          </fieldset>
+          <fieldset>
+            <legend>Raconte nous ta croix</legend>
+            <div>
+              <label for="date">Quel jour a tu coche ?</label>
+              <input type="date" name="date" id="date" />
+            </div>
+            <div>
+              <p>tu as fait ca</p>
+              <input type="radio" name="realisation" id="avue" value="a vue" />
+              <label for="avue">A vue</label>
+              <input type="radio" name="realisation" id="flash" value="Flash" />
+              <label for="flash">Flash</label>
+              <input
+                type="radio"
+                name="realisation"
+                id="essai"
+                value="Apres Travail"
+              />
+              <label for="essai"
+                >En
+                <input
+                  type="number"
+                  name="nombreEssai"
+                  id="nombreEssai"
+                  value="0"
+                  width="10px"
+                  disabled
+                />
+                essais</label
+              >
+            </div>
+            <div class="isFlex">
+              <label for="com">Commantaires personel</label>
+              <textarea name="com" id="com" cols="30" rows="5"></textarea>
+            </div>
+            <div>
+              <label for="like">Coup de coeur</label>
+              <input type="checkbox" name="like" id="like" />
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <script src="/croix/croix.js"></script>
+  </body>
+</html>

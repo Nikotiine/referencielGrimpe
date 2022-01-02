@@ -11,18 +11,24 @@
   <body class="listeSites">
     <header>
       <div class="divNavbar">
-        <div class="home" onclick="goHome()">
-          <p><a href="/index.html">Accueil</a></p>
+        <div class="isFlexRaw">
+          <div>
+            <img
+              src="/asset/img/deco.png"
+              alt="deconnexion"
+              height="40px"
+              onclick="deco()"
+            />
+          </div>
+          <div class="localStore"></div>
         </div>
         <div>
           <p><a href="/index-site/liste-sites.html">Sites</a></p>
         </div>
         <div>
-          <p><a href="/croix/nouvelleCroix.html">Croix</a></p>
+          <p><a href="/croix/croix.html">Croix</a></p>
         </div>
-        <div>
-          <p><a href="/formulaireSite/new-spot.html">Nouveau site</a></p>
-        </div>
+
         <div><p>Topo</p></div>
       </div>
     </header>
@@ -105,6 +111,21 @@
                 <option value="Y a du 5 -">5 moins</option>
                 <option value="5c mini">5 sup</option>
                 <option value="6a ou b mini">6 a/b</option>
+              </select>
+              <label for="rock">Type de rocher</label>
+              <select name="rocher" id="rock" required>
+                <option value="">Nature du rocher</option>
+                <option value="Calcaire">Calcaire</option>
+                <option value="Gneiss">Gneiss</option>
+                <option value="Granit">Granit</option>
+                <option value="Molasse">Molasse</option>
+                <option value="Conglomerat">Conglomerat</option>
+                <option value="Grés">Grés</option>
+                <option value="Quartzite">Quartzite</option>
+                <option value="Ardoise">Ardoise</option>
+                <option value="Marbre">Marbre</option>
+                <option value="Basalt">Basalt</option>
+                <option value="Autre">Autre</option>
               </select>
 
               <div class="exposition">

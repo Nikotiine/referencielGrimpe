@@ -1,9 +1,9 @@
 const { creatUser } = require("./models");
 
-async function newUser(userdata) {
+async function newUser(userData) {
   return await creatUser.findOrCreate({
-    where: { userName: userdata.userName },
-    defaults: userdata,
+    where: { userName: userData.userName },
+    defaults: userData,
   });
 }
 async function loginUser(login) {

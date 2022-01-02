@@ -1,23 +1,23 @@
-const { croixCreat } = require("./models");
+const { routCreat } = require("./models");
 
-async function newCroix(croixdata) {
-  return await croixCreat.findOrCreate({
+async function newRout(croixdata) {
+  return await routCreat.findOrCreate({
     where: { routName: croixdata.routName },
     defaults: croixdata,
   });
 }
 async function showRout(id) {
-  return await croixCreat.count({
+  return await routCreat.count({
     where: {
       userId: id,
     },
   });
 }
 async function getRout(userid) {
-  return await croixCreat.findAll({
+  return await routCreat.findAll({
     include: "spot",
 
     where: { userId: userid },
   });
 }
-module.exports = { newCroix, showRout, getRout };
+module.exports = { newRout, showRout, getRout };

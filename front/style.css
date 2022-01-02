@@ -463,6 +463,10 @@ select {
   max-width: 50px;
   min-width: 25px;
 }
+#nombreEssai {
+  min-width: 30px;
+  width: 40px;
+}
 /*************-----------------fin croix*************************/
 /**************************************-------------------Liste-site----------------------************/
 .listeSites {
@@ -477,6 +481,7 @@ select {
 #tableausite {
   display: flex;
   justify-content: center;
+  margin-top: 2%;
 }
 #tableausite > table {
   border: 1px solid black;
@@ -741,6 +746,10 @@ select {
 .isConnectBtn {
   border-color: black;
   width: 40%;
+}
+.isNewBtn {
+  border-color: black;
+  width: 10%;
 }
 #homeUser {
   display: flex;

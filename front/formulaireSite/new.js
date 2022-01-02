@@ -3,8 +3,21 @@ const formulaire = document.querySelector("form");
 const parking1 = document.getElementById("poui");
 const parking2 = document.getElementById("pnon");
 const navbar = document.querySelector(".divNavbar");
-function goHome() {
+const prenom = document.querySelector(".localStore");
+const localS = localStorage.getItem("prenom");
+const sendId = localStorage.getItem("id");
+(() => {
+  if (localS === null) {
+    window.location.href = "/index.html";
+  }
+})();
+prenom.innerHTML = `<p><a class="isOnclick" onclick="homePage(sendId)">${localS}</a></p>`;
+function deco() {
   window.location.href = "/index.html";
+  localStorage.clear();
+}
+function homePage(sendId) {
+  window.location.href = "/acceuil/home.html?id=" + sendId;
 }
 window.addEventListener("scroll", () => {
   if (window.scrollY > 68) {
@@ -44,7 +57,7 @@ formulaire.addEventListener("submit", (e) => {
   const automne = document.getElementById("automne").checked;
   const hiver = document.getElementById("hiver").checked;
   const toiletteOk = document.getElementById("toiletteA").checked;
-
+  const rockType = document.getElementById("rock").value;
   const eauPotable = document.getElementById("eaupotable").checked;
   const riviere = document.getElementById("rivlac").checked;
   const resau = document.getElementById("reseau").checked;
@@ -76,6 +89,7 @@ formulaire.addEventListener("submit", (e) => {
     sud: sud,
     est: est,
     ouest: ouest,
+    rockType: rockType,
     niveau: document.getElementById("niveau").value,
     tailleSite: document.getElementById("nombreVoie").value,
   };

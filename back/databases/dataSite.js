@@ -1,7 +1,10 @@
 const { dataSite } = require("./models");
 
-async function newSpot(name) {
-  await dataSite.create(name);
+async function newSpot(dataNewSpot) {
+  return await dataSite.findOrCreate({
+    where: { spotName: dataNewSpot.spotName },
+    default: dataNewSpot,
+  });
 }
 
 async function showTable() {

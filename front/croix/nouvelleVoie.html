@@ -25,18 +25,16 @@
           <p><a href="/index-site/liste-sites.html">Sites</a></p>
         </div>
         <div>
-          <p><a href="/croix/nouvelleCroix.html">Croix</a></p>
+          <p><a href="/croix/croix.html">Croix</a></p>
         </div>
-        <div>
-          <p><a href="/formulaireSite/new-spot.html">Nouveau site</a></p>
-        </div>
+
         <div><p>Topo</p></div>
       </div>
     </header>
 
     <div class="fullBody">
       <div class="isFlex marginTop divForm">
-        <h1>Nouvelle Croix</h1>
+        <h1>Nouvelle Voie</h1>
         <form action="">
           <fieldset>
             <legend>Info sur la voie</legend>
@@ -74,6 +72,10 @@
               </select>
             </div>
             <div>
+              <label for="longeur">longueur de la voie</label>
+              <input type="number" name="longueur" id="longueur" max="50" />
+            </div>
+            <div>
               <label for="profil">Profil de la voie</label>
               <select name="profil" id="profil">
                 <option value="">Choisir</option>
@@ -84,43 +86,28 @@
               </select>
             </div>
             <div>
-              <p>realisation</p>
-              <label for="avue">A vue</label>
-              <input type="radio" name="realisation" id="avue" value="à vue" />
-              <label for="flash">Flash</label>
-              <input type="radio" name="realisation" id="flash" value="flash" />
-              <label for="essai">Apres travail</label>
-              <input
-                type="radio"
-                name="realisation"
-                id="essai"
-                value="apres travail"
-              />
+              <label for="paires">Nombre de paires</label>
               <input
                 type="number"
-                name="essais"
-                id="essais"
-                placeholder="En combien"
-                min="2"
-                max="15"
-                value="0"
-                class="maxWidth50"
-                disabled
+                name="paires"
+                id="paires"
+                placeholder="Nombre de degaines"
+                max="25"
               />
             </div>
-          </fieldset>
-          <fieldset>
-            <legend>Info complementaire</legend>
-            <label for="paires">Nombre de paires</label>
-            <input
-              type="number"
-              name="paires"
-              id="paires"
-              placeholder="Nombre de degaines"
-              max="25"
-            />
-            <label for="longeur">Longueure de la voie</label>
-            <input type="number" name="longueur" id="longueur" max="50" />
+            <div>
+              <p>Equipé sur :</p>
+              <label for="spit">plaquette</label>
+              <input type="radio" name="equipement" id="spit" value="spit" />
+              <label for="broche">Broches</label>
+              <input
+                type="radio"
+                name="equipement"
+                id="broche"
+                value="broche"
+              />
+            </div>
+
             <div>
               <p>type d effort</p>
               <label for="bloc">bloc</label>
@@ -130,20 +117,13 @@
               <label for="conti">Conti</label>
               <input type="checkbox" name="conti" id="conti" value="conti" />
             </div>
-            <textarea
-              name="remarque"
-              id="remarque"
-              cols="30"
-              rows="10"
-              placeholder="Remarque personnel sur la voie"
-            ></textarea>
           </fieldset>
-          <input type="submit" value="Cochée X" />
+          <input type="submit" value="Ajouter Voie" />
         </form>
       </div>
-      <div id="newCroix">Nouvelle croix enregistré</div>
-      <div id="alreadyCroix">Croix deja cochée</div>
+      <div id="newCroix">Nouvelle voie enregistré</div>
+      <div id="alreadyCroix">Voie deja existante</div>
     </div>
-    <script src="./nouvelleCroix.js"></script>
+    <script src="./nouvelleVoie.js"></script>
   </body>
 </html>

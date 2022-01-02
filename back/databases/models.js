@@ -11,17 +11,15 @@ const creatUser = database.define("users", {
   admin: { type: DataTypes.BOOLEAN },
 });
 
-const croixCreat = database.define("croix", {
-  routName: { type: DataTypes.STRING },
-  routCotation1: { type: DataTypes.INTEGER },
-  routCotation2: { type: DataTypes.STRING },
-  routProfil: { type: DataTypes.STRING },
-  realisation: { type: DataTypes.STRING },
-  essai: { type: DataTypes.INTEGER },
+const routCreat = database.define("rout", {
+  name: { type: DataTypes.STRING },
+  cotation1: { type: DataTypes.INTEGER },
+  cotation2: { type: DataTypes.STRING },
+  profil: { type: DataTypes.STRING },
   degaines: { type: DataTypes.INTEGER },
   effort: { type: DataTypes.STRING },
-  routHeight: { type: DataTypes.INTEGER },
-  commentaires: { type: DataTypes.STRING },
+  height: { type: DataTypes.INTEGER },
+  equipement: { type: DataTypes.STRING },
 });
 
 const dataSite = database.define("spot", {
@@ -47,17 +45,18 @@ const dataSite = database.define("spot", {
   ouest: { type: DataTypes.BOOLEAN },
   niveau: { type: DataTypes.STRING },
   tailleSite: { type: DataTypes.STRING },
+  rockType: { type: DataTypes.STRING },
 });
-
-dataSite.hasMany(croixCreat, {
+const croixCreat = database.define("croix", {});
+dataSite.hasMany(routCreat, {
   onUpdate: "CASCADE",
   onDelete: "CASCADE",
 });
-croixCreat.belongsTo(dataSite);
+routCreat.belongsTo(dataSite);
 creatUser.hasMany(croixCreat, {
   onDelete: "CASCADE",
   onUpdate: "CASCADE",
 });
 croixCreat.belongsTo(creatUser);
 
-module.exports = { dataSite, croixCreat, creatUser };
+module.exports = { dataSite, routCreat, creatUser };

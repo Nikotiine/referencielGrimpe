@@ -14,23 +14,36 @@
   <body class="listeSites">
     <header>
       <div class="divNavbar">
-        <div class="home" onclick="goHome()">
-          <p><a href="/index.html">Accueil</a></p>
+        <div class="isFlexRaw">
+          <div>
+            <img
+              src="/asset/img/deco.png"
+              alt="deconnexion"
+              height="40px"
+              onclick="deco()"
+            />
+          </div>
+          <div class="localStore"></div>
         </div>
         <div>
-          <p><a href="./liste-sites.html">Sites</a></p>
+          <p><a href="/index-site/liste-sites.html">Sites</a></p>
         </div>
         <div>
-          <p><a href="/croix/nouvelleCroix.html">Croix</a></p>
+          <p><a href="/croix/croix.html">Croix</a></p>
         </div>
-        <div>
-          <p><a href="/formulaireSite/new-spot.html">Nouveau site</a></p>
-        </div>
+
         <div><p>Topo</p></div>
       </div>
     </header>
     <div class="fullBody">
       <h1>Liste des sites</h1>
+      <input
+        type="button"
+        value="Nouveau Site"
+        class="styleButton isNewBtn"
+        onclick="newSpot()"
+      />
+
       <div id="tableausite">
         <table>
           <thead>

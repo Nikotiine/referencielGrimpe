@@ -3,11 +3,27 @@ const springLogo = '<i class="fas fa-seedling"></i>';
 const summerLogo = '<i class="fas fa-sun"></i>';
 const fallLogo = '<i class="fab fa-canadian-maple-leaf"></i>';
 const siteDisPlay = document.getElementById("SiteDisplay");
+const navbar = document.querySelector(".divNavbar");
+const prenom = document.querySelector(".localStore");
+const localS = localStorage.getItem("prenom");
+const sendId = localStorage.getItem("id");
 let listSpot = [];
 
-const navbar = document.querySelector(".divNavbar");
-function goHome() {
+prenom.innerHTML = `<p><a class="isOnclick" onclick="homePage(sendId)">${localS}</a></p>`;
+function deco() {
   window.location.href = "/index.html";
+  localStorage.clear();
+}
+function homePage(sendId) {
+  window.location.href = "/acceuil/home.html?id=" + sendId;
+}
+(() => {
+  if (localS === null) {
+    window.location.href = "/index.html";
+  }
+})();
+function newSpot() {
+  window.location.href = "/formulaireSite/new-spot.html";
 }
 window.addEventListener("scroll", () => {
   if (window.scrollY > 68) {
@@ -17,48 +33,41 @@ window.addEventListener("scroll", () => {
   }
 });
 
-const fetchSpot = async () => {
+(async () => {
   await fetch("http://localhost:3000/spot/")
     .then((res) => res.json())
-    .then((data) => (listSpot = data));
-};
-
-const spotDisplay = async () => {
-  await fetchSpot();
-  //const bestSaison =(saison)=>{}
-
+    .then((data) => (listSpot = data.data));
   siteDisPlay.innerHTML = listSpot
     .map(
-      (nomdusite) =>
-        `<tr><td><a href="ficheSite.html?id=${nomdusite.id}">${
-          nomdusite.spotName
-        }</a></td><td class="hidden320 hidden600">${nomdusite.nearHome}</td>
-        <td>${nomdusite.heightRout}</td><td>${nomdusite.approchTime}</td>
-        <td>${nomdusite.nord ? "Nord " : ""}${nomdusite.sud ? "Sud " : ""}${
-          nomdusite.est ? "Est " : ""
-        }${nomdusite.ouest ? "Ouest" : ""}</td><td class="hidden320">${
-          nomdusite.equipment
+      (listSpot) =>
+        `<tr><td><a href="ficheSite.html?id=${listSpot.id}">${
+          listSpot.spotName
+        }</a></td><td class="hidden320 hidden600">${listSpot.nearHome}</td>
+        <td>${listSpot.heightRout}</td><td>${listSpot.approchTime}</td>
+        <td>${listSpot.nord ? "Nord " : ""}${listSpot.sud ? "Sud " : ""}${
+          listSpot.est ? "Est " : ""
+        }${listSpot.ouest ? "Ouest" : ""}</td><td class="hidden320">${
+          listSpot.equipment
         }</td>
-        <td class="hidden">${nomdusite.hiver ? "hiver -" : ""}${
-          nomdusite.ete ? "ete -" : ""
-        }${nomdusite.automne ? "automne -" : ""}${
-          nomdusite.printemps ? "printemps" : ""
-        }</td><td class="showLogo">${nomdusite.hiver ? winterLogo : ""}${
-          nomdusite.printemps ? springLogo : ""
-        }${nomdusite.ete ? summerLogo : ""}${nomdusite.automne ? fallLogo : ""}
-        <td class="hidden">${nomdusite.tailleSite}</td><td class="hidden">${
-          nomdusite.niveau
+        <td class="hidden">${listSpot.hiver ? "hiver -" : ""}${
+          listSpot.ete ? "ete -" : ""
+        }${listSpot.automne ? "automne -" : ""}${
+          listSpot.printemps ? "printemps" : ""
+        }</td><td class="showLogo">${listSpot.hiver ? winterLogo : ""}${
+          listSpot.printemps ? springLogo : ""
+        }${listSpot.ete ? summerLogo : ""}${listSpot.automne ? fallLogo : ""}
+        <td class="hidden">${listSpot.tailleSite}</td><td class="hidden">${
+          listSpot.niveau
         }<td><input type="button" id="btnDel" onclick="supSite(${
-          nomdusite.id
-        })" value="Sup." name="${nomdusite.id}" title="Supprimer le site ${
-          nomdusite.spotName
+          listSpot.id
+        })" value="Sup." name="${listSpot.id}" title="Supprimer le site ${
+          listSpot.spotName
         }"></td>
         </tr>`
     )
 
     .join("");
-};
-spotDisplay();
+})();
 
 function supSite(index) {
   //let index = event.target.name;
