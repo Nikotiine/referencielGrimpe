@@ -25,69 +25,67 @@ let rechercheId = window.location.search;
 
 const id = rechercheId.slice(4);
 const ficheSite = document.getElementById("detailSpot");
-let showSpot = [];
+let monspot = [];
 
-(async () => {
+const spot = async () => {
   await fetch("http://localhost:3000/spot/" + id)
     .then((res) => res.json())
-    .then((data) => (showSpot = data.data));
-  ficheSite.innerHTML = `<h1>${showSpot.spotName}</h1></br>
-  <p>Localisation: <span>${showSpot.nearHome}</span></br>
-  Saison conseillée: <span>${showSpot.printemps ? "Printemps " : ""}${
-    showSpot.ete ? "Ete " : ""
-  }${showSpot.automne ? "Automne " : ""}${
-    showSpot.hiver ? "Hiver " : ""
+    .then((data) => (monspot = data.data));
+  ficheSite.innerHTML = `<h1>${monspot.spotName}</h1></br>
+  <p>Localisation: <span>${monspot.nearHome}</span></br>
+  Saison conseillée: <span>${monspot.printemps ? "Printemps " : ""}${
+    monspot.ete ? "Ete " : ""
+  }${monspot.automne ? "Automne " : ""}${
+    monspot.hiver ? "Hiver " : ""
   }</span></br>
-  Exposition:<span> ${showSpot.est ? "Est " : ""}${showSpot.sud ? "Sud " : ""}${
-    showSpot.ouest ? "Ouest " : ""
-  }${showSpot.nord ? "Nord" : ""}</span></br></p>
+  Exposition:<span> ${monspot.est ? "Est " : ""}${monspot.sud ? "Sud " : ""}${
+    monspot.ouest ? "Ouest " : ""
+  }${monspot.nord ? "Nord" : ""}</span></br></p>
 
-  <p>Taille du site: <span>${showSpot.tailleSite} voies</span></br>
-  Ticket d'entrée: <span>${showSpot.niveau}</span></br>
-  hauteur des voies: <span>${showSpot.heightRout} metres</span></br>
-  Type d'equipement: <span>${showSpot.equipment}</span></br>
+  <p>Taille du site: <span>${monspot.tailleSite} voies</span></br>
+  Ticket d'entrée: <span>${monspot.niveau}</span></br>
+  hauteur des voies: <span>${monspot.heightRout} metres</span></br>
+  Type d'equipement: <span>${monspot.equipment}</span></br>
   Type de Rocher: <span>"type de rocher"</span></p>
-  <p>temps d'approche:<span> ${showSpot.approchTime} minutes</span></br>
-  type d'approche: <span>${showSpot.approchType}</span></p>
+  <p>temps d'approche:<span> ${monspot.approchTime} minutes</span></br>
+  type d'approche: <span>${monspot.approchType}</span></p>
   
   <p>Geoloc du parking: ${
-    showSpot.positionPark ? showSpot.positionPark.coordinates[0] : ""
-  } , ${showSpot.positionPark ? showSpot.positionPark.coordinates[1] : ""}
+    monspot.positionPark ? monspot.positionPark.coordinates[0] : ""
+  } , ${monspot.positionPark ? monspot.positionPark.coordinates[1] : ""}
   </br>Geoloc du squatt a camion: ${
-    showSpot.positionSQuatt ? showSpot.positionSQuatt.coordinates[0] : "-----"
+    monspot.positionSQuatt ? monspot.positionSQuatt.coordinates[0] : "-----"
   } , ${
-    showSpot.positionSQuatt ? showSpot.positionSQuatt.coordinates[1] : "-----"
+    monspot.positionSQuatt ? monspot.positionSQuatt.coordinates[1] : "-----"
   }
   <br><div>Confort du squatt: <ul><li>${
-    showSpot.commodite ? "Toilettes pratiques " : "Toilettes galeres"
-  }</li><li>${
-    showSpot.freshWater ? "Eau potable a proximite " : " "
+    monspot.commodite ? "Toilettes pratiques " : "Toilettes galeres"
+  }</li><li>${monspot.freshWater ? "Eau potable a proximite " : " "}</li><li> ${
+    monspot.eauPasLoin ? "Riviere ou lac a proximite " : " "
   }</li><li> ${
-    showSpot.eauPasLoin ? "Riviere ou lac a proximite " : " "
-  }</li><li> ${
-    showSpot.reseau ? "4g a balle" : "Pas assez de reseau"
+    monspot.reseau ? "4g a balle" : "Pas assez de reseau"
   }</li></ul></div><div>
   <input type="button" value="modifier" onclick="modifsite(${
-    showSpot.id
-  })" name="${showSpot.id}" title="modifier la page du site"></div>`;
+    monspot.id
+  })" name="${monspot.id}" title="modifier la page du site"></div>`;
   coordonees();
-})();
-
+};
+spot();
 //------------------------------------------------fin-------fetch get---------------------------------->>>>>>
 //----------------------------------carte gps--------------------------->>>>>
 let macarte = null;
 
 function coordonees() {
-  const lat = showSpot.positionPark.coordinates[0];
-  const lon = showSpot.positionPark.coordinates[1];
-  console.log(showSpot.positionSQuatt);
+  const lat = monspot.positionPark.coordinates[0];
+  const lon = monspot.positionPark.coordinates[1];
+  console.log(monspot.positionSQuatt);
 
   initMap(lat, lon);
   setMarker(lat, lon);
-  if (showSpot.positionSQuatt !== null) {
+  if (monspot.positionSQuatt !== null) {
     setMarker(
-      showSpot.positionSQuatt.coordinates[0],
-      showSpot.positionSQuatt.coordinates[1]
+      monspot.positionSQuatt.coordinates[0],
+      monspot.positionSQuatt.coordinates[1]
     );
   }
 }
@@ -181,35 +179,34 @@ const annule = () => {
   window.location.reload();
 };
 function datavalue() {
-  document.getElementById("niveau").value = showSpot.niveau;
-  document.getElementById("nombreVoie").value = showSpot.tailleSite;
-  document.getElementById("typeapproche").value = showSpot.approchType;
-  document.getElementById("appro").value = showSpot.approchTime;
-  document.getElementById("hauteur").value = showSpot.heightRout;
-  document.getElementById("site").value = showSpot.spotName;
-  document.getElementById("Emplacement").value = showSpot.nearHome;
-  document.getElementById("hiver").checked = showSpot.hiver;
-  document.getElementById("printemps").checked = showSpot.printemps;
-  document.getElementById("ete").checked = showSpot.ete;
-  document.getElementById("automne").checked = showSpot.automne;
-  document.getElementById("equipement").value = showSpot.equipment;
-  document.getElementById("nord").checked = showSpot.nord;
-  document.getElementById("sud").checked = showSpot.sud;
-  document.getElementById("est").checked = showSpot.est;
-  document.getElementById("ouest").checked = showSpot.ouest;
-  document.getElementById("toiletteA").checked = showSpot.commodite;
-  document.getElementById("reseau").checked = showSpot.resau;
-  document.getElementById("rivlac").checked = showSpot.eauPasLoin;
-  document.getElementById("eaupotable").checked = showSpot.freshWater;
-  document.getElementById("gpsoui").value =
-    showSpot.positionPark.coordinates[0];
+  document.getElementById("niveau").value = monspot.niveau;
+  document.getElementById("nombreVoie").value = monspot.tailleSite;
+  document.getElementById("typeapproche").value = monspot.approchType;
+  document.getElementById("appro").value = monspot.approchTime;
+  document.getElementById("hauteur").value = monspot.heightRout;
+  document.getElementById("site").value = monspot.spotName;
+  document.getElementById("Emplacement").value = monspot.nearHome;
+  document.getElementById("hiver").checked = monspot.hiver;
+  document.getElementById("printemps").checked = monspot.printemps;
+  document.getElementById("ete").checked = monspot.ete;
+  document.getElementById("automne").checked = monspot.automne;
+  document.getElementById("equipement").value = monspot.equipment;
+  document.getElementById("nord").checked = monspot.nord;
+  document.getElementById("sud").checked = monspot.sud;
+  document.getElementById("est").checked = monspot.est;
+  document.getElementById("ouest").checked = monspot.ouest;
+  document.getElementById("toiletteA").checked = monspot.commodite;
+  document.getElementById("reseau").checked = monspot.resau;
+  document.getElementById("rivlac").checked = monspot.eauPasLoin;
+  document.getElementById("eaupotable").checked = monspot.freshWater;
+  document.getElementById("gpsoui").value = monspot.positionPark.coordinates[0];
   document.getElementById("gpsoui2").value =
-    showSpot.positionPark.coordinates[1];
-  if (showSpot.positionSQuatt !== null) {
+    monspot.positionPark.coordinates[1];
+  if (monspot.positionSQuatt !== null) {
     document.getElementById("gpsnon").value =
-      showSpot.positionSQuatt.coordinates[0];
+      monspot.positionSQuatt.coordinates[0];
     document.getElementById("gpsnon2").value =
-      showSpot.positionSQuatt.coordinates[1];
+      monspot.positionSQuatt.coordinates[1];
   }
 }
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');

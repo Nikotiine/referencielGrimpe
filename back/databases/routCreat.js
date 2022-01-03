@@ -6,8 +6,12 @@ async function newRout(routdata) {
     defaults: routdata,
   });
 }
-async function showAllRout() {
-  return await rout.findAll();
+async function showAllRout(spotId) {
+  return await rout.findAll({
+    where: {
+      spotId: spotId,
+    },
+  });
 }
 /*async function showRout(id) {
   return await rout.count({

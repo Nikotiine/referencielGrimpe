@@ -1,8 +1,10 @@
 const { croix } = require("./models");
 
-/*async function newCroix(dataNewCroix) {
+async function newCroix(dataNewCroix) {
   return await croix.findOrCreate({
-    where: { spotName: dataNewSpot.spotName },
-    default: dataNewSpot,
+    where: { routId: dataNewCroix.routId, userId: dataNewCroix.userId },
+    defaults: dataNewCroix,
   });
-}*/
+}
+
+module.exports = { newCroix };

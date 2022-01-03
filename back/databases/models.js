@@ -62,12 +62,10 @@ rout.belongsTo(spot);
 
 user.belongsToMany(rout, {
   through: croix,
-  foreignKey: "user_id",
 });
 
 rout.belongsToMany(user, {
   through: croix,
-  foreignKey: "rout_id",
 });
 
 module.exports = { spot, rout, user, croix };

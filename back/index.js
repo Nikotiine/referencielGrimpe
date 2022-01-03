@@ -91,14 +91,12 @@ app.post("/rout/", (req, res) => {
     }
   });
 });
-app.get("/rout/", (req, res) => {
-  showAllRout().then((allRout) => {
-    res.json({ data: allRout });
-  });
+app.get("/rout/:id", (req, res) => {
+  showAllRout(req.params.id).then((allRout) => res.json({ data: allRout }));
 });
 
 //---------------------------add croix ------------------------
-/*app.post("/croix", (req, res) => {
+app.post("/croix/", (req, res) => {
   newCroix(req.body).then((dataCroix) => {
     const [result, created] = dataCroix;
     if (created === true) {
@@ -107,7 +105,7 @@ app.get("/rout/", (req, res) => {
       res.status(400).json({ data: "Already croited" });
     }
   });
-});*/
+});
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");
 });

@@ -33,10 +33,11 @@ window.addEventListener("scroll", () => {
   }
 });
 
-(async () => {
+const liste = async () => {
   await fetch("http://localhost:3000/spot/")
     .then((res) => res.json())
     .then((data) => (listSpot = data.data));
+
   siteDisPlay.innerHTML = listSpot
     .map(
       (listSpot) =>
@@ -67,8 +68,8 @@ window.addEventListener("scroll", () => {
     )
 
     .join("");
-})();
-
+};
+liste();
 function supSite(index) {
   //let index = event.target.name;
   const modal = document.getElementById("myModal");
