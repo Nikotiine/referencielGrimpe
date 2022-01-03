@@ -1,23 +1,26 @@
-const { routCreat } = require("./models");
+const { rout } = require("./models");
 
-async function newRout(croixdata) {
-  return await routCreat.findOrCreate({
-    where: { routName: croixdata.routName },
-    defaults: croixdata,
+async function newRout(routdata) {
+  return await rout.findOrCreate({
+    where: { name: routdata.name },
+    defaults: routdata,
   });
 }
-async function showRout(id) {
-  return await routCreat.count({
+async function showAllRout() {
+  return await rout.findAll();
+}
+/*async function showRout(id) {
+  return await rout.count({
     where: {
       userId: id,
     },
   });
 }
 async function getRout(userid) {
-  return await routCreat.findAll({
+  return await rout.findAll({
     include: "spot",
 
     where: { userId: userid },
   });
-}
-module.exports = { newRout, showRout, getRout };
+}*/
+module.exports = { newRout, showAllRout };

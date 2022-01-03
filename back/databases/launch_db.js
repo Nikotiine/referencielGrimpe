@@ -1,14 +1,15 @@
 const { database } = require("./config");
-const { creatUser } = require("./models");
-const { croixCreat } = require("./models");
-const { dataSite } = require("./models");
-
+const { user } = require("./models");
+const { croix } = require("./models");
+const { spot } = require("./models");
+const { rout } = require("./models");
 (async () => {
   try {
     await database.authenticate();
-    await croixCreat.sync({ alter: true });
-    await creatUser.sync({ alter: true });
-    await dataSite.sync({ alter: true });
+    await croix.sync({ alter: true });
+    await user.sync({ alter: true });
+    await spot.sync({ alter: true });
+    await rout.sync({ alter: true });
     console.log("Connection mariadb ok.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);

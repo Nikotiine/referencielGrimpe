@@ -1,17 +1,18 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { showTable } = require("./databases/dataSite");
-const { newSpot } = require("./databases/dataSite");
-const { showOneSpot } = require("./databases/dataSite");
-const { delSpot } = require("./databases/dataSite");
-const { editSite } = require("./databases/dataSite");
+const { showTable } = require("./databases/spotCreat");
+const { newSpot } = require("./databases/spotCreat");
+const { showOneSpot } = require("./databases/spotCreat");
+const { delSpot } = require("./databases/spotCreat");
+const { editSite } = require("./databases/spotCreat");
 const { newUser } = require("./databases/userCreat");
 const { loginUser } = require("./databases/userCreat");
 const { showUser } = require("./databases/userCreat");
 const { newRout } = require("./databases/routCreat");
-// const { showRout } = require("./databases/croixCreat");
+const { showAllRout } = require("./databases/routCreat");
 // const { getRout } = require("./databases/croixCreat");
+const { newCroix } = require("./databases/croixCreat");
 require("./databases/launch_db");
 app.use(express.json());
 app.use(cors());
@@ -21,7 +22,7 @@ app.post("/spot/", (req, res) => {
     .then((newSpotCreat) => {
       const { result, created } = newSpotCreat;
       if (created === true) {
-        res.json({ data: "new spot added" });
+        res.json({ data: "spot created" });
       } else {
         res.status(400).json({ data: "spot already exist" });
       }
@@ -58,7 +59,7 @@ app.post("/newuser/", (req, res) => {
     .then((user) => {
       const [result, created] = user;
       if (created === true) {
-        res.json({ data: "Utilisateur enregisté" });
+        res.json({ data: created });
       } else {
         res.status(400).json({ data: "deja utiliser" });
       }
@@ -81,26 +82,32 @@ app.get("/userId/:id", (req, res) => {
 
 //---------------------------add rout ------------------------
 app.post("/rout/", (req, res) => {
-  newRout(req.body).then((dataCroix) => {
-    const [result, created] = dataCroix;
+  newRout(req.body).then((dataRout) => {
+    const [result, created] = dataRout;
     if (created === true) {
-      res.json({ data: "Utilisateur enregisté" });
+      res.json({ data: created });
     } else {
       res.status(400).json({ data: "deja utiliser" });
     }
   });
 });
-// app.get("/rout/:id", (req, res) => {
-//   showRout(req.params.id).then((rout) => {
-//     //const { count, rows } = rout;
-//     //res.json({ data: count });
-//     res.json({ data: rout });
-//   });
-// });
-// app.get("/getcroix/:id", (req, res) => {
-//   getRout(req.params.id).then((data) => res.json(data));
-// });
+app.get("/rout/", (req, res) => {
+  showAllRout().then((allRout) => {
+    res.json({ data: allRout });
+  });
+});
 
+//---------------------------add croix ------------------------
+/*app.post("/croix", (req, res) => {
+  newCroix(req.body).then((dataCroix) => {
+    const [result, created] = dataCroix;
+    if (created === true) {
+      res.json({ data: created });
+    } else {
+      res.status(400).json({ data: "Already croited" });
+    }
+  });
+});*/
 app.listen(3000, () => {
   console.log("serveur ok sur localhost:3000");
 });

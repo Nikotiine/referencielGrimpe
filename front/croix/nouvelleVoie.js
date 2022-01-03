@@ -20,10 +20,13 @@ function homePage(sendId) {
   }
 })();
 
-(async () => {
+const showSpot = async () => {
   await fetch("http://localhost:3000/spot/")
     .then((res) => res.json())
-    .then((data) => (listSpot = data));
+    .then((data) => (listSpot = data.data));
+};
+(async () => {
+  await showSpot();
   spot.innerHTML = listSpot
     .map(
       (dataspot) =>
@@ -35,7 +38,7 @@ function homePage(sendId) {
 
 formulaireVoie.addEventListener("submit", (e) => {
   e.preventDefault();
-  const dataCroix = {
+  const dataRout = {
     name: document.getElementById("rout").value,
     cotation1: document.getElementById("degre").value,
     cotation2: document.getElementById("degreL").value,
@@ -44,12 +47,12 @@ formulaireVoie.addEventListener("submit", (e) => {
     effort: document.querySelector('input[type="checkbox"]:checked').value,
     height: document.getElementById("longueur").value,
     spotId: spot.value,
-    equipement: document.querySelector('input[type="radio]:checked').value,
+    equipement: document.querySelector('input[type="radio"]:checked').value,
   };
 
   fetch("http://localhost:3000/rout/", {
     method: "POST",
-    body: JSON.stringify(dataCroix),
+    body: JSON.stringify(dataRout),
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   });
 });

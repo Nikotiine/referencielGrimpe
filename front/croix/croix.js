@@ -33,13 +33,14 @@ const spotName = async () => {
     .then((data) => (listSpot = data.data));
 };
 const routName = async () => {
-  await fetch("http://locahost:3000/rout/")
+  await fetch("http://localhost:3000/rout/")
     .then((res) => res.json())
     .then((data) => (listRout = data.data));
 };
 const selectCroix = async () => {
   await spotName();
   await routName();
+  console.log(listSpot);
   spot.innerHTML = listSpot.map(
     (listSpot) => `<option value="${listSpot.id}">${listSpot.spotName}</option>`
   );
@@ -47,6 +48,7 @@ const selectCroix = async () => {
     (listRout) => `<option value="${listRout.id}"}>${listRout.name}</option>`
   );
 };
+selectCroix();
 essai.addEventListener("click", (e) => {
   if (e.target.checked === true) {
     nombreEssai.disabled = false;
@@ -66,4 +68,20 @@ function addNewCroix() {}
 
 formNewCroix.addEventListener("submit", (e) => {
   e.preventDefault();
+  const dataCroix = {
+    date: document.getElementById("date").value,
+    realisation: document.querySelector('input[type="radio"]:checked').value,
+    essai: document.getElementById("nombreEssai").value,
+    post: document.getElementById("com").value,
+    like: document.getElementById("like").checked,
+  };
+  fetch("http://locahost:3000/croix/"),
+    {
+      method: "POST",
+      body: JSON.stringify(dataCroix),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    };
 });

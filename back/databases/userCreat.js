@@ -1,13 +1,13 @@
-const { creatUser } = require("./models");
+const { user } = require("./models");
 
 async function newUser(userData) {
-  return await creatUser.findOrCreate({
+  return await user.findOrCreate({
     where: { userName: userData.userName },
     defaults: userData,
   });
 }
 async function loginUser(login) {
-  return await creatUser.findOne({
+  return await user.findOne({
     where: {
       userName: login.userName,
       userPass: login.userPass,
@@ -15,7 +15,7 @@ async function loginUser(login) {
   });
 }
 async function showUser(userId) {
-  return await creatUser.findByPk(userId);
+  return await user.findByPk(userId);
 }
 
 module.exports = { newUser, loginUser, showUser };

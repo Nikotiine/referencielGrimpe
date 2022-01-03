@@ -23,7 +23,7 @@
   "dev": {
     "username": "root",
     "password": "root",
-    "database": "grimpniko",
+    "database": "grimper",
     "host": "localhost",
     "dialect": "mariadb"
   }

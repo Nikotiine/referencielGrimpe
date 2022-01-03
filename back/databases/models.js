@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { database } = require("./config");
 
-const creatUser = database.define("users", {
+const user = database.define("users", {
   userName: { type: DataTypes.STRING },
   userPass: { type: DataTypes.STRING },
   firstName: { type: DataTypes.STRING },
@@ -11,7 +11,7 @@ const creatUser = database.define("users", {
   admin: { type: DataTypes.BOOLEAN },
 });
 
-const routCreat = database.define("rout", {
+const rout = database.define("rout", {
   name: { type: DataTypes.STRING },
   cotation1: { type: DataTypes.INTEGER },
   cotation2: { type: DataTypes.STRING },
@@ -22,7 +22,7 @@ const routCreat = database.define("rout", {
   equipement: { type: DataTypes.STRING },
 });
 
-const dataSite = database.define("spot", {
+const spot = database.define("spot", {
   spotName: { type: DataTypes.STRING },
   heightRout: { type: DataTypes.INTEGER },
   approchTime: { type: DataTypes.INTEGER },
@@ -47,16 +47,27 @@ const dataSite = database.define("spot", {
   tailleSite: { type: DataTypes.STRING },
   rockType: { type: DataTypes.STRING },
 });
-const croixCreat = database.define("croix", {});
-dataSite.hasMany(routCreat, {
+const croix = database.define("croix", {
+  date: { type: DataTypes.DATEONLY },
+  realisation: { type: DataTypes.STRING },
+  essai: { type: DataTypes.INTEGER },
+  post: { type: DataTypes.STRING },
+  like: { type: DataTypes.BOOLEAN },
+});
+spot.hasMany(rout, {
   onUpdate: "CASCADE",
   onDelete: "CASCADE",
 });
-routCreat.belongsTo(dataSite);
-creatUser.hasMany(croixCreat, {
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});
-croixCreat.belongsTo(creatUser);
+rout.belongsTo(spot);
 
-module.exports = { dataSite, routCreat, creatUser };
+user.belongsToMany(rout, {
+  through: croix,
+  foreignKey: "user_id",
+});
+
+rout.belongsToMany(user, {
+  through: croix,
+  foreignKey: "rout_id",
+});
+
+module.exports = { spot, rout, user, croix };
