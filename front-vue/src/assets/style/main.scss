@@ -15,6 +15,11 @@
     }
   }
 }
+.card {
+  max-width: 25%;
+  box-shadow: 2px 2px 0 black;
+  border: 1px solid $primary;
+}
 .auth-card {
   border: 1px solid black;
   width: 50%;
