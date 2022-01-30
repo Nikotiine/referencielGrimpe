@@ -3,8 +3,8 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     mode: "",
-    site: "",
-    user: "",
+    site: "normal",
+    user: "user",
   },
   mutations: {
     setStatus(state, newStatus) {
