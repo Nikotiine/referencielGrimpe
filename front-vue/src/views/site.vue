@@ -3,7 +3,7 @@
   <div v-if="status === 'normal'">
     <cardsites />
   </div>
-  <div class="flex-raw m-t-10 m-lr-auto max-width-50" v-if="status === 'add'">
+  <div class="max-width-50 m-lr-auto m-t-10" v-if="status === 'add'">
     <addSite />
   </div>
   <div class="flex-raw m-t-10 m-lr-auto max-width-50" v-if="status === 'all'">

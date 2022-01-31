@@ -13,6 +13,10 @@
   justify-content: center;
   justify-items: center;
 }
+.align-center {
+  align-items: center;
+  align-content: center;
+}
 .align-end {
   align-items: flex-end;
   align-content: flex-end;
@@ -20,11 +24,20 @@
 .m-lr-auto {
   margin: 0 auto;
 }
+.m-tb-auto {
+  margin: auto 0;
+}
 .m-a-auto {
   margin: auto;
 }
 .m-t-10 {
   margin-top: 10%;
+}
+.m-t-10p {
+  margin-top: 10px;
+}
+.m-l-15 {
+  margin-left: 15%;
 }
 .m-l-15p {
   margin-left: 15px;
@@ -37,4 +50,7 @@
 }
 .space-evenly {
   justify-content: space-evenly;
+}
+.text-center {
+  text-align: center;
 }

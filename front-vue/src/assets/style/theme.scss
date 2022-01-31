@@ -1,6 +1,6 @@
-$primary: rgb(80, 171, 196);
+$primary: rgb(235, 227, 227);
 $secondary: rgba(255, 0, 149, 0.918);
-
+$modal-card-head-background-color: $primary;
 $navbar-dropdown-item-hover-color: $secondary;
 
 @import "../../../node_modules/bulma/sass/utilities/_all.sass";
