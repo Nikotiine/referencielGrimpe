@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "authentication",
   data() {
@@ -34,6 +35,9 @@ export default {
     cancel: function () {
       this.$store.commit("setStatus", "0");
     },
+  },
+  signIn: function () {
+    axios.post("http://localhost:3000/login/");
   },
 };
 </script>
