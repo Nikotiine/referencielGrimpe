@@ -5,7 +5,7 @@
       <label class="label m-a-auto m-t-10p">Situation Geographique</label>
       <div class="select m-lr-auto">
         <select v-model="selectRegion" @change="getDept(selectRegion)">
-          <option value="0">Selectionnez la region</option>
+          <option :value="null">Selectionnez la region</option>
           <option
             v-for="region in regions"
             :key="region.code"
@@ -16,9 +16,13 @@
         </select>
       </div>
       <div class="select m-lr-auto m-t-10p">
-        <select>
-          <option>Sélectionnez le departement</option>
-          <option v-for="departement in departements" :key="departement.code">
+        <select v-model="selectDept">
+          <option :value="null">Sélectionnez le departement</option>
+          <option
+            v-for="departement in departements"
+            :key="departement.code"
+            v-bind:value="departement.code"
+          >
             {{ departement.nom }}
           </option>
         </select>
@@ -121,6 +125,14 @@
         </div>
       </div>
     </div>
+    <div class="flex-raw m-t-10p">
+      <button class="button control isSecondary" @click="back">
+        precedent
+      </button>
+      <button class="button control is-primary m-l-15p" @click="next">
+        Suivant
+      </button>
+    </div>
   </div>
 </template>
 
@@ -129,13 +141,31 @@ import axios from "axios";
 export default {
   name: "addSiteFormLoc",
   data() {
-    return { parking: false, selectRegion: 0, regions: [], departements: [] };
+    return {
+      parking: false,
+      selectRegion: null,
+      selectDept: null,
+      regions: [],
+      departements: [],
+    };
   },
   methods: {
     getDept: function (code) {
       axios
         .get("https://geo.api.gouv.fr/regions/" + code + "/departements")
         .then((res) => (this.departements = res.data));
+    },
+    back: function () {
+      this.$store.commit("setFormSite", 1);
+    },
+    next: function () {
+      const site = {
+        region: this.selectRegion,
+        departement: this.selectDept,
+        parking: this.parking,
+      };
+      this.$emit("site", site);
+      this.$store.commit("setFormSite", 0);
     },
   },
   mounted() {

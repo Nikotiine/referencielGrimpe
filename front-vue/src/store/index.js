@@ -5,6 +5,7 @@ export default createStore({
     mode: "",
     site: "normal",
     user: "user",
+    formSite: 0,
   },
   mutations: {
     setStatus(state, newStatus) {
@@ -15,6 +16,9 @@ export default createStore({
     },
     setUser(state, newStatus) {
       state.user = newStatus;
+    },
+    setFormSite(state, newStatus) {
+      state.formSite = newStatus;
     },
   },
   actions: {},

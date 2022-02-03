@@ -4,8 +4,8 @@
     <div class="field has-addons flex-column">
       <label class="label m-a-auto">Exposition</label>
       <div class="select m-lr-auto">
-        <select>
-          <option>Sélectionnez l'exposition</option>
+        <select v-model="site.exposition">
+          <option :value="null">Sélectionnez l'exposition</option>
           <option v-for="expo in exposition" :key="expo.id">
             {{ expo.name }}
           </option>
@@ -15,19 +15,19 @@
       <div class="flex-raw space-evenly">
         <div class="flex-column">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.ete" />
             Ete </label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.hiver" />
             Hiver
           </label>
         </div>
         <div class="flex-column m-l-15p">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.printemps" />
             Printemps </label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.automne" />
             Automne
           </label>
         </div>
@@ -35,8 +35,8 @@
 
       <label class="label m-a-auto m-t-10p">Temps d'approche</label>
       <div class="select m-lr-auto">
-        <select>
-          <option>Sélectionnez le temps</option>
+        <select v-model="site.tempsApproche">
+          <option :value="null">Sélectionnez le temps</option>
           <option v-for="approche in approches" :key="approche.id">
             {{ approche.temps }}
           </option>
@@ -45,8 +45,8 @@
 
       <label class="label m-a-auto m-t-10p">Type d'approche</label>
       <div class="select m-lr-auto">
-        <select>
-          <option>Sélectionnez l'approche</option>
+        <select v-model="site.typeApproche">
+          <option :value="null">Sélectionnez l'approche</option>
           <option v-for="approche in approches" :key="approche.id">
             {{ approche.name }}
           </option>
@@ -55,8 +55,8 @@
 
       <label class="label m-a-auto m-t-10p">Hauteur max des voies</label>
       <div class="select m-lr-auto">
-        <select>
-          <option>Sélectionnez la hauteur</option>
+        <select v-model="site.hauteurMax">
+          <option :value="null">Sélectionnez la hauteur</option>
           <option v-for="hauteur in hauteurs" :key="hauteur.id">
             {{ hauteur.size }}
           </option>
@@ -64,8 +64,8 @@
       </div>
       <label class="label m-a-auto m-t-10p">Type de rocher</label>
       <div class="select m-lr-auto">
-        <select>
-          <option>Sélectionnez le type</option>
+        <select v-model="site.rockType">
+          <option :value="null">Sélectionnez le type</option>
           <option v-for="rock in rocks" :key="rock.id">
             {{ rock.name }}
           </option>
@@ -75,19 +75,19 @@
       <div class="flex-raw space-evenly">
         <div class="flex-column">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.dalle" />
             Dalle </label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.vertical" />
             Vertical
           </label>
         </div>
         <div class="flex-column m-l-15p">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.devers" />
             Devers</label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.surplomb" />
             Surplomb
           </label>
         </div>
@@ -97,19 +97,19 @@
       <div class="flex-raw space-evenly">
         <div class="flex-column">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.rapproche" />
             Rapproché </label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.normal" />
             Normal
           </label>
         </div>
         <div class="flex-column m-l-15p">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.engage" />
             Engagé </label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="site.expose" />
             Exposé
           </label>
         </div>
@@ -117,8 +117,8 @@
 
       <label class="label m-a-auto m-t-10p">Nombre de lignes</label>
       <div class="select m-lr-auto">
-        <select>
-          <option>Sélectionnez le nombre</option>
+        <select v-model="site.nombreLignes">
+          <option :value="null">Sélectionnez le nombre</option>
           <option v-for="route in routes" :key="route.id">
             {{ route.total }}
           </option>
@@ -126,8 +126,8 @@
       </div>
       <label class="label m-a-auto m-t-10p">Ticket D'entree</label>
       <div class="select m-lr-auto">
-        <select>
-          <option>Sélectionnez le niveau</option>
+        <select v-model="site.niveauMini">
+          <option :value="null">Sélectionnez le niveau</option>
           <option v-for="level in levels" :key="level.id">
             {{ level.levelMini }}
           </option>
@@ -136,11 +136,21 @@
       <label class="label m-a-auto m-t-10p">Nombre de secteurs</label>
       <div class="control m-lr-auto m-t-10p">
         <label class="radio">
-          <input type="radio" name="secteur" :checked="secteur === false" />
+          <input
+            type="radio"
+            name="secteur"
+            :checked="secteur === false"
+            v-model="site.secteur"
+          />
           1 seul
         </label>
         <label class="radio">
-          <input type="radio" name="secteur" v-on:change="secteur = !secteur" />
+          <input
+            type="radio"
+            name="secteur"
+            v-on:change="secteur = !secteur"
+            v-model="site.secteur"
+          />
           plusieurs
         </label>
       </div>
@@ -183,10 +193,20 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-info">Enregistrer</button>
+          <button class="button is-info" @click="saveSecteurs">
+            Enregistrer
+          </button>
           <button class="button" @click="cancel">Cancel</button>
         </footer>
       </div>
+    </div>
+    <div class="flex-raw m-t-10p">
+      <button class="button control isSecondary" @click="back">
+        precedent
+      </button>
+      <button class="button control is-primary m-l-15p" @click="next">
+        Suivant
+      </button>
     </div>
   </div>
 </template>
@@ -194,8 +214,32 @@
 <script>
 export default {
   name: "addSiteFormInfo",
+  props: ["toto"],
+
   data() {
     return {
+      site: {
+        exposition: null,
+        ete: false,
+        hiver: false,
+        automne: false,
+        printemps: false,
+        tempsApproche: null,
+        typeApproche: null,
+        hauteurMax: null,
+        rockType: null,
+        vertical: false,
+        dalle: false,
+        devers: false,
+        surplomb: false,
+        rapproche: false,
+        normal: false,
+        expose: false,
+        engage: false,
+        nombreLignes: null,
+        niveauMini: null,
+        secteur: false,
+      },
       secteur: false,
       exposition: [
         { id: 0, name: "nord" },
@@ -206,6 +250,7 @@ export default {
         { id: 5, name: "sud - ouest" },
         { id: 6, name: "est" },
         { id: 7, name: "ouest" },
+        { id: 8, name: "Multiple" },
       ],
       approches: [
         {
@@ -261,7 +306,7 @@ export default {
         { id: 3, levelMini: "6 A/B" },
         { id: 4, levelMini: "6sup/7" },
       ],
-      inputs: [{ id: 0 }],
+      inputs: [{ id: 0, name: "" }],
       hauteurs: [
         { id: 0, size: "10 metres" },
         { id: 1, size: "15 metres" },
@@ -284,6 +329,14 @@ export default {
       this.secteur = !this.secteur;
 
       this.inputs = [{ id: 0 }];
+    },
+    saveSecteurs: function () {},
+    next: function () {
+      this.$emit("site", this.site);
+      this.$store.commit("setFormSite", 2);
+    },
+    back: function () {
+      this.$store.commit("setFormSite", 0);
     },
   },
 };
