@@ -189,6 +189,7 @@
               :placeholder="'Secteur#' + input.id"
               v-for="input in inputs"
               :key="input.id"
+              v-model="input.name"
             />
           </div>
         </section>
@@ -214,7 +215,6 @@
 <script>
 export default {
   name: "addSiteFormInfo",
-  props: ["toto"],
 
   data() {
     return {
@@ -239,6 +239,7 @@ export default {
         nombreLignes: null,
         niveauMini: null,
         secteur: false,
+        secteurs: [],
       },
       secteur: false,
       exposition: [
@@ -330,7 +331,12 @@ export default {
 
       this.inputs = [{ id: 0 }];
     },
-    saveSecteurs: function () {},
+    saveSecteurs: function () {
+      //this.inputs.push({ name: this.inputs.name });
+      this.inputs.name = this.inputs.value;
+      this.site.secteurs = this.inputs;
+      this.secteur = !this.secteur;
+    },
     next: function () {
       this.$emit("site", this.site);
       this.$store.commit("setFormSite", 2);

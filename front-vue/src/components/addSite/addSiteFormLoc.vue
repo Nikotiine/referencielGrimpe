@@ -54,6 +54,8 @@
           step="any"
           min="-180"
           max="180"
+          v-model="longitude1"
+          :class="{ 'is-danger': verifGps }"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-globe-europe"></i>
@@ -67,6 +69,7 @@
           step="any"
           min="-90"
           max="90"
+          v-model="latitude1"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-globe-europe"></i>
@@ -84,6 +87,7 @@
             step="any"
             min="-180"
             max="180"
+            v-model="longitude2"
           />
           <span class="icon is-small is-left">
             <i class="fas fa-globe-europe"></i>
@@ -97,6 +101,7 @@
             step="any"
             min="-90"
             max="90"
+            v-model="latitude2"
           />
           <span class="icon is-small is-left">
             <i class="fas fa-globe-europe"></i>
@@ -142,6 +147,7 @@ export default {
   name: "addSiteFormLoc",
   data() {
     return {
+      longitude1: 0,
       parking: false,
       selectRegion: null,
       selectDept: null,
@@ -159,10 +165,20 @@ export default {
       this.$store.commit("setFormSite", 1);
     },
     next: function () {
+      const positionParking = {
+        type: "Point",
+        coordinates: [this.latitude1, this.longitude1],
+      };
+      const positionParkingCamion = {
+        type: "Point",
+        coordinates: [this.latitude2, this.longitude2],
+      };
       const site = {
         region: this.selectRegion,
         departement: this.selectDept,
         parking: this.parking,
+        positionParking: positionParking,
+        positionParkingCamion: positionParkingCamion,
       };
       this.$emit("site", site);
       this.$store.commit("setFormSite", 0);
@@ -172,6 +188,15 @@ export default {
     axios
       .get("https://geo.api.gouv.fr/regions")
       .then((res) => (this.regions = res.data.slice(5 - 17)));
+  },
+  computed: {
+    verifGps() {
+      if (this.longitude1 < 180 && this.longitude1 > -180) {
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
 };
 </script>

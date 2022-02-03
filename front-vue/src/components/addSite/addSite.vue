@@ -4,7 +4,15 @@
       <div class="field has-addons" v-if="status === 0">
         <label class="label m-a-auto">Nom du site</label>
         <p class="control has-icons-left m-l-15p">
-          <input class="input" type="text" v-model="newSite.name" />
+          <input
+            class="input"
+            :class="{
+              'is-danger': !valide,
+              'is-success': valide,
+            }"
+            type="text"
+            v-model="newSite.name"
+          />
           <span class="icon is-small is-left">
             <i class="fas fa-tag"></i>
           </span>
@@ -35,24 +43,28 @@ export default {
   components: { addSiteFormInfo, addSiteFormLoc },
   data() {
     return {
-      newSite: { name: null },
+      newSite: { name: "" },
     };
   },
   methods: {
     next: function () {
-      this.$store.commit("setFormSite", 1);
+      if (this.valide === false) {
+        return;
+      } else {
+        this.$store.commit("setFormSite", 1);
+      }
     },
 
-    addInfo: function (e) {
+    addInfo: function (info) {
       this.newSite = {
         ...this.newSite,
-        ...e,
+        ...info,
       };
     },
-    addLoc: function (e) {
+    addLoc: function (loc) {
       this.newSite = {
         ...this.newSite,
-        ...e,
+        ...loc,
       };
     },
   },
@@ -62,6 +74,13 @@ export default {
   computed: {
     status() {
       return this.$store.state.formSite;
+    },
+    valide() {
+      if (this.newSite.name != "") {
+        return true;
+      } else {
+        return false;
+      }
     },
   },
 };
