@@ -1,16 +1,16 @@
 <template>
   <navbar />
   <div v-if="status === 'user'">
-    <mainCard />
+    <usercard />
   </div>
 </template>
 
 <script>
 import navbar from "../components/navbar.vue";
-import mainCard from "../components/maincard.vue";
+import usercard from "../components/usercard.vue";
 export default {
   name: "user",
-  components: { navbar, mainCard },
+  components: { navbar, usercard },
   computed: {
     status() {
       return this.$store.state.user;

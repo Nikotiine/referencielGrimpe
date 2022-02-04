@@ -65,7 +65,7 @@
 
 <script>
 export default {
-  name: "mainCard",
+  name: "usercard",
   methods: {
     switchToProfil: function () {
       return this.$store.commit("setUser", "profil");
