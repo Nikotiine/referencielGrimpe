@@ -49,13 +49,12 @@
       <p class="control has-icons-left">
         <input
           class="input m-b-10p"
-          type="number"
+          type="tel"
           placeholder="Longitude"
           step="any"
-          min="-180"
-          max="180"
+          :maxlength="maxLengthCoordinates"
           v-model="longitude1"
-          :class="{ 'is-danger': verifGps }"
+          :class="{ 'is-danger': validateLongitudePark }"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-globe-europe"></i>
@@ -64,12 +63,12 @@
       <p class="control has-icons-left">
         <input
           class="input"
-          type="number"
+          type="tel"
           placeholder="Latitude"
           step="any"
-          min="-90"
-          max="90"
+          :maxlength="maxLengthCoordinates"
           v-model="latitude1"
+          :class="{ 'is-danger': validateLatitudePark }"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-globe-europe"></i>
@@ -82,11 +81,11 @@
         <p class="control has-icons-left">
           <input
             class="input m-b-10p"
-            type="number"
+            type="tel"
             placeholder="Longitude"
             step="any"
-            min="-180"
-            max="180"
+            :maxlength="maxLengthCoordinates"
+            :class="{ 'is-danger': validateLongitudeCam }"
             v-model="longitude2"
           />
           <span class="icon is-small is-left">
@@ -96,12 +95,12 @@
         <p class="control has-icons-left">
           <input
             class="input"
-            type="number"
+            type="tel"
             placeholder="Latitude"
             step="any"
-            min="-90"
-            max="90"
+            :maxlength="maxLengthCoordinates"
             v-model="latitude2"
+            :class="{ 'is-danger': validateLatitudeCam }"
           />
           <span class="icon is-small is-left">
             <i class="fas fa-globe-europe"></i>
@@ -130,11 +129,15 @@
         </div>
       </div>
     </div>
-    <div class="flex-raw m-t-10p">
+    <div class="flex-raw m-t-10p justify-center">
       <button class="button control isSecondary" @click="back">
         precedent
       </button>
-      <button class="button control is-primary m-l-15p" @click="next">
+      <button
+        class="button control is-primary m-l-15p"
+        @click="next"
+        :disabled="validateField"
+      >
         Suivant
       </button>
     </div>
@@ -147,7 +150,11 @@ export default {
   name: "addSiteFormLoc",
   data() {
     return {
-      longitude1: 0,
+      maxLengthCoordinates: 10,
+      longitude1: null,
+      longitude2: null,
+      latitude1: null,
+      latitude2: null,
       parking: false,
       selectRegion: null,
       selectDept: null,
@@ -190,11 +197,71 @@ export default {
       .then((res) => (this.regions = res.data.slice(5 - 17)));
   },
   computed: {
-    verifGps() {
+    validateLongitudePark() {
       if (this.longitude1 < 180 && this.longitude1 > -180) {
         return false;
       } else {
         return true;
+      }
+    },
+    validateLongitudeCam() {
+      if (this.longitude2 < 180 && this.longitude2 > -180) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    validateLatitudePark() {
+      if (this.latitude1 < 90 && this.latitude1 > -90) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    validateLatitudeCam() {
+      if (this.latitude2 < 90 && this.latitude2 > -90) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    // validateField() {
+    //   if (
+    //     !this.selectRegion ||
+    //     !this.selectDept ||
+    //     !this.longitude1 ||
+    //     !this.latitude1 ||
+    //     this.validateLongitudePark === true ||
+    //     this.validateLatitudePark === true
+    //   ) {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // },
+    validateField() {
+      if (
+        !this.selectRegion ||
+        !this.selectDept ||
+        !this.longitude1 ||
+        !this.latitude1 ||
+        this.validateLongitudePark === true ||
+        this.validateLatitudePark === true
+      ) {
+        return true;
+      } else if (this.parking === true) {
+        if (
+          !this.longitude2 ||
+          !this.latitude2 ||
+          this.validateLongitudeCam === true ||
+          this.validateLatitudeCam === true
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
       }
     },
   },

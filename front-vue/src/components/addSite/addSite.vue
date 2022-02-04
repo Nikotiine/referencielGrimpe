@@ -6,10 +6,7 @@
         <p class="control has-icons-left m-l-15p">
           <input
             class="input"
-            :class="{
-              'is-danger': !valide,
-              'is-success': valide,
-            }"
+            :class="{ 'is-success': fieldIsValide }"
             type="text"
             v-model="newSite.name"
           />
@@ -25,11 +22,11 @@
           class="button control is-primary m-l-15p"
           @click="next"
           v-if="status === 0"
+          :disabled="!fieldIsValide"
         >
           Suivant
         </button>
       </div>
-      <div>{{ newSite }}</div>
     </div>
   </form>
 </template>
@@ -48,7 +45,7 @@ export default {
   },
   methods: {
     next: function () {
-      if (this.valide === false) {
+      if (this.fieldIsValide === false) {
         return;
       } else {
         this.$store.commit("setFormSite", 1);
@@ -75,7 +72,7 @@ export default {
     status() {
       return this.$store.state.formSite;
     },
-    valide() {
+    fieldIsValide() {
       if (this.newSite.name != "") {
         return true;
       } else {

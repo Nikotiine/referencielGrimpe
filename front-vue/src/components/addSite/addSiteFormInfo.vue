@@ -205,7 +205,11 @@
       <button class="button control isSecondary" @click="back">
         precedent
       </button>
-      <button class="button control is-primary m-l-15p" @click="next">
+      <button
+        class="button control is-primary m-l-15p"
+        @click="next"
+        :disabled="validateField"
+      >
         Suivant
       </button>
     </div>
@@ -343,6 +347,23 @@ export default {
     },
     back: function () {
       this.$store.commit("setFormSite", 0);
+    },
+  },
+  computed: {
+    validateField() {
+      if (
+        !this.site.exposition ||
+        !this.site.tempsApproche ||
+        !this.site.typeApproche ||
+        !this.site.hauteurMax ||
+        !this.site.rockType ||
+        !this.site.niveauMini ||
+        !this.site.nombreLignes
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     },
   },
 };
