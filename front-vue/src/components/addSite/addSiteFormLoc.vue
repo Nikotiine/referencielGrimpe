@@ -136,7 +136,7 @@
       <button
         class="button control is-primary m-l-15p"
         @click="next"
-        :disabled="validateField"
+        :disabled="isFieldsNotValid"
       >
         Suivant
       </button>
@@ -239,7 +239,7 @@ export default {
     //     return false;
     //   }
     // },
-    validateField() {
+    isFieldsNotValid() {
       if (
         !this.selectRegion ||
         !this.selectDept ||

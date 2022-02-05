@@ -44,7 +44,7 @@ export default {
       this.$store.commit("setStatus", "0");
     },
     signIn: function () {
-      console.log("click");
+      
       axios
         .post("http://localhost:3000/login/", {
           userName: this.user,

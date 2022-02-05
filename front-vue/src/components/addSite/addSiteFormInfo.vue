@@ -205,11 +205,7 @@
       <button class="button control isSecondary" @click="back">
         precedent
       </button>
-      <button
-        class="button control is-primary m-l-15p"
-        @click="next"
-        :disabled="validateField"
-      >
+      <button class="button control is-primary m-l-15p" @click="next">
         Suivant
       </button>
     </div>
