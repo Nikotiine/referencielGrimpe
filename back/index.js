@@ -32,7 +32,7 @@ app.post("/spot/", (req, res) => {
 
 app.get("/spot/", (req, res) => {
   showTable()
-    .then((oneSpot) => res.json({ data: oneSpot }))
+    .then((oneSpot) => res.json(oneSpot))
     .catch((err) => res.json(err));
 });
 
