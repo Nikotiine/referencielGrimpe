@@ -111,19 +111,19 @@
       <div class="flex-raw space-evenly">
         <div class="flex-column">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="eauPotable" />
             Eau potable </label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="toilettes" />
             Toilettes pratiques
           </label>
         </div>
         <div class="flex-column m-l-15p">
           <label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="riviereLac" />
             Riviere ou lac pas loin </label
           ><label class="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" v-model="resau" />
             Reseau 4G ok
           </label>
         </div>
@@ -158,6 +158,10 @@ export default {
       parking: false,
       selectRegion: null,
       selectDept: null,
+      eauPotable: false,
+      toilettes: false,
+      resau: false,
+      riviereLac: false,
       regions: [],
       departements: [],
     };
@@ -184,8 +188,12 @@ export default {
         region: this.selectRegion,
         departement: this.selectDept,
         parking: this.parking,
+        eauPotable: this.eauPotable,
         positionParking: positionParking,
         positionParkingCamion: positionParkingCamion,
+        toilettes: this.toilettes,
+        resau: this.resau,
+        riviereLac: this.riviereLac,
       };
       this.$emit("site", site);
       this.$store.commit("setFormSite", 0);

@@ -1,5 +1,9 @@
 <template>
   <navbar />
+  <cardcroix v-if="status === 'normal'" />
+  <div class="max-width-60 m-lr-auto" v-if="status === 'add'">
+    <addcroix />
+  </div>
 
   <div class="about">
     <h1>This is an about page</h1>
@@ -7,9 +11,18 @@
 </template>
 <script>
 import navbar from "../components/navbar.vue";
+import cardcroix from "../components/croix/cardcroix.vue";
+import addcroix from "../components/croix/addCroix.vue";
 
 export default {
-  setup() {},
-  components: { navbar },
+  data() {
+    return {};
+  },
+  components: { navbar, cardcroix, addcroix },
+  computed: {
+    status() {
+      return this.$store.state.croix;
+    },
+  },
 };
 </script>
