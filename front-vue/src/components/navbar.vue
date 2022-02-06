@@ -20,7 +20,7 @@
     <div :class="{ 'is-active': showNav }" class="navbar-menu">
       <div class="navbar-start">
         <div class="navbar-item is-hoverable">
-          <a class="navbar-link" @click="showUserCard"
+          <a class="navbar-link" @click="switchToUser"
             ><router-link to="/user">{{ name }}</router-link></a
           >
           <div class="navbar-dropdown">
@@ -49,15 +49,37 @@
           </div>
         </div>
         <div class="navbar-item is-hoverable">
-          <a class="navbar-link"
+          <a class="navbar-link" @click="switchToVoies"
+            ><router-link to="/voies">Voies</router-link></a
+          >
+          <div class="navbar-dropdown">
+            <a class="navbar-item" @click="navToAllvoie">
+              Voir toute les voies
+            </a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item" @click="navToAddvoie"> Ajouter une voie </a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item" @click="navToSearchvoie"
+              >Rechercher une voie
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item is-hoverable">
+          <a class="navbar-link" @click="switchToCroix"
             ><router-link to="/croix">Croix</router-link></a
           >
           <div class="navbar-dropdown">
-            <a class="navbar-item"> Voir toute tes croix </a>
+            <a class="navbar-item" @click="navToALLCroix">
+              Voir toute tes croix
+            </a>
             <hr class="navbar-divider" />
-            <a class="navbar-item"> Ajouter une croix </a>
+            <a class="navbar-item" @click="navToAddCroix">
+              Ajouter une croix
+            </a>
             <hr class="navbar-divider" />
-            <a class="navbar-item"> Ajouter un projet </a>
+            <a class="navbar-item" @click="navToAddProject">
+              Ajouter un projet
+            </a>
           </div>
         </div>
       </div>
@@ -101,8 +123,17 @@ export default {
     loggin: function () {
       this.$store.commit("setStatus", "1");
     },
+    switchToUser: function () {
+      this.$store.commit("setUser", "user");
+    },
     switchToSite: function () {
       this.$store.commit("setSite", "normal");
+    },
+    switchToVoies: function () {
+      this.$store.commit("setVoies", "normal");
+    },
+    switchToCroix: function () {
+      this.$store.commit("setCroix", "normal");
     },
     navToAllSite: function () {
       this.$router.push("site");
@@ -116,8 +147,29 @@ export default {
       this.$router.push("site");
       return this.$store.commit("setSite", "add");
     },
-    showUserCard: function () {
-      this.$store.commit("setUser", "user");
+    navToAddvoie: function () {
+      this.$router.push("voies");
+      return this.$store.commit("setVoies", "add");
+    },
+    navToAllvoie: function () {
+      this.$router.push("voies");
+      return this.$store.commit("setVoies", "all");
+    },
+    navToSearchvoie: function () {
+      this.$router.push("voies");
+      return this.$store.commit("setVoies", "search");
+    },
+    navToAddCroix: function () {
+      this.$router.push("croix");
+      return this.$store.commit("setCroix", "add");
+    },
+    navToALLCroix: function () {
+      this.$router.push("croix");
+      return this.$store.commit("setCroix", "all");
+    },
+    navToAddProject: function () {
+      this.$router.push("croix");
+      return this.$store.commit("setCroix", "addPoject");
     },
   },
 };
