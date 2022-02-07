@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 const config = require("../config/config.json");
 
 // configuration choice
-const CONFIG_NAME = "dev";
+const CONFIG_NAME = "vue";
 const currentConfiguration = config[CONFIG_NAME];
 
 const database = new Sequelize(

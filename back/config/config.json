@@ -26,5 +26,12 @@
     "database": "grimper",
     "host": "localhost",
     "dialect": "mariadb"
+  },
+  "vue": {
+    "username": "root",
+    "password": "root",
+    "database": "grimpniko",
+    "host": "localhost",
+    "dialect": "mariadb"
   }
 }
