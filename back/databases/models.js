@@ -2,70 +2,117 @@ const { DataTypes } = require("sequelize");
 const { database } = require("./config");
 
 const user = database.define("users", {
-  userName: { type: DataTypes.STRING },
-  userPass: { type: DataTypes.STRING },
+  nickName: { type: DataTypes.STRING },
+  password: { type: DataTypes.STRING },
   firstName: { type: DataTypes.STRING },
   lastName: { type: DataTypes.STRING },
-  age: { type: DataTypes.INTEGER },
-  sex: { type: DataTypes.STRING },
+  email: { type: DataTypes.STRING },
   admin: { type: DataTypes.BOOLEAN },
+  avatar: { type: DataTypes.BLOB("long") },
 });
 
-const rout = database.define("rout", {
-  name: { type: DataTypes.STRING },
-  cotation1: { type: DataTypes.INTEGER },
-  cotation2: { type: DataTypes.STRING },
-  profil: { type: DataTypes.STRING },
-  degaines: { type: DataTypes.INTEGER },
-  effort: { type: DataTypes.STRING },
-  height: { type: DataTypes.INTEGER },
-  equipement: { type: DataTypes.STRING },
-});
+// const rout = database.define("rout", {
+//   name: { type: DataTypes.STRING },
+//   secteur: { type: DataTypes.STRING },
+//   cotation: { type: DataTypes.STRING },
+//   profil: { type: DataTypes.STRING },
+//   degaines: { type: DataTypes.INTEGER },
+//   bloc: { type: DataTypes.BOOLEAN },
+//   conti: { type: DataTypes.BOOLEAN },
+//   resi: { type: DataTypes.BOOLEAN },
+//   height: { type: DataTypes.INTEGER },
+//   equipement: { type: DataTypes.STRING },
+// });
 
-const spot = database.define("spot", {
-  spotName: { type: DataTypes.STRING },
-  heightRout: { type: DataTypes.INTEGER },
-  approchTime: { type: DataTypes.INTEGER },
-  approchType: { type: DataTypes.STRING },
-  equipment: { type: DataTypes.STRING },
-  nearHome: { type: DataTypes.STRING },
-  positionPark: { type: DataTypes.GEOMETRY },
-  positionSQuatt: { type: DataTypes.GEOMETRY },
-  hiver: { type: DataTypes.BOOLEAN },
-  printemps: { type: DataTypes.BOOLEAN },
-  ete: { type: DataTypes.BOOLEAN },
-  automne: { type: DataTypes.BOOLEAN },
-  commodite: { type: DataTypes.BOOLEAN },
-  resau: { type: DataTypes.BOOLEAN },
-  eauPasLoin: { type: DataTypes.BOOLEAN },
-  freshWater: { type: DataTypes.BOOLEAN },
-  nord: { type: DataTypes.BOOLEAN },
-  sud: { type: DataTypes.BOOLEAN },
-  est: { type: DataTypes.BOOLEAN },
-  ouest: { type: DataTypes.BOOLEAN },
-  niveau: { type: DataTypes.STRING },
-  tailleSite: { type: DataTypes.STRING },
-  rockType: { type: DataTypes.STRING },
-});
-const croix = database.define("croix", {
-  date: { type: DataTypes.DATEONLY },
-  realisation: { type: DataTypes.STRING },
-  essai: { type: DataTypes.INTEGER },
-  post: { type: DataTypes.STRING },
-  like: { type: DataTypes.BOOLEAN },
-});
-spot.hasMany(rout, {
-  onUpdate: "CASCADE",
-  onDelete: "CASCADE",
-});
-rout.belongsTo(spot);
+// const spot = database.define("spot", {
+//   name: { type: DataTypes.STRING },
+//   exposition: { type: DataTypes.STRING },
+//   hauteurMax: { type: DataTypes.STRING },
+//   tempsApproche: { type: DataTypes.STRING },
+//   typeApproche: { type: DataTypes.STRING },
+//   nombreLignes: { type: DataTypes.STRING },
+//   niveauMini: { type: DataTypes.STRING },
+//   rockType: { type: DataTypes.STRING },
+//   positionParking: { type: DataTypes.GEOMETRY },
+//   positionParkingCamion: { type: DataTypes.GEOMETRY },
+//   secteur: { type: DataTypes.BOOLEAN },
+//   region: { type: DataTypes.STRING },
+//   departement: { type: DataTypes.STRING },
+//   parking: { type: DataTypes.BOOLEAN },
+// });
+// const confortParking = database.define("confortParking", {
+//   toilettes: { type: DataTypes.BOOLEAN },
+//   resau: { type: DataTypes.BOOLEAN },
+//   riviereLac: { type: DataTypes.BOOLEAN },
+//   eauPotable: { type: DataTypes.BOOLEAN },
+// });
+// const secteurs = database.define("secteur", {
+//   name: { type: DataTypes.STRING },
+// });
+// const saison = database.define("saison", {
+//   hiver: { type: DataTypes.BOOLEAN },
+//   printemps: { type: DataTypes.BOOLEAN },
+//   ete: { type: DataTypes.BOOLEAN },
+//   automne: { type: DataTypes.BOOLEAN },
+// });
+// const equipement = database.define("equipement", {
+//   normal: { type: DataTypes.BOOLEAN },
+//   engage: { type: DataTypes.BOOLEAN },
+//   expose: { type: DataTypes.BOOLEAN },
+//   rapproche: { type: DataTypes.BOOLEAN },
+// });
+// const typeVoie = database.define("typeVoie", {
+//   vertical: { type: DataTypes.BOOLEAN },
+//   dalle: { type: DataTypes.BOOLEAN },
+//   devers: { type: DataTypes.BOOLEAN },
+//   surplomb: { type: DataTypes.BOOLEAN },
+// });
+// const croix = database.define("croix", {
+//   date: { type: DataTypes.DATEONLY },
+//   flash: { type: DataTypes.BOOLEAN },
+//   aVue: { type: DataTypes.BOOLEAN },
+//   travail: { type: DataTypes.BOOLEAN },
+//   projet: { type: DataTypes.BOOLEAN },
+//   essais: { type: DataTypes.INTEGER },
+//   post: { type: DataTypes.STRING },
+//   like: { type: DataTypes.BOOLEAN },
+// });
+// spot.hasMany(rout, {
+//   onUpdate: "CASCADE",
+//   onDelete: "CASCADE",
+// });
+// rout.belongsTo(spot);
+// spot.hasMany(secteurs, {
+//   onUpdate: "CASCADE",
+//   onDelete: "CASCADE",
+// });
+// secteurs.belongsTo(spot);
+// spot.hasMany(typeVoie, {
+//   onUpdate: "CASCADE",
+//   onDelete: "CASCADE",
+// });
+// typeVoie.belongsTo(spot);
+// spot.hasMany(equipement, {
+//   onUpdate: "CASCADE",
+//   onDelete: "CASCADE",
+// });
+// equipement.belongsTo(spot);
+// spot.hasMany(saison, {
+//   onUpdate: "CASCADE",
+//   onDelete: "CASCADE",
+// });
+// saison.belongsTo(spot);
+// spot.hasMany(confortParking, {
+//   onUpdate: "CASCADE",
+//   onDelete: "CASCADE",
+// });
+// confortParking.belongsTo(spot);
+// user.belongsToMany(rout, {
+//   through: croix,
+// });
 
-user.belongsToMany(rout, {
-  through: croix,
-});
+// rout.belongsToMany(user, {
+//   through: croix,
+// });
 
-rout.belongsToMany(user, {
-  through: croix,
-});
-
-module.exports = { spot, rout, user, croix };
+module.exports = { user };
