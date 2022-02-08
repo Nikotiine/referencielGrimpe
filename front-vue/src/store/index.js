@@ -8,6 +8,7 @@ export default createStore({
     voies: "normal",
     croix: "normal",
     formSite: 0,
+    login: null,
   },
   mutations: {
     setStatus(state, newStatus) {
@@ -27,6 +28,9 @@ export default createStore({
     },
     setCroix(state, newStatus) {
       state.croix = newStatus;
+    },
+    setLogin(state, newUser) {
+      state.login = newUser;
     },
   },
   actions: {},
