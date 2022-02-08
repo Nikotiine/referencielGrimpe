@@ -27,21 +27,45 @@
         <label class="label m-a-auto m-t-10p">Realisation</label>
         <div class="flex-raw space-evenly">
           <label class="radio">
-            <input type="radio" name="equipement" />
+            <input
+              type="radio"
+              name="equipement"
+              v-model="vue"
+              :checked="vue === true"
+              @change="hideInput"
+            />
             A vue </label
           ><label class="radio">
-            <input type="radio" name="equipement" />
+            <input
+              type="radio"
+              name="equipement"
+              v-model="flash"
+              @change="hideInput"
+            />
             Flash </label
           ><label class="radio">
-            <input type="radio" name="equipement" />
+            <input
+              type="radio"
+              name="equipement"
+              v-model="travail"
+              @change="showInput"
+            />
             apres travail
           </label>
+          <label class="radio">
+            <input
+              type="radio"
+              name="equipement"
+              v-model="projet"
+              @change="showInput"
+            />
+            En projet
+          </label>
         </div>
-        <label class="label m-a-auto m-t-10p">date Realisation</label>
-        <div class="flex-raw space-evenly">
-          <input type="date" class="input" />
-        </div>
-        <div class="select m-lr-auto m-t-10p">
+        <div
+          class="field text-center m-lr-auto m-t-10p"
+          v-if="showEssai === true"
+        >
           <label class="label m-a-auto m-t-10p">Nombre d'essais</label>
           <p class="control has-icons-left m-l-15p">
             <input class="input" type="tel" placeholder="essai" />
@@ -49,6 +73,10 @@
               <i class="fas fa-tag"></i>
             </span>
           </p>
+        </div>
+        <label class="label m-a-auto m-t-10p">date Realisation</label>
+        <div class="flex-raw space-evenly">
+          <input type="date" class="input" />
         </div>
 
         <label class="label m-a-auto m-t-10p">Commentaires</label>
@@ -58,7 +86,7 @@
             <i class="fas fa-tag"></i>
           </span>
         </p>
-        <label class="label m-a-auto m-t-10p">type d'effort</label>
+        <label class="label m-a-auto m-t-10p">complemnent d'info</label>
         <div class="flex-column space-evenly">
           <div class="flex-raw space-evenly">
             <label class="checkbox">
@@ -84,6 +112,24 @@
 <script>
 export default {
   name: "addcroix",
+  data() {
+    return {
+      travail: false,
+      projet: false,
+      vue: true,
+      flash: false,
+      showEssai: false,
+    };
+  },
+  computed: {},
+  methods: {
+    showInput: function () {
+      return (this.showEssai = true);
+    },
+    hideInput: function () {
+      return (this.showEssai = false);
+    },
+  },
 };
 </script>
 

@@ -18,13 +18,13 @@
     </div>
 
     <div :class="{ 'is-active': showNav }" class="navbar-menu">
-      <div class="navbar-start">
+      <div class="navbar-start" v-if="login != null">
         <div class="navbar-item is-hoverable">
           <a class="navbar-link" @click="switchToUser"
-            ><router-link to="/user">{{ name }}</router-link></a
+            ><router-link to="/user">{{ login.nickName }}</router-link></a
           >
           <div class="navbar-dropdown">
-            <a class="navbar-item">Ton profil</a>
+            <a class="navbar-item" @click="navToProfil">Ton profil</a>
             <hr class="navbar-divider" />
             <a class="navbar-item">Tes Stats</a>
             <hr class="navbar-divider" />
@@ -78,13 +78,13 @@
             </a>
             <hr class="navbar-divider" />
             <a class="navbar-item" @click="navToAddProject">
-              Ajouter un projet
+              Voir tes projets
             </a>
           </div>
         </div>
       </div>
 
-      <div class="navbar-end">
+      <div class="navbar-end" v-if="login === null">
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
@@ -114,7 +114,7 @@
 export default {
   name: "navbar",
   data() {
-    return { showNav: false, name: "Niko" };
+    return { showNav: false };
   },
   methods: {
     addUser: function () {
@@ -134,6 +134,10 @@ export default {
     },
     switchToCroix: function () {
       this.$store.commit("setCroix", "normal");
+    },
+    navToProfil: function () {
+      this.$router.push("user");
+      return this.$store.commit("setUser", "profil");
     },
     navToAllSite: function () {
       this.$router.push("site");
@@ -170,6 +174,11 @@ export default {
     navToAddProject: function () {
       this.$router.push("croix");
       return this.$store.commit("setCroix", "addPoject");
+    },
+  },
+  computed: {
+    login() {
+      return this.$store.state.login;
     },
   },
 };

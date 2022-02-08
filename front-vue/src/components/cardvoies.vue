@@ -67,7 +67,7 @@ export default {
   data() {},
   methods: {
     switchToAddvoie: function () {
-      this.$store.commit("setVoie", "add");
+      this.$store.commit("setVoies", "add");
     },
   },
 };

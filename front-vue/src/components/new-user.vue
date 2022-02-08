@@ -72,10 +72,45 @@
         </span>
       </p>
     </div>
-    <button class="button" @click="cancel">Annuler</button>
-    <button class="button is-primary m-l-15p" :disabled="validateField">
-      Sign in
-    </button>
+    <div
+      class="file is-normal has-name flex-column"
+      :class="{
+        'is-danger': this.fileOverSize === true,
+        'is-success': this.fileOverSize === false,
+      }"
+    >
+      <label class="label">Photo de profil (max 200ko)</label>
+      <label class="file-label">
+        <input
+          class="file-input"
+          type="file"
+          accept="image/jpeg, image/png"
+          name="resume"
+          @change="previewFile"
+        />
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">Upload </span>
+        </span>
+        <span class="file-name"
+          ><p v-for="avatar in avatars" :key="avatar.id">
+            {{ avatar.name }}
+          </p></span
+        >
+      </label>
+    </div>
+    <div class="m-t-10p">
+      <button class="button" @click="cancel">Annuler</button>
+      <button
+        class="button is-primary m-l-15p"
+        :disabled="validateField"
+        @click="newUser"
+      >
+        Sign in
+      </button>
+    </div>
   </form>
 </template>
 
@@ -90,19 +125,32 @@ export default {
       email: null,
       firstName: null,
       lastName: null,
+      avatars: [],
+      fileOverSize: null,
     };
   },
   methods: {
+    previewFile: function (file) {
+      if (file.target.files[0].size < 80000) {
+        this.fileOverSize = false;
+        this.avatars = file.target.files;
+      } else {
+        this.fileOverSize = true;
+        return;
+      }
+    },
     cancel: function () {
       this.$store.commit("setStatus", "0");
     },
+
     newUser: function () {
       axios.post("http://localhost:3000/newuser/", {
         nickName: this.nickName,
-        firstname: this.firstName,
+        firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
         password: this.password,
+        avatar: this.avatars[0],
       });
     },
   },

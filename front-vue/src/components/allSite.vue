@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from "axios";
+//import axios from "axios";
 export default {
   name: "allSite",
   data() {
@@ -31,11 +31,11 @@ export default {
       sites: [],
     };
   },
-  mounted() {
-    axios
-      .get("http://localhost:3000/spot/")
-      .then((res) => (this.sites = res.data));
-  },
+  // mounted() {
+  //   axios
+  //     .get("http://localhost:3000/spot/")
+  //     .then((res) => (this.sites = res.data));
+  // },
 };
 </script>
 
