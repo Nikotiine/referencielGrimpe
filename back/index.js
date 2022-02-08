@@ -1,20 +1,23 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const { authenticateToken } = require("./databases/token");
 const { showTable } = require("./databases/spotCreat");
 const { newSpot } = require("./databases/spotCreat");
 const { showOneSpot } = require("./databases/spotCreat");
 const { delSpot } = require("./databases/spotCreat");
 const { editSite } = require("./databases/spotCreat");
 const { newUser } = require("./databases/userCreat");
-const { loginUser } = require("./databases/userCreat");
+const { loginUser, verifyToken } = require("./databases/userCreat");
 const { showUser } = require("./databases/userCreat");
 const { newRout } = require("./databases/routCreat");
 const { showAllRout } = require("./databases/routCreat");
 // const { getRout } = require("./databases/croixCreat");
 const { newCroix } = require("./databases/croixCreat");
+const { verify } = require("jsonwebtoken");
 require("./databases/launch_db");
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 //---------------------------add spot ------------------------
 app.post("/spot/", (req, res) => {
@@ -67,15 +70,19 @@ app.post("/newuser/", (req, res) => {
     .catch((err) => res.send(err));
 });
 app.post("/login/", (req, res) => {
-  loginUser(req.body).then((login) => {
-    if (login === null) {
-      res.status(400).json({ data: "badId" });
-    } else {
-      res.send(login);
-    }
+  loginUser(req.body).then((token) => {
+    // res.json({ login });
+    if (!token) {
+      res.status(401).json({ data: "non auth" });
+    } else res.json({ token });
   });
 });
-
+app.get("/me/", authenticateToken, (req, res) => {
+  res.send(req.user);
+});
+app.post("/refreshToken/", (req, res) => {
+  verifyToken(req).then((token) => res.send(token));
+});
 app.get("/userId/:id", (req, res) => {
   showUser(req.params.id).then((user) => res.json({ data: user }));
 });
