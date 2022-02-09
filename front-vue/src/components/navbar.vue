@@ -106,6 +106,20 @@
           </div>
         </div>
       </div>
+      <div class="navbar-end" v-if="login != null">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <a class="bd-tw-button button" @click="logOut">
+                <span class="icon">
+                  <i class="fas fa-sign-out-alt"></i>
+                </span>
+                <span> Se deconnecter</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -122,6 +136,11 @@ export default {
     },
     loggin: function () {
       this.$store.commit("setStatus", "1");
+    },
+    logOut: function () {
+      this.$store.commit("setLogin", null);
+      this.$router.push("/");
+      localStorage.clear();
     },
     switchToUser: function () {
       this.$store.commit("setUser", "user");
