@@ -144,7 +144,7 @@ export default {
     },
 
     newUser: function () {
-      axios.post("http://localhost:3000/newuser/", {
+      axios.post("newuser", {
         nickName: this.nickName,
         firstName: this.firstName,
         lastName: this.lastName,
