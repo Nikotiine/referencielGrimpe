@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import addSiteFormInfo from "./addSiteFormInfo.vue";
 import addSiteFormLoc from "./addSiteFormLoc.vue";
 
@@ -63,6 +64,8 @@ export default {
         ...this.newSite,
         ...loc,
       };
+      console.log(this.newSite);
+      axios.post("spot", this.newSite).then((res) => console.log(res));
     },
   },
   mounted() {},

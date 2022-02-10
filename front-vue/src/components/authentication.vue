@@ -59,8 +59,8 @@ export default {
     cancel: function () {
       this.$store.commit("setStatus", "0");
     },
-    signIn: function () {
-      axios
+    signIn: async function () {
+      await axios
         .post("login", {
           email: this.email,
           password: this.password,
