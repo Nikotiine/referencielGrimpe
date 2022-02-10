@@ -6,26 +6,28 @@ axios.defaults.headers.common["authorization"] = `Bearer ${accessToken}`;
 
 axios.interceptors.response.use(
   (response) => {
-    console.log("ok");
+    console.log("interceptor ok");
     return response;
   },
   async (error) => {
-    console.log("COUCOU");
+    console.log("erreur token");
     console.log(error);
     const originalRequest = error.config;
     if (
-      error.config.url != "/refreshToken/" &&
+      error.config.url != "refreshToken" &&
       error.response.status === 401 &&
       originalRequest._retry !== true
     ) {
+      console.log("erreur refresh");
       originalRequest._retry = true;
       if (refreshToken && refreshToken != "") {
+        console.log("err2");
         axios.defaults.headers.common[
           "authorization"
         ] = `Bearer ${refreshToken}`;
         console.log("refresh token");
         await axios
-          .post("/refreshToken/")
+          .post("refreshToken")
           .then((response) => {
             axios.defaults.headers.common[
               "authorization"

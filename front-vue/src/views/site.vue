@@ -6,7 +6,7 @@
   <div class="max-width-60 m-lr-auto" v-if="status === 'add'">
     <addSite />
   </div>
-  <div class="flex-raw m-t-10 m-lr-auto" v-if="status === 'all'">
+  <div class="" v-if="status === 'all'">
     <allSite />
   </div>
   <div
@@ -44,5 +44,8 @@ export default {
 <style lang="scss" scoped>
 img {
   max-height: 200px;
+}
+.over {
+  overflow: auto;
 }
 </style>
