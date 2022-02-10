@@ -186,9 +186,9 @@
             <input
               class="input is-primary m-t-10p"
               type="text"
-              :placeholder="'Secteur#' + input.id"
+              :placeholder="'Secteur#' + input.ref"
               v-for="input in inputs"
-              :key="input.id"
+              :key="input.ref"
               v-model="input.name"
             />
           </div>
@@ -307,7 +307,7 @@ export default {
         { id: 3, levelMini: "6 A/B" },
         { id: 4, levelMini: "6sup/7" },
       ],
-      inputs: [{ id: 0, name: "" }],
+      inputs: [{ ref: 0, name: "" }],
       hauteurs: [
         { id: 0, size: "10 metres" },
         { id: 1, size: "15 metres" },
@@ -321,7 +321,7 @@ export default {
   },
   methods: {
     addSecteur: function () {
-      this.inputs.push({ id: this.inputs.length });
+      this.inputs.push({ ref: this.inputs.length });
     },
     supSecteur: function () {
       this.inputs.pop();
@@ -329,12 +329,13 @@ export default {
     cancel: function () {
       this.secteur = !this.secteur;
 
-      this.inputs = [{ id: 0 }];
+      this.inputs = [{ ref: 0 }];
     },
     saveSecteurs: function () {
       //this.inputs.push({ name: this.inputs.name });
       this.inputs.name = this.inputs.value;
       this.site.secteurs = this.inputs;
+      this.site.secteur = true;
       this.secteur = !this.secteur;
     },
     next: function () {
