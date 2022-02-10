@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { authenticateToken } = require("./databases/token");
+const { verifyToken } = require("./databases/token");
 const { showTable } = require("./databases/spotCreat");
 const { newSpot } = require("./databases/spotCreat");
 const { showOneSpot } = require("./databases/spotCreat");
 const { delSpot } = require("./databases/spotCreat");
 const { editSite } = require("./databases/spotCreat");
 const { newUser } = require("./databases/userCreat");
-const { loginUser, verifyToken } = require("./databases/userCreat");
+const { loginUser } = require("./databases/userCreat");
 const { showUser } = require("./databases/userCreat");
 const { newRout } = require("./databases/routCreat");
 const { showAllRout } = require("./databases/routCreat");
@@ -25,13 +26,13 @@ app.post("/refreshToken/", (req, res) => {
 });
 
 //---------------------------add spot ------------------------
-app.post("/spot/", (req, res) => {
+app.post("/spot/", authenticateToken, (req, res) => {
   newSpot(req.body)
     .then((res) => res.json(res))
     .catch((err) => res.json({ data: err }));
 });
 
-app.get("/spot/", (req, res) => {
+app.get("/spot/", authenticateToken, (req, res) => {
   showTable()
     .then((oneSpot) => res.json(oneSpot))
     .catch((err) => res.json(err));
@@ -82,7 +83,8 @@ app.post("/login/", (req, res) => {
 //   verifyToken(req).then((token) => res.send(token));
 // });
 app.get("/user/", authenticateToken, (req, res) => {
-  res.send(req.user);
+  console.log(req.user.account.id);
+  showUser(req.user.account.id).then((datauser) => res.json(datauser));
 });
 
 //---------------------------add rout ------------------------
