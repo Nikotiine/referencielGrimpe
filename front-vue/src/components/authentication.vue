@@ -50,8 +50,7 @@ export default {
   methods: {
     loadUserInfo: function () {
       axios.get("user").then((res) => {
-        console.log(res.data);
-        this.$store.commit("setLogin", res.data.account);
+        this.$store.commit("setLogin", res.data);
 
         this.$store.commit("setStatus", "");
       });
