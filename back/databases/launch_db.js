@@ -3,12 +3,14 @@ const { user } = require("./models");
 const { croix } = require("./models");
 const { spot } = require("./models");
 const { rout } = require("./models");
+const { secteurSpots } = require("./models");
 (async () => {
   try {
     await database.authenticate();
     // await croix.sync({ alter: true });
     await user.sync({ alter: true });
-    //await spot.sync({ alter: true });
+    await spot.sync({ alter: true });
+    await secteurSpots.sync({ alter: true });
     //await rout.sync({ alter: true });
     console.log("Connection mariadb ok.");
   } catch (error) {

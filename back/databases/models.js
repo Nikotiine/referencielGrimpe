@@ -24,37 +24,38 @@ const user = database.define("users", {
 //   equipement: { type: DataTypes.STRING },
 // });
 
-// const spot = database.define("spot", {
-//   name: { type: DataTypes.STRING },
-//   exposition: { type: DataTypes.STRING },
-//   hauteurMax: { type: DataTypes.STRING },
-//   tempsApproche: { type: DataTypes.STRING },
-//   typeApproche: { type: DataTypes.STRING },
-//   nombreLignes: { type: DataTypes.STRING },
-//   niveauMini: { type: DataTypes.STRING },
-//   rockType: { type: DataTypes.STRING },
-//   positionParking: { type: DataTypes.GEOMETRY },
-//   positionParkingCamion: { type: DataTypes.GEOMETRY },
-//   secteur: { type: DataTypes.BOOLEAN },
-//   region: { type: DataTypes.STRING },
-//   departement: { type: DataTypes.STRING },
-//   parking: { type: DataTypes.BOOLEAN },
-// });
+const spot = database.define("spot", {
+  name: { type: DataTypes.STRING },
+  exposition: { type: DataTypes.STRING },
+  hauteurMax: { type: DataTypes.STRING },
+  tempsApproche: { type: DataTypes.STRING },
+  typeApproche: { type: DataTypes.STRING },
+  nombreLignes: { type: DataTypes.STRING },
+  niveauMini: { type: DataTypes.STRING },
+  hiver: { type: DataTypes.BOOLEAN },
+  printemps: { type: DataTypes.BOOLEAN },
+  ete: { type: DataTypes.BOOLEAN },
+  automne: { type: DataTypes.BOOLEAN },
+  rockType: { type: DataTypes.STRING },
+  positionParking: { type: DataTypes.GEOMETRY },
+  positionParkingCamion: { type: DataTypes.GEOMETRY },
+  secteur: { type: DataTypes.BOOLEAN },
+  region: { type: DataTypes.INTEGER },
+  departement: { type: DataTypes.INTEGER },
+  parking: { type: DataTypes.BOOLEAN },
+});
 // const confortParking = database.define("confortParking", {
 //   toilettes: { type: DataTypes.BOOLEAN },
 //   resau: { type: DataTypes.BOOLEAN },
 //   riviereLac: { type: DataTypes.BOOLEAN },
 //   eauPotable: { type: DataTypes.BOOLEAN },
 // });
-// const secteurs = database.define("secteur", {
-//   name: { type: DataTypes.STRING },
-// });
-// const saison = database.define("saison", {
-//   hiver: { type: DataTypes.BOOLEAN },
-//   printemps: { type: DataTypes.BOOLEAN },
-//   ete: { type: DataTypes.BOOLEAN },
-//   automne: { type: DataTypes.BOOLEAN },
-// });
+
+const secteurSpots = database.define("secteur", {
+  ref: { type: DataTypes.INTEGER },
+  name: { type: DataTypes.TEXT },
+});
+
 // const equipement = database.define("equipement", {
 //   normal: { type: DataTypes.BOOLEAN },
 //   engage: { type: DataTypes.BOOLEAN },
@@ -82,11 +83,11 @@ const user = database.define("users", {
 //   onDelete: "CASCADE",
 // });
 // rout.belongsTo(spot);
-// spot.hasMany(secteurs, {
-//   onUpdate: "CASCADE",
-//   onDelete: "CASCADE",
-// });
-// secteurs.belongsTo(spot);
+spot.hasMany(secteurSpots, {
+  onUpdate: "CASCADE",
+  onDelete: "CASCADE",
+});
+secteurSpots.belongsTo(spot);
 // spot.hasMany(typeVoie, {
 //   onUpdate: "CASCADE",
 //   onDelete: "CASCADE",
@@ -107,6 +108,7 @@ const user = database.define("users", {
 //   onDelete: "CASCADE",
 // });
 // confortParking.belongsTo(spot);
+
 // user.belongsToMany(rout, {
 //   through: croix,
 // });
@@ -115,4 +117,4 @@ const user = database.define("users", {
 //   through: croix,
 // });
 
-module.exports = { user };
+module.exports = { user, spot, secteurSpots };

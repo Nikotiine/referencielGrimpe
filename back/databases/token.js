@@ -12,10 +12,11 @@ function generateRefreshToken(user) {
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
-  if (token === null) return res.status(401).send("toto pas content");
+  console.log(token);
+  if (token === null) return res.status(401).send("pas de token");
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) {
-      return res.status(401).send("tata pas contente");
+      return res.status(401).send("token incorrect");
     }
     console.log("ca marche");
     req.user = user;
