@@ -19,17 +19,15 @@ require("./databases/launch_db");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+//-----------------------------token--------------------------
+app.post("/refreshToken/", (req, res) => {
+  verifyToken(req).then((token) => res.send(token));
+});
+
 //---------------------------add spot ------------------------
 app.post("/spot/", (req, res) => {
   newSpot(req.body)
-    .then((newSpotCreat) => {
-      const { result, created } = newSpotCreat;
-      if (created === true) {
-        res.json({ data: "spot created" });
-      } else {
-        res.status(400).json({ data: "spot already exist" });
-      }
-    })
+    .then((res) => res.json(res))
     .catch((err) => res.json({ data: err }));
 });
 
@@ -77,14 +75,14 @@ app.post("/login/", (req, res) => {
     } else res.json({ token });
   });
 });
-app.get("/me/", authenticateToken, (req, res) => {
+// app.get("/me/", authenticateToken, (req, res) => {
+//   res.send(req.user);
+// });
+// app.post("/refreshToken/", (req, res) => {
+//   verifyToken(req).then((token) => res.send(token));
+// });
+app.get("/user/", authenticateToken, (req, res) => {
   res.send(req.user);
-});
-app.post("/refreshToken/", (req, res) => {
-  verifyToken(req).then((token) => res.send(token));
-});
-app.get("/userId/:id", (req, res) => {
-  showUser(req.params.id).then((user) => res.json({ data: user }));
 });
 
 //---------------------------add rout ------------------------
