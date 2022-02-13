@@ -200,9 +200,9 @@ export default {
     },
   },
   mounted() {
-    axios
-      .get("https://geo.api.gouv.fr/regions")
-      .then((res) => (this.regions = res.data.slice(5 - 17)));
+    axios.get("https://geo.api.gouv.fr/regions").then((res) => {
+      this.regions = res.data.slice(5 - 17);
+    });
   },
   computed: {
     validateLongitudePark() {

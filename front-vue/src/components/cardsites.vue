@@ -10,7 +10,9 @@
         <div class="media">
           <div class="media-content">
             <p class="title is-4">Liste des sites</p>
-            <p class="subtitle is-6">Actuellement --- sites referencés</p>
+            <p class="subtitle is-6">
+              Actuellement {{ totalSite }} sites referencés
+            </p>
           </div>
         </div>
 
@@ -67,11 +69,17 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "cardsites",
+  data() {
+    return {
+      totalSite: 0,
+    };
+  },
   methods: {
     switchToAll: function () {
-      return this.$store.commit("setSite", "all");
+      this.$store.commit("setSite", "all");
     },
     switchToAdd: function () {
       this.$store.commit("setSite", "add");
@@ -79,6 +87,12 @@ export default {
     switchToSearch: function () {
       this.$store.commit("setSite", "search");
     },
+  },
+  computed: {},
+  mounted() {
+    axios.get("totalSpot").then((res) => {
+      this.totalSite = res.data;
+    });
   },
 };
 </script>

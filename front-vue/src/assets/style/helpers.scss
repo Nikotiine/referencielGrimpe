@@ -33,6 +33,12 @@
 .m-tb-auto {
   margin: auto 0;
 }
+.m-t-2m {
+  margin-top: 2em;
+}
+.m-t-1m {
+  margin-top: 1em;
+}
 .m-a-auto {
   margin: auto;
 }
@@ -54,6 +60,9 @@
 .max-width-50 {
   max-width: 50%;
 }
+.max-width-25 {
+  max-width: 25%;
+}
 .max-width-60 {
   max-width: 60%;
 }
@@ -65,4 +74,7 @@
 }
 .text-center {
   text-align: center;
+}
+.left-border-2sb {
+  border-left: 2px solid black;
 }

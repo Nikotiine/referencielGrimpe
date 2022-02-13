@@ -1,0 +1,109 @@
+<template>
+  <div class="max-width-25 field m-lr-auto m-t-2m" v-if="status === 'all'">
+    <p class="control has-icons-left">
+      <input
+        class="input"
+        type="search"
+        placeholder="rechercher"
+        v-model="search"
+      />
+      <span class="icon is-small is-left">
+        <i class="fas fa-search"></i>
+      </span>
+    </p>
+  </div>
+  <div class="">
+    <div
+      class="flex-raw space-evenly flex-wrap stretch m-t-2m over"
+      v-if="status === 'all'"
+    >
+      <div
+        class="box m-b-10p text-center"
+        v-for="site in searchSite"
+        :key="site.id"
+        @click="switchToOne(site.id)"
+      >
+        <p class="subtitle">{{ site.name }}</p>
+      </div>
+    </div>
+    <div class="" v-if="status === 'one'">
+      <oneSite />
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+import oneSite from "../site/oneSite.vue";
+export default {
+  name: "allSite",
+  components: {
+    oneSite,
+  },
+  data() {
+    return {
+      sites: [],
+
+      search: "",
+    };
+  },
+  methods: {
+    switchToOne: function (id) {
+      console.log(id);
+      this.$store.commit("spotid", id);
+      this.$store.commit("setCardSite", "one");
+    },
+    // showOne: function (id) {
+    //   axios.get("spot/" + id).then((res) => {
+    //     console.log(res.data);
+    //     this.fiche = res.data;
+    //     this.status = "site";
+    //     this.getRegion();
+    //   });
+    // },
+    // getRegion: function () {
+    //   axios
+    //     .get(
+    //       "https://geo.api.gouv.fr/regions/" +
+    //         this.fiche.region +
+    //         "?fields=code"
+    //     )
+    //     .then((res) => (this.regions = res.data.nom));
+    // },
+  },
+  mounted() {
+    axios.get("spot").then((res) => {
+      this.sites = res.data;
+    });
+  },
+
+  computed: {
+    status() {
+      return this.$store.state.cardSite;
+    },
+    searchSite() {
+      return this.sites.filter((site) => {
+        return site.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "../../assets/style/theme";
+
+.over {
+  overflow: auto;
+  max-height: 75vh;
+}
+
+.box {
+  max-width: 15%;
+  min-width: 15%;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 34%);
+}
+.input {
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 34%);
+}
+</style>

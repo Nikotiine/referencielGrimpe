@@ -51,7 +51,7 @@ export default {
     loadUserInfo: function () {
       axios.get("user").then((res) => {
         this.$store.commit("setLogin", res.data);
-
+        console.log("user valide");
         this.$store.commit("setStatus", "");
       });
     },
