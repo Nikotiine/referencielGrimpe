@@ -2,7 +2,22 @@ import axios from "axios";
 const accessToken = localStorage.getItem("accessToken");
 let refreshToken = localStorage.getItem("refreshToken");
 axios.defaults.baseURL = "http://localhost:3000/";
-axios.defaults.headers.common["authorization"] = `Bearer ${accessToken}`;
+//axios.defaults.headers.common["authorization"] = `Bearer ${accessToken}`;
+
+axios.interceptors.request.use(
+  async (config) => {
+    config.headers = {
+      authorization: `Bearer ${accessToken}`,
+      //accept: "application/json",
+      //"Content-Type": "application/x-www-form-urlencoded",
+    };
+    console.log("request");
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
+  }
+);
 
 axios.interceptors.response.use(
   (response) => {
@@ -21,7 +36,7 @@ axios.interceptors.response.use(
       console.log("erreur refresh");
       originalRequest._retry = true;
       if (refreshToken && refreshToken != "") {
-        console.log("err2");
+        console.log("erreur bearer");
         axios.defaults.headers.common[
           "authorization"
         ] = `Bearer ${refreshToken}`;

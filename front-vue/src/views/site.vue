@@ -1,6 +1,6 @@
 <template>
   <navbar />
-  <div v-if="status === 'normal'">
+  <div v-if="status === 'card'">
     <cardsites />
   </div>
   <div class="max-width-60 m-lr-auto" v-if="status === 'add'">
@@ -20,7 +20,7 @@
 import navbar from "../components/navbar.vue";
 import cardsites from "../components/cardsites.vue";
 import addSite from "../components/addSite/addSite.vue";
-import allSite from "../components/allSite.vue";
+import allSite from "../components/site/allSite.vue";
 import searchSite from "../components/searchSite.vue";
 export default {
   data() {
@@ -44,8 +44,5 @@ export default {
 <style lang="scss" scoped>
 img {
   max-height: 200px;
-}
-.over {
-  overflow: auto;
 }
 </style>

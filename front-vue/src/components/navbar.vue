@@ -146,7 +146,7 @@ export default {
       this.$store.commit("setUser", "user");
     },
     switchToSite: function () {
-      this.$store.commit("setSite", "normal");
+      this.$store.commit("setSite", "card");
     },
     switchToVoies: function () {
       this.$store.commit("setVoies", "normal");
@@ -160,7 +160,8 @@ export default {
     },
     navToAllSite: function () {
       this.$router.push("site");
-      return this.$store.commit("setSite", "all");
+      this.$store.commit("setSite", "all");
+      this.$store.commit("setCardSite", "all");
     },
     navToSearchSite: function () {
       this.$router.push("site");
