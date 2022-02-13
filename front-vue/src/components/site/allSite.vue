@@ -50,6 +50,7 @@ export default {
   methods: {
     switchToOne: function (id) {
       console.log(id);
+      console.log("toto");
       this.$store.commit("spotid", id);
       this.$store.commit("setCardSite", "one");
     },

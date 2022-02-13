@@ -46,10 +46,10 @@
         </p>
       </div>
     </div>
-    <div class="modal" :class="{ 'is-active': modalOpenStreetMap }">
+    <div class="modal is-active" v-if="modalOpenStreetMap">
       <div class="modal-background"></div>
       <div class="modal-content">
-        <Example :positionPark="positionPark" :positionCam="positionCam" />
+        <maps :parking="positionPark" :parkingCamion="positionCam" />
       </div>
       <button
         class="modal-close is-large"
@@ -73,18 +73,18 @@
 
 <script>
 import axios from "axios";
-import Example from "../site/maps.vue";
+import maps from "../site/maps.vue";
 export default {
   name: "oneSite",
-  components: { Example },
+  components: { maps },
   data() {
     return {
       modalOpenStreetMap: false,
       site: {},
       region: "",
       departement: "",
-      positionPark: [],
-      positionCam: [],
+      positionPark: null,
+      positionCam: null,
     };
   },
   methods: {
@@ -118,8 +118,8 @@ export default {
     axios.get("spot/" + this.$store.state.spotId).then((res) => {
       console.log(res.data);
       this.site = res.data;
-      this.positionPark = res.data.positionParking.coordinates;
-      this.positionCam = res.data.positionParkingCamion.coordinates;
+      this.positionPark = res.data.positionParking?.coordinates;
+      this.positionCam = res.data.positionParkingCamion?.coordinates;
       this.getRegion();
       this.getDepartement();
     });
