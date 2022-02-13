@@ -23,10 +23,10 @@ function authenticateToken(req, res, next) {
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) {
       console.log(token);
-      console.log("err");
-      return res.status(401).send("token incorrect");
+      console.log("err de token");
+      return res.status(401);
     }
-    console.log("ca marche");
+    console.log("ok valide");
     req.user = user;
     next();
   });
@@ -36,12 +36,12 @@ async function verifyToken(req) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
   if (!token) {
-    return res.sendStatus(401);
+    return res.status(401);
   }
 
   jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
     if (err) {
-      return res.sendStatus(401);
+      return res.status(401);
     }
     // TODO : check en bdd que le user a toujours les droit et qu'il existe toujours
     console.log("verify ok");

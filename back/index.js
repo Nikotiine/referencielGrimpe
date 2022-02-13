@@ -3,11 +3,12 @@ const app = express();
 const cors = require("cors");
 const { authenticateToken } = require("./databases/token");
 const { verifyToken } = require("./databases/token");
-const { showTable } = require("./databases/spotCreat");
+
 const { newSpot } = require("./databases/spotCreat");
-const { showOneSpot } = require("./databases/spotCreat");
+const { findOneSpot } = require("./databases/spotCreat");
+const { findAndCountAllSpot } = require("./databases/spotCreat");
 const { delSpot } = require("./databases/spotCreat");
-const { editSite } = require("./databases/spotCreat");
+const { editSpot } = require("./databases/spotCreat");
 const { newUser } = require("./databases/userCreat");
 const { loginUser } = require("./databases/userCreat");
 const { showUser } = require("./databases/userCreat");
@@ -31,16 +32,26 @@ app.post("/spot/", authenticateToken, (req, res) => {
     .then((res) => res.json(res))
     .catch((err) => res.json({ data: err }));
 });
-
+app.get("/totalSpot/", authenticateToken, (req, res) => {
+  findAndCountAllSpot()
+    .then((totalSite) => {
+      const { count, rows } = totalSite;
+      res.json(count);
+    })
+    .catch((err) => res.json(err));
+});
 app.get("/spot/", authenticateToken, (req, res) => {
-  showTable()
-    .then((oneSpot) => res.json(oneSpot))
+  findAndCountAllSpot()
+    .then((allSite) => {
+      const { count, rows } = allSite;
+      res.json(rows);
+    })
     .catch((err) => res.json(err));
 });
 
-app.get("/spot/:id", (req, res) => {
-  showOneSpot(req.params.id)
-    .then((index) => res.json({ data: index }))
+app.get("/spot/:id", authenticateToken, (req, res) => {
+  findOneSpot(req.params.id)
+    .then((site) => res.json(site))
     .catch((err) => res.json({ data: err }));
 });
 
@@ -50,7 +61,7 @@ app.delete("/spot/:id", (req, res) => {
     .catch((err) => res.json(err));
 });
 app.put("/spot/:id", (req, res) => {
-  editSite(req.body, req.params.id)
+  editSpot(req.body, req.params.id)
     .then((edit) => res.json({ data: edit }))
     .catch((err) => res.json({ data: err }));
 });
@@ -83,7 +94,7 @@ app.post("/login/", (req, res) => {
 //   verifyToken(req).then((token) => res.send(token));
 // });
 app.get("/user/", authenticateToken, (req, res) => {
-  console.log(req.user.account.id);
+  console.log("user data send");
   showUser(req.user.account.id).then((datauser) => res.json(datauser));
 });
 

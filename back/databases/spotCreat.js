@@ -1,15 +1,13 @@
 const { spot, secteurSpots } = require("./models");
 
 async function newSpot(data) {
-  console.log(data.secteurs);
-
   const [spotData, created] = await spot.findOrCreate({
     where: { name: data.name },
     defaults: {
       exposition: data.exposition,
       hauteurMax: data.hauteurMax,
       tempsApproche: data.tempsApproche,
-      typeApproche: data.tempsApproche,
+      typeApproche: data.typeApproche,
       nombreLignes: data.nombreLignes,
       niveauMini: data.niveauMini,
       hiver: data.hiver,
@@ -24,10 +22,8 @@ async function newSpot(data) {
       positionParkingCamion: data.positionParkingCamion,
     },
   });
-
   if (created === true) {
     console.log(" site enregistre");
-
     if (spotData.secteur === true) {
       data.secteurs.forEach((secteur) => {
         const fkey = { spotId: spotData.id };
@@ -37,28 +33,34 @@ async function newSpot(data) {
       await secteurSpots.bulkCreate(data.secteurs);
       console.log("apres bulk");
     }
-
     return { spotData };
   } else return false;
 }
+async function findAndCountAllSpot() {
+  console.log("compte");
+  return await spot.findAndCountAll();
+}
 
-async function showTable() {
-  return await spot.findAll();
+async function findOneSpot(pk) {
+  return await spot.findOne({
+    where: {
+      id: pk,
+    },
+    include: secteurSpots,
+  });
 }
-async function showOneSpot(pk) {
-  return await spot.findByPk(pk);
-}
+
 async function delSpot(id) {
   return await spot.destroy({ where: { id: id } });
 }
-async function editSite(body, spotid) {
+async function editSpot(body, spotid) {
   return await spot.update(body, { where: { id: spotid } });
 }
 
 module.exports = {
-  showTable,
   newSpot,
-  showOneSpot,
+  findOneSpot,
   delSpot,
-  editSite,
+  editSpot,
+  findAndCountAllSpot,
 };
