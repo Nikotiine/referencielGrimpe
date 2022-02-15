@@ -1,7 +1,12 @@
 <template>
   <div class="card m-t-1m min-wi" v-if="mode === 'search'">
     <div class="card-content flex-column">
-      <h4 class="title is-4 text-center">{{ this.filter.length }} Resultats</h4>
+      <h4 class="title is-4 text-center" v-if="this.filter.length <= 1">
+        {{ this.filter.length }} Resultat
+      </h4>
+      <h4 class="title is-4 text-center" v-if="this.filter.length >= 2">
+        {{ this.filter.length }} Resultats
+      </h4>
       <div class="tags are-large">
         <span
           class="tag"
@@ -14,7 +19,7 @@
     </div>
   </div>
   <div v-if="mode === 'one'" class="min-wi m-t-1m">
-    <oneSite />
+    <oneSite @returnToSearch="switchToResult()" />
   </div>
 </template>
 
@@ -32,7 +37,11 @@ export default {
   methods: {
     switchToOne: function (id) {
       this.$store.commit("spotid", id);
+      this.$store.commit("searchButton", true);
       this.mode = "one";
+    },
+    switchToResult: function () {
+      return (this.mode = "search");
     },
   },
 };
@@ -48,5 +57,8 @@ export default {
 }
 .min-wi {
   min-width: 40%;
+}
+.tag {
+  cursor: pointer;
 }
 </style>

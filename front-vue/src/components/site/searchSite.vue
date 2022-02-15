@@ -238,6 +238,7 @@ export default {
             return false;
           }
           if (this.sais) {
+            // return this.testSaisonFilter()
             if (this.ete && site.ete !== this.ete) {
               return false;
             }
