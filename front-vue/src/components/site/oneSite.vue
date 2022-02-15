@@ -1,5 +1,5 @@
 <template>
-  <div class="card m-lr-auto m-t-1m">
+  <div class="card">
     <div class="card-content">
       <h4 class="title is-4 text-center">Detail du site</h4>
       <h1 class="title is-2 text-center">{{ site.name }}</h1>
@@ -47,15 +47,13 @@
       </div>
     </div>
     <div class="modal is-active" v-if="modalOpenStreetMap">
-      <div class="modal-background"></div>
+      <div
+        class="modal-background"
+        @click="modalOpenStreetMap = !modalOpenStreetMap"
+      ></div>
       <div class="modal-content">
         <maps :parking="positionPark" :parkingCamion="positionCam" />
       </div>
-      <button
-        class="modal-close is-large"
-        aria-label="close"
-        @click="modalOpenStreetMap = !modalOpenStreetMap"
-      ></button>
     </div>
     <footer class="card-footer">
       <p
@@ -133,7 +131,7 @@ export default {
   background-color: $b-g-transparent;
   overflow: auto;
   max-height: 90vh;
-  min-width: 60%;
+  min-width: 100%;
 }
 .card-footer {
   background-color: $primary;
