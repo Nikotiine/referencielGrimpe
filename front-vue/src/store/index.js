@@ -12,6 +12,7 @@ export default createStore({
     allSite: [],
     spotId: null,
     cardSite: "all",
+    seachButton: false,
   },
   mutations: {
     setStatus(state, newStatus) {
@@ -43,6 +44,9 @@ export default createStore({
     },
     spotid(state, id) {
       state.spotId = id;
+    },
+    searchButton(state, newStatus) {
+      state.seachButton = newStatus;
     },
   },
   actions: {},

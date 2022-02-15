@@ -26,8 +26,8 @@
         <p class="subtitle">{{ site.name }}</p>
       </div>
     </div>
-    <div class="" v-if="status === 'one'">
-      <oneSite class="m-lr-auto m-t-1m" />
+    <div class="m-lr-auto max-width-60" v-if="status === 'one'">
+      <oneSite class="m-t-1m m-lr-auto" />
     </div>
   </div>
 </template>
@@ -53,6 +53,7 @@ export default {
       console.log("toto");
       this.$store.commit("spotid", id);
       this.$store.commit("setCardSite", "one");
+      this.$store.commit("searchButton", false);
     },
     // showOne: function (id) {
     //   axios.get("spot/" + id).then((res) => {
@@ -110,5 +111,8 @@ export default {
 }
 .input {
   box-shadow: 0px 3px 6px rgb(0 0 0 / 34%);
+}
+.max-width-60 {
+  max-width: 60%;
 }
 </style>

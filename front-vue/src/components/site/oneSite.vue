@@ -63,7 +63,10 @@
         <span> Afficher la carte </span>
       </p>
       <p class="card-footer-item left-border-2sb">
-        <span> Editer le site</span>
+        <span v-if="isInSearch === false"> Editer le site</span>
+        <span v-if="isInSearch === true" @click="backToResult"
+          >Revenir au resultat</span
+        >
       </p>
     </footer>
   </div>
@@ -85,7 +88,16 @@ export default {
       positionCam: null,
     };
   },
+  computed: {
+    isInSearch() {
+      return this.$store.state.seachButton;
+    },
+  },
   methods: {
+    backToResult: function () {
+      this.$store.commit("searchButton", false);
+      this.$emit("returnToSearch");
+    },
     // getSpot: function (id) {
     //   console.log("niko");
     //   axios.get("spot/" + id).then((res) => {
