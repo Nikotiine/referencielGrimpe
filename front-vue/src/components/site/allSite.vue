@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="" v-if="status === 'one'">
-      <oneSite />
+      <oneSite class="m-lr-auto m-t-1m" />
     </div>
   </div>
 </template>
@@ -103,6 +103,10 @@ export default {
   max-width: 15%;
   min-width: 15%;
   box-shadow: 0px 3px 6px rgb(0 0 0 / 34%);
+  background-color: $b-g-transparent;
+  :hover {
+    background-color: rgb(69, 88, 105);
+  }
 }
 .input {
   box-shadow: 0px 3px 6px rgb(0 0 0 / 34%);

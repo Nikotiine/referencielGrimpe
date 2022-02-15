@@ -138,7 +138,7 @@
         @click="next"
         :disabled="isFieldsNotValid"
       >
-        Suivant
+        Enregistrer
       </button>
     </div>
   </div>

@@ -9,10 +9,7 @@
   <div class="" v-if="status === 'all'">
     <allSite />
   </div>
-  <div
-    class="flex-raw m-t-10 m-lr-auto max-width-50"
-    v-if="status === 'search'"
-  >
+  <div class="text-center flex-raw space-evenly" v-if="status === 'search'">
     <searchSite />
   </div>
 </template>
@@ -21,7 +18,7 @@ import navbar from "../components/navbar.vue";
 import cardsites from "../components/cardsites.vue";
 import addSite from "../components/addSite/addSite.vue";
 import allSite from "../components/site/allSite.vue";
-import searchSite from "../components/searchSite.vue";
+import searchSite from "../components/site/searchSite.vue";
 export default {
   data() {
     return {};
