@@ -110,7 +110,7 @@ export default {
       sais: false,
       haut: false,
       expo: false,
-      regDept: false,
+      regDept: true,
       selectRegion: null,
       selectDept: null,
       hauteurMax: null,
@@ -238,20 +238,7 @@ export default {
             return false;
           }
           if (this.sais) {
-            // return this.testSaisonFilter()
-            if (this.ete && site.ete !== this.ete) {
-              return false;
-            }
-            if (this.hiver && site.hiver !== this.hiver) {
-              return false;
-            }
-            if (this.automne && site.automne !== this.automne) {
-              return false;
-            }
-            if (this.printemps && site.printemps !== this.printemps) {
-              return false;
-            }
-            return true;
+            return this.saisonFilter(site);
           }
           return true;
         }
@@ -267,19 +254,7 @@ export default {
             return false;
           }
           if (this.sais) {
-            if (this.ete && site.ete !== this.ete) {
-              return false;
-            }
-            if (this.hiver && site.hiver !== this.hiver) {
-              return false;
-            }
-            if (this.automne && site.automne !== this.automne) {
-              return false;
-            }
-            if (this.printemps && site.printemps !== this.printemps) {
-              return false;
-            }
-            return true;
+            return this.saisonFilter(site);
           }
 
           return true;
@@ -289,153 +264,51 @@ export default {
             return false;
           }
           if (this.sais) {
-            if (this.ete && site.ete !== this.ete) {
-              return false;
-            }
-            if (this.hiver && site.hiver !== this.hiver) {
-              return false;
-            }
-            if (this.automne && site.automne !== this.automne) {
-              return false;
-            }
-            if (this.printemps && site.printemps !== this.printemps) {
-              return false;
-            }
-            return true;
+            return this.saisonFilter(site);
           }
           return true;
         }
         if (this.sais) {
-          if (this.ete && site.ete !== this.ete) {
-            return false;
-          }
-          if (this.hiver && site.hiver !== this.hiver) {
-            return false;
-          }
-          if (this.automne && site.automne !== this.automne) {
-            return false;
-          }
-          if (this.printemps && site.printemps !== this.printemps) {
-            return false;
-          }
-          return true;
+          return this.saisonFilter(site);
+          // if (this.ete && site.ete !== this.ete) {
+          //   return false;
+          // }
+          // if (this.hiver && site.hiver !== this.hiver) {
+          //   return false;
+          // }
+          // if (this.automne && site.automne !== this.automne) {
+          //   return false;
+          // }
+          // if (this.printemps && site.printemps !== this.printemps) {
+          //   return false;
+          // }
+          // return true;
         }
         return false;
       });
     },
-
-    // expoSearch() {
-    //   return this.sites.filter((site) => {
-    //     if (this.ete && site.ete !== this.ete) {
-    //       return false;
-    //     }
-    //     if (this.automne && site.automne !== this.automne) {
-    //       return false;
-    //     }
-    //     if (this.hiver && site.hiver !== this.hiver) {
-    //       return false;
-    //     }
-    //     if (this.print && site.printemps !== this.print) {
-    //       return false;
-    //     }
-    //     return true;
-    //   });
-    // },
-    // hauteurSearch() {
-    //   return this.sites.filter((site) => {
-    //     if (this.hauteurMax && site.hauteurMax !== this.hauteurMax) {
-    //       return false;
-    //     }
-    //     return true;
-    //   });
-    // },
-    // saisonSearch() {
-    //   return this.sites.filter((site) => {
-    //     return (
-    //       site.ete === this.ete ||
-    //       site.hiver === this.hiver ||
-    //       site.printemps === this.printemps ||
-    //       site.automne === this.automne
-    //     );
-    //   });
-    // },
-    // withExpo() {
-    //   return this.regionSearch.filter((site) => {
-    //     return site.exposition === this.exposition;
-    //   });
-    // },
-    // withHauteur() {
-    //   return this.withExpo.filter((site) => {
-    //     return site.hauteurMax === this.hauteurMax;
-    //   });
-    // },
-    // resultSearch() {
-    //   return this.withHauteur.filter((site) => {
-    //     return (
-    //       site.ete === this.ete &&
-    //       site.hiver === this.hiver &&
-    //       site.printemps === this.printemps &&
-    //       site.automne === this.automne
-    //     );
-    //   });
-    // return this.sites.filter((site) => {
-    //   if (this.regionSearch && this.selectRegion !== site.region) {
-    //     return false;
-    //   }
-    //   if (this.expoSearch && this.exposition !== site.exposition) {
-    //     return false;
-    //   }
-    //   if (this.hauteurSearch && this.hauteurMax !== site.hauteurMax) {
-    //     return false;
-    //   }
-    //   if (
-    //     this.saisonSearch &&
-    //     this.ete !== site.ete &&
-    //     this.hiver !== site.hiver &&
-    //     this.automne !== site.automne &&
-    //     this.printemps !== site.printemps
-    //   ) {
-    //     return false;
-    //   }
-    //   return true;
-    // });
   },
-  // toto() {
-  //   return this.sites.filter((site) => {
-  //     // if (
-  //     //   this.ete !== site.ete &&
-  //     //   this.hiver !== site.hiver &&
-  //     //   this.automne !== site.automne &&
-  //     //   this.printemps !== site.printemps
-  //     // ) {
-  //     //   return false;
-  //     // }
-  //     // if (this.hauteurMax !== site.hauteurMax) {
-  //     //   return false;
-  //     // }
-  //     if (this.expoSearch && this.exposition !== site.exposition) {
-  //       return false;
-  //     }
-  //     // if (Number(this.selectDept) !== site.departement) {
-  //     //   return false;
-  //     // }
-  //     if (
-  //       this.regionSearch &&
-  //       Number(this.selectRegion) !== site.region &&
-  //       this.regionSearch &&
-  //       Number(this.selectDept) !== site.departement
-  //     ) {
-  //       return false;
-  //     }
-  //     return true;
-  //   });
-  // },
 
   methods: {
     getDept: function (code) {
       axios
         .get("https://geo.api.gouv.fr/regions/" + code + "/departements")
         .then((res) => (this.departements = res.data));
+    },
+    saisonFilter: function (site) {
+      if (this.ete && site.ete !== this.ete) {
+        return false;
+      }
+      if (this.hiver && site.hiver !== this.hiver) {
+        return false;
+      }
+      if (this.automne && site.automne !== this.automne) {
+        return false;
+      }
+      if (this.printemps && site.printemps !== this.printemps) {
+        return false;
+      }
+      return true;
     },
   },
 };

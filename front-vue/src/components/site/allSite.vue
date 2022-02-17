@@ -1,20 +1,29 @@
 <template>
-  <div class="max-width-25 field m-lr-auto m-t-2m" v-if="status === 'all'">
-    <p class="control has-icons-left">
-      <input
-        class="input"
-        type="search"
-        placeholder="rechercher"
-        v-model="search"
-      />
-      <span class="icon is-small is-left">
-        <i class="fas fa-search"></i>
-      </span>
-    </p>
+  <div class="flex-raw">
+    <div class="max-width-25 field m-lr-auto m-t-1m" v-if="status === 'all'">
+      <p class="control has-icons-left">
+        <input
+          class="input"
+          type="search"
+          placeholder="Rechercher par nom"
+          v-model="search"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-search"></i>
+        </span>
+      </p>
+    </div>
+    <button
+      class="button is-fullwidth m-lr-auto max-width-25 m-t-1m but"
+      @click="switchToSearch"
+      v-if="status === 'all'"
+    >
+      Recherche avancée
+    </button>
   </div>
   <div class="">
     <div
-      class="flex-raw space-evenly flex-wrap stretch m-t-2m over"
+      class="flex-raw space-evenly flex-wrap stretch m-t-1m over"
       v-if="status === 'all'"
     >
       <div
@@ -54,6 +63,10 @@ export default {
       this.$store.commit("spotid", id);
       this.$store.commit("setCardSite", "one");
       this.$store.commit("searchButton", false);
+    },
+    switchToSearch: function () {
+      this.$router.push("site");
+      return this.$store.commit("setSite", "search");
     },
     // showOne: function (id) {
     //   axios.get("spot/" + id).then((res) => {
@@ -97,16 +110,23 @@ export default {
 
 .over {
   overflow: auto;
-  max-height: 75vh;
+  max-height: 79vh;
 }
-
+.but {
+  background-color: $b-g-transparent;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 34%);
+  &:hover {
+    background-color: $hoverable;
+  }
+}
 .box {
   max-width: 15%;
   min-width: 15%;
   box-shadow: 0px 3px 6px rgb(0 0 0 / 34%);
   background-color: $b-g-transparent;
-  :hover {
-    background-color: rgb(69, 88, 105);
+  cursor: pointer;
+  &:hover {
+    background-color: $hoverable;
   }
 }
 .input {

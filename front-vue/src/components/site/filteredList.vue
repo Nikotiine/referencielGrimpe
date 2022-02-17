@@ -60,5 +60,8 @@ export default {
 }
 .tag {
   cursor: pointer;
+  &:hover {
+    background-color: $hoverable;
+  }
 }
 </style>

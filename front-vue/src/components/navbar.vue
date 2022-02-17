@@ -169,7 +169,8 @@ export default {
     },
     navToAddSite: function () {
       this.$router.push("site");
-      return this.$store.commit("setSite", "add");
+      this.$store.commit("setSite", "add");
+      this.$store.commit("setFormSite", 0);
     },
     navToAddvoie: function () {
       this.$router.push("voies");
