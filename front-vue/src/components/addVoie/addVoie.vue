@@ -7,7 +7,9 @@
         <div class="select m-lr-auto">
           <select>
             <option>Selectionnez le site</option>
-            <option>un site</option>
+            <option v-for="site in sites" :key="site.id">
+              {{ site.name }}
+            </option>
           </select>
         </div>
         <div class="select m-lr-auto m-t-10p">
@@ -119,6 +121,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "addvoie",
   data() {
@@ -132,7 +135,13 @@ export default {
         { id: 4, number: "8", lettre: "C" },
         { id: 5, number: "9", lettre: "C+" },
       ],
+      sites: null,
     };
+  },
+  mounted() {
+    axios.get("spot").then((res) => {
+      this.sites = res.data;
+    });
   },
 };
 </script>

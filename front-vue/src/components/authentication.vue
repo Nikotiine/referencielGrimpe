@@ -24,7 +24,7 @@
         </span>
       </p>
     </div>
-    <div class="notification is-danger" v-if="badId === true">
+    <div class="notification is-danger danger-shadow" v-if="badId === true">
       <button class="delete" @click="badId = !badId"></button>
 
       <strong>Mot de passe ou Email invalide</strong>

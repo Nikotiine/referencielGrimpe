@@ -6,7 +6,10 @@
         <p class="control has-icons-left m-l-15p">
           <input
             class="input"
-            :class="{ 'is-success': fieldIsValide }"
+            :class="{
+              'is-success': fieldIsValide,
+              'is-danger': nameIsUsed.length === 1,
+            }"
             type="text"
             v-model="newSite.name"
           />
@@ -14,6 +17,14 @@
             <i class="fas fa-tag"></i>
           </span>
         </p>
+        <Transition>
+          <div
+            class="notification is-danger is-light danger-shadow"
+            v-if="nameIsUsed.length === 1"
+          >
+            <strong>Nom deja utilisé</strong>
+          </div></Transition
+        >
       </div>
       <addSiteFormInfo v-if="status === 1" @site="addInfo" />
       <addSiteFormLoc v-if="status === 2" @site="addLoc" />
@@ -22,7 +33,7 @@
           class="button control is-primary m-l-15p"
           @click="next"
           v-if="status === 0"
-          :disabled="!fieldIsValide"
+          :disabled="!fieldIsValide || nameIsUsed.length === 1"
         >
           Suivant
         </button>
@@ -42,6 +53,7 @@ export default {
   data() {
     return {
       newSite: { name: "" },
+      sites: [],
     };
   },
   methods: {
@@ -68,7 +80,11 @@ export default {
       axios.post("spot", this.newSite).then((res) => console.log(res));
     },
   },
-  mounted() {},
+  mounted() {
+    axios.get("spot").then((res) => {
+      this.sites = res.data;
+    });
+  },
 
   created() {},
   computed: {
@@ -78,9 +94,16 @@ export default {
     fieldIsValide() {
       if (this.newSite.name != "") {
         return true;
-      } else {
-        return false;
       }
+      return false;
+    },
+    nameIsUsed() {
+      return this.sites.filter((site) => {
+        if (this.newSite.name && site.name !== this.newSite.name) {
+          return false;
+        }
+        return true;
+      });
     },
   },
 };
@@ -92,5 +115,24 @@ form {
   background-color: $b-g-transparent;
   overflow: auto;
   max-height: 90vh;
+}
+.notification {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 25%;
+  text-align: center;
+  z-index: 2;
+}
+.v-enter-active {
+  transition: opacity 1.2s ease;
+}
+.v-leave-active {
+  transition: opacity 0.8s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
