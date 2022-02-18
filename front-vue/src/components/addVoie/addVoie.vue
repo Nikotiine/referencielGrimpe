@@ -3,20 +3,30 @@
     <div class="field flex-column align-center">
       <h1 class="title text-center">Details de la voie</h1>
       <div class="field has-addons flex-column">
-        <label class="label m-a-auto m-t-10p">Choisir un site</label>
-        <div class="select m-lr-auto">
-          <select>
-            <option>Selectionnez le site</option>
-            <option v-for="site in sites" :key="site.id">
-              {{ site.name }}
-            </option>
-          </select>
+        <label class="label m-a-auto m-t-10p">Indiquez un site</label>
+
+        <div class="m-t-10p">
+          <VueMultiselect
+            v-model="selectedSite"
+            :options="sites"
+            placeholder="Selectionez un site"
+            track-by="name"
+            label="name"
+            selectLabel="Pressez Entrer pour choisir"
+            @select="getSecteur"
+          >
+          </VueMultiselect>
         </div>
-        <div class="select m-lr-auto m-t-10p">
-          <select>
-            <option>Sélectionnez le secteur</option>
-            <option>un secteur</option>
-          </select>
+        <div class="m-t-10p" v-if="showSecteur">
+          <VueMultiselect
+            v-model="selectedSecteur"
+            :options="secteurs"
+            placeholder="Selectionez un secteur"
+            track-by="name"
+            label="name"
+            selectLabel="Pressez Entrer pour choisir"
+          >
+          </VueMultiselect>
         </div>
         <label class="label m-a-auto m-t-10p">Nom de la voie</label>
         <p class="control has-icons-left m-l-15p">
@@ -26,34 +36,28 @@
           </span>
         </p>
         <label class="label m-a-auto m-t-10p">Cotation</label>
-        <div class="select m-lr-auto">
-          <select>
-            <option>Selectionnez le degres</option>
-            <option v-for="degre in cotations" :key="degre.id">
-              {{ degre.number }}
-            </option>
-          </select>
+
+        <div class="m-t-10p">
+          <VueMultiselect
+            v-model="selectedCotations"
+            :options="cotations"
+            placeholder="Chercher une cote"
+          >
+          </VueMultiselect>
         </div>
-        <div class="select m-lr-auto m-t-10p">
-          <select>
-            <option>Selectionnez le abc</option>
-            <option v-for="degre in cotations" :key="degre.id">
-              {{ degre.lettre }}
-            </option>
-          </select>
-        </div>
+
         <label class="label m-a-auto m-t-10p">Nombre de paires</label>
         <p class="control has-icons-left m-l-15p">
           <input class="input" type="tel" placeholder="nom" />
           <span class="icon is-small is-left">
-            <i class="fas fa-tag"></i>
+            <i class="fas fa-mountain"></i>
           </span>
         </p>
         <label class="label m-a-auto m-t-10p">longueur de la voie</label>
         <p class="control has-icons-left m-l-15p">
           <input class="input" type="tel" placeholder="longueur" />
           <span class="icon is-small is-left">
-            <i class="fas fa-tag"></i>
+            <i class="fas fa-route"></i>
           </span>
         </p>
         <label class="label m-a-auto m-t-10p">type d'effort</label>
@@ -121,26 +125,76 @@
 </template>
 
 <script>
+import VueMultiselect from "vue-multiselect";
 import axios from "axios";
 export default {
   name: "addvoie",
+
   data() {
     return {
+      showSecteur: false,
       newVoie: { name: null },
+      selectedSecteur: null,
+      selectedSite: null,
+      secteurs: [],
+      selectedCotations: null,
       cotations: [
-        { id: 0, number: "4", lettre: "A" },
-        { id: 1, number: "5", lettre: "A+" },
-        { id: 2, number: "6", lettre: "B" },
-        { id: 3, number: "7", lettre: "B+" },
-        { id: 4, number: "8", lettre: "C" },
-        { id: 5, number: "9", lettre: "C+" },
+        "4a",
+        "4a+",
+        "4b",
+        "4b+",
+        "4c",
+        "4c+",
+        "5a",
+        "5a+",
+        "5b",
+        "5b+",
+        "5c",
+        "5c+",
+        "6a",
+        "6a+",
+        "6b",
+        "6b+",
+        "6c",
+        "6c+",
+        "7a",
+        "7a+",
+        "7b",
+        "7b+",
+        "7c",
+        "7c+",
+        "8a",
+        "8a+",
+        "8b",
+        "8b+",
+        "8c",
+        "8c+",
+        "9a",
+        "9a+",
+        "9b",
+        "9b+",
+        "9c",
       ],
-      sites: null,
+      sites: [],
     };
   },
+  components: { VueMultiselect },
+  methods: {
+    getSecteur: function (value) {
+      if (value.secteur) {
+        axios.get("spot/" + value.id).then((res) => {
+          this.secteurs = res.data.secteurs;
+          this.showSecteur = true;
+        });
+      }
+      this.showSecteur = false;
+    },
+  },
+  computed: {},
   mounted() {
     axios.get("spot").then((res) => {
       this.sites = res.data;
+      //console.log(res.data);
     });
   },
 };
@@ -148,6 +202,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/style/theme";
+
 form {
   background-color: $b-g-transparent;
   overflow: auto;
