@@ -1,5 +1,4 @@
 <template>
-  <navbar />
   <authentication v-if="mode === '1'" />
   <newUser v-if="mode === '2'" />
   <div class="home"></div>
@@ -7,13 +6,13 @@
 
 <script>
 // @ is an alias to /src
-import navbar from "../components/navbar.vue";
+
 import authentication from "../components/authentication.vue";
 import newUser from "../components/new-user.vue";
 
 export default {
   name: "Home",
-  components: { navbar, authentication, newUser },
+  components: { authentication, newUser },
   data() {
     return {};
   },

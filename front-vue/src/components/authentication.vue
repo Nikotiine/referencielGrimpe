@@ -50,6 +50,7 @@ export default {
   methods: {
     loadUserInfo: function () {
       axios.get("user").then((res) => {
+        //localStorage.setItem("user", JSON.stringify(res.data));
         this.$store.commit("setLogin", res.data);
         console.log("user valide");
         this.$store.commit("setStatus", "");

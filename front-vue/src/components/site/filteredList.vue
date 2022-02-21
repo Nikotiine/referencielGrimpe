@@ -19,7 +19,7 @@
     </div>
   </div>
   <div v-if="mode === 'one'" class="min-wi m-t-1m">
-    <oneSite @returnToSearch="switchToResult()" />
+    <oneSite @returnToSearch="switchToResult()" :spotId="spotId" />
   </div>
 </template>
 
@@ -32,12 +32,13 @@ export default {
   data() {
     return {
       mode: "search",
+      spotId: null,
     };
   },
   methods: {
     switchToOne: function (id) {
-      this.$store.commit("spotid", id);
-      this.$store.commit("searchButton", true);
+      this.spotId = id;
+      this.$store.commit("oneSiteButton", "search");
       this.mode = "one";
     },
     switchToResult: function () {

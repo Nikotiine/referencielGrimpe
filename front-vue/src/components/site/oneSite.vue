@@ -4,12 +4,22 @@
       <span
         class="icon-text absolu"
         @click="backToAll"
-        v-if="isInSearch === false"
+        v-if="isInSearch === 'all'"
       >
         <span class="icon">
           <i class="fas fa-backward"></i>
         </span>
         <span>Retour</span>
+      </span>
+      <span
+        class="icon-text absolu"
+        @click="goToAll"
+        v-if="isInSearch === 'add'"
+      >
+        <span class="icon">
+          <i class="fas fa-backward"></i>
+        </span>
+        <span>Tous les sites</span>
       </span>
       <h4 class="title is-4 text-center">Detail du site</h4>
       <h1 class="title is-2 text-center">{{ site.name }}</h1>
@@ -145,8 +155,10 @@
         <span> Afficher la carte </span>
       </p>
       <p class="card-footer-item left-border-2sb">
-        <span v-if="isInSearch === false"> Editer le site</span>
-        <span v-if="isInSearch === true" @click="backToResult"
+        <span v-if="isInSearch === 'all'" @click="showNotif">
+          Editer le site</span
+        >
+        <span v-if="isInSearch === 'search'" @click="backToResult"
           >Revenir a la recherche</span
         >
       </p>
@@ -158,12 +170,28 @@
 import axios from "axios";
 
 import maps from "../site/maps.vue";
+// import { watch } from "@vue/runtime-core";
 export default {
   name: "oneSite",
   components: { maps },
+  props: ["spotId"],
+
+  //{
+  // validate: {
+  //   type: Function,
+  // },
+  // spotId: {
+  //   type: Number,
+  //   },
+  // },
+  // setup(props) {
+  //   watch(props.validate, () => {
+  //     this.validate();
+  //   });
+  // },
+  watch() {},
   data() {
     return {
-      toto: "un seul",
       divVoies: false,
       divSecteur: false,
       divGeo: true,
@@ -180,18 +208,21 @@ export default {
   },
   computed: {
     isInSearch() {
-      return this.$store.state.seachButton;
+      return this.$store.state.oneSiteButton;
     },
   },
   methods: {
     backToResult: function () {
-      this.$store.commit("searchButton", false);
+      this.$store.commit("oneSiteButton", "");
       this.$emit("returnToSearch");
     },
     backToAll: function () {
-      this.$store.commit("setCardSite", "all");
+      this.$emit("back");
     },
-
+    goToAll: function () {
+      this.$router.push("/site/all");
+      this.$store.commit("oneSiteButton", "");
+    },
     // getSpot: function (id) {
     //   console.log("niko");
     //   axios.get("spot/" + id).then((res) => {
@@ -219,7 +250,7 @@ export default {
     },
   },
   mounted() {
-    axios.get("spot/" + this.$store.state.spotId).then((res) => {
+    axios.get("spot/" + this.spotId).then((res) => {
       console.log(res.data);
       this.site = res.data;
       this.secteurs = res.data.secteurs;
@@ -228,7 +259,9 @@ export default {
       this.getRegion();
       this.getDepartement();
     });
+    this.show;
   },
+  created() {},
 };
 </script>
 

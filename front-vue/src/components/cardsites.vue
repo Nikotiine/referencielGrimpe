@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     switchToAll: function () {
-      this.$store.commit("setSite", "all");
+      this.$router.push("/site/all");
     },
     switchToAdd: function () {
       this.$store.commit("setSite", "add");

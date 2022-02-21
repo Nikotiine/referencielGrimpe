@@ -1,5 +1,4 @@
 <template>
-  <navbar />
   <div>
     <cardvoies v-if="status === 'normal'" />
   </div>
@@ -9,12 +8,12 @@
 </template>
 
 <script>
-import navbar from "../components/navbar.vue";
+//import navbar from "../components/navbar.vue";
 import cardvoies from "../components/cardvoies.vue";
 import addVoie from "../components/addVoie/addVoie.vue";
 export default {
   name: "voies",
-  components: { navbar, cardvoies, addVoie },
+  components: { cardvoies, addVoie },
   methods: {},
 
   computed: {

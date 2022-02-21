@@ -11,16 +11,16 @@
           <div class="media-content">
             <p class="title is-4">Information personnelles</p>
             <p class="subtitle is-6">
-              Prenom:{{ profil.firstName }}<br />nom:{{ profil.lastName }}
-              <br />Pseudo:{{ profil.nickName }}
+              Prenom:{{ userData.firstName }}<br />nom:{{ userData.lastName }}
+              <br />Pseudo:{{ userData.nickName }}
             </p>
           </div>
         </div>
 
         <div class="content">
           <p>
-            ton email:"{{ profil.email }} <br />
-            Membre depuis :{{ profil.createdAt }}
+            ton email: {{ userData.email }} <br />
+            Membre depuis :{{}}
           </p>
         </div>
       </div>
@@ -29,18 +29,25 @@
 </template>
 
 <script>
-//import axios from "axios";
+import axios from "axios";
 export default {
   name: "userProfil",
   data() {
-    return {};
+    return { userData: "" };
   },
-  methods: {},
-  setup() {},
-  computed: {
-    profil() {
-      return this.$store.state.login;
+  methods: {
+    loadUser: function () {
+      axios.get("user").then((res) => {
+        console.log("user loaded");
+        this.userData = res.data;
+      });
     },
+  },
+  setup() {},
+  computed: {},
+  mounted() {},
+  created() {
+    this.loadUser();
   },
 };
 </script>

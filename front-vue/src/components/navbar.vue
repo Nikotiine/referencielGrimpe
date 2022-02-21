@@ -21,7 +21,7 @@
       <div class="navbar-start" v-if="login != null">
         <div class="navbar-item is-hoverable">
           <a class="navbar-link" @click="switchToUser"
-            ><router-link to="/user">{{ login.nickName }}</router-link></a
+            ><router-link to="/user">{{ login }}</router-link></a
           >
           <div class="navbar-dropdown">
             <a class="navbar-item" @click="navToProfil">Ton profil</a>
@@ -37,15 +37,17 @@
             ><router-link to="/site">Sites</router-link></a
           >
           <div class="navbar-dropdown">
-            <a class="navbar-item" @click="navToAllSite">
-              voir tous les sites
+            <a class="navbar-item">
+              <router-link to="/site/all">Tous les sites</router-link>
             </a>
             <hr class="navbar-divider" />
-            <a class="navbar-item" @click="navToSearchSite">
-              Rechercher un site
+            <a class="navbar-item">
+              <router-link to="/site/search">Rechercher un site</router-link>
             </a>
             <hr class="navbar-divider" />
-            <a class="navbar-item" @click="navToAddSite"> Ajouter un site </a>
+            <a class="navbar-item">
+              <router-link to="/site/add">Ajouter un site</router-link>
+            </a>
           </div>
         </div>
         <div class="navbar-item is-hoverable">
@@ -138,7 +140,8 @@ export default {
       this.$store.commit("setStatus", "1");
     },
     logOut: function () {
-      this.$store.commit("setLogin", null);
+      this.$store.commit("setLogin", "");
+      this.$store.commit("clearPseudo", null);
       this.$router.push("/");
       localStorage.clear();
     },
@@ -199,7 +202,7 @@ export default {
   },
   computed: {
     login() {
-      return this.$store.state.login;
+      return this.$store.state.pseudo;
     },
   },
 };

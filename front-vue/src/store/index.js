@@ -1,5 +1,9 @@
 import { createStore } from "vuex";
-
+let userLogged = localStorage.getItem("user");
+// if (!userLogged) {
+//   this.$router.push("/Home");
+//   this.$store.commit("setStatus", 1);
+// }
 export default createStore({
   state: {
     mode: "",
@@ -8,11 +12,11 @@ export default createStore({
     voies: "normal",
     croix: "normal",
     formSite: 0,
-    login: null,
+    pseudo: userLogged,
     allSite: [],
     spotId: null,
     cardSite: "all",
-    seachButton: false,
+    oneSiteButton: "",
   },
   mutations: {
     setStatus(state, newStatus) {
@@ -34,7 +38,9 @@ export default createStore({
       state.croix = newStatus;
     },
     setLogin(state, newUser) {
-      state.login = newUser;
+      state.pseudo = newUser.nickName;
+      localStorage.setItem("userId", newUser.id);
+      localStorage.setItem("user", newUser.nickName);
     },
     setAllSite(state, all) {
       state.allSite = all;
@@ -45,8 +51,11 @@ export default createStore({
     spotid(state, id) {
       state.spotId = id;
     },
-    searchButton(state, newStatus) {
-      state.seachButton = newStatus;
+    clearPseudo(state, clear) {
+      state.pseudo = clear;
+    },
+    oneSiteButton(state, newStatus) {
+      state.oneSiteButton = newStatus;
     },
   },
   actions: {},

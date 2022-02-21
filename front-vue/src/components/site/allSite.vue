@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="m-lr-auto max-width-60" v-if="status === 'one'">
-      <oneSite class="m-t-1m m-lr-auto" />
+      <oneSite class="m-t-1m m-lr-auto" :spotId="spotId" @back="backToAll" />
     </div>
   </div>
 </template>
@@ -52,21 +52,26 @@ export default {
   data() {
     return {
       sites: [],
-
+      status: "all",
       search: "",
+      spotId: null,
     };
   },
   methods: {
     switchToOne: function (id) {
       console.log(id);
       console.log("toto");
-      this.$store.commit("spotid", id);
-      this.$store.commit("setCardSite", "one");
-      this.$store.commit("searchButton", false);
+      //this.$store.commit("spotid", id);
+      this.spotId = id;
+      this.status = "one";
+      this.$store.commit("oneSiteButton", "all");
     },
     switchToSearch: function () {
-      this.$router.push("site");
-      return this.$store.commit("setSite", "search");
+      this.$router.push("/site/search");
+      //return this.$store.commit("setSite", "search");
+    },
+    backToAll: function () {
+      this.status = "all";
     },
     // showOne: function (id) {
     //   axios.get("spot/" + id).then((res) => {
@@ -93,9 +98,9 @@ export default {
   },
 
   computed: {
-    status() {
-      return this.$store.state.cardSite;
-    },
+    // status() {
+    //   return this.$store.state.cardSite;
+    // },
     searchSite() {
       return this.sites.filter((site) => {
         return site.name.toLowerCase().includes(this.search.toLowerCase());

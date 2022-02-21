@@ -1,9 +1,8 @@
 <template>
-  <navbar />
   <div v-if="status === 'card'">
     <cardsites />
   </div>
-  <div class="max-width-60 m-lr-auto" v-if="status === 'add'">
+  <div v-if="status === 'add'">
     <addSite />
   </div>
   <div class="" v-if="status === 'all'">
@@ -14,7 +13,7 @@
   </div>
 </template>
 <script>
-import navbar from "../components/navbar.vue";
+//import navbar from "../components/navbar.vue";
 import cardsites from "../components/cardsites.vue";
 import addSite from "../components/addSite/addSite.vue";
 import allSite from "../components/site/allSite.vue";
@@ -24,7 +23,6 @@ export default {
     return {};
   },
   components: {
-    navbar,
     cardsites,
     addSite,
     allSite,

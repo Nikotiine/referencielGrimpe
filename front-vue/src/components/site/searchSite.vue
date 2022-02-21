@@ -1,102 +1,104 @@
 <template>
-  <div class="card m-t-1m">
-    <div class="card-content flex-column">
-      <h4 class="title is-4 text-center">Rechercher un Site</h4>
-      <h5 class="subtitle is-5">
-        <label class="checkbox m-t-2m">
-          <input type="checkbox" v-model="regDept" />
-          Par Region et Departement
-        </label>
-      </h5>
-
-      <div class="select m-lr-auto">
-        <select
-          v-model="selectRegion"
-          @change="getDept(selectRegion)"
-          :disabled="!regDept"
-        >
-          <option :value="null">Selectionnez la region</option>
-          <option
-            v-for="region in regions"
-            :key="region.code"
-            v-bind:value="region.code"
-          >
-            {{ region.nom }}
-          </option>
-        </select>
-      </div>
-      <div class="select m-lr-auto m-t-10p">
-        <select v-model="selectDept" :disabled="!selectRegion">
-          <option :value="null">Sélectionnez le departement</option>
-          <option
-            v-for="departement in departements"
-            :key="departement.code"
-            v-bind:value="departement.code"
-          >
-            {{ departement.nom }}
-          </option>
-        </select>
-      </div>
-
-      <h5 class="subtitle is-5">
-        <label class="checkbox m-t-2m">
-          <input type="checkbox" v-model="expo" />
-          Par Exposition
-        </label>
-      </h5>
-      <div class="select m-lr-auto">
-        <select v-model="exposition" :disabled="!expo">
-          <option :value="null">Sélectionnez l'exposition</option>
-          <option v-for="expo in expositions" :key="expo.id">
-            {{ expo.name }}
-          </option>
-        </select>
-      </div>
-
-      <h5 class="subtitle is-5">
-        <label class="checkbox m-t-2m">
-          <input type="checkbox" v-model="haut" />
-          Par hauteur max
-        </label>
-      </h5>
-      <div class="select m-lr-auto">
-        <select v-model="hauteurMax" :disabled="!haut">
-          <option :value="null">Sélectionnez la hauteur</option>
-          <option v-for="hauteur in hauteurs" :key="hauteur.id">
-            {{ hauteur.size }}
-          </option>
-        </select>
-      </div>
-
-      <h5 class="subtitle is-5">
-        <label class="checkbox m-t-2m">
-          <input type="checkbox" v-model="sais" />
-          Par saisons
-        </label>
-      </h5>
-      <div class="flex-raw space-evenly">
-        <div class="flex-column">
-          <label class="checkbox">
-            <input type="checkbox" v-model="ete" :disabled="!sais" />
-            Ete </label
-          ><label class="checkbox">
-            <input type="checkbox" v-model="hiver" :disabled="!sais" />
-            Hiver
+  <div class="text-center flex-raw space-evenly">
+    <div class="card m-t-1m">
+      <div class="card-content flex-column">
+        <h4 class="title is-4 text-center">Rechercher un Site</h4>
+        <h5 class="subtitle is-5">
+          <label class="checkbox m-t-2m">
+            <input type="checkbox" v-model="regDept" />
+            Par Region et Departement
           </label>
+        </h5>
+
+        <div class="select m-lr-auto">
+          <select
+            v-model="selectRegion"
+            @change="getDept(selectRegion)"
+            :disabled="!regDept"
+          >
+            <option :value="null">Selectionnez la region</option>
+            <option
+              v-for="region in regions"
+              :key="region.code"
+              v-bind:value="region.code"
+            >
+              {{ region.nom }}
+            </option>
+          </select>
         </div>
-        <div class="flex-column m-l-15p">
-          <label class="checkbox">
-            <input type="checkbox" v-model="printemps" :disabled="!sais" />
-            Printemps </label
-          ><label class="checkbox">
-            <input type="checkbox" v-model="automne" :disabled="!sais" />
-            Automne
+        <div class="select m-lr-auto m-t-10p">
+          <select v-model="selectDept" :disabled="!selectRegion">
+            <option :value="null">Sélectionnez le departement</option>
+            <option
+              v-for="departement in departements"
+              :key="departement.code"
+              v-bind:value="departement.code"
+            >
+              {{ departement.nom }}
+            </option>
+          </select>
+        </div>
+
+        <h5 class="subtitle is-5">
+          <label class="checkbox m-t-2m">
+            <input type="checkbox" v-model="expo" />
+            Par Exposition
           </label>
+        </h5>
+        <div class="select m-lr-auto">
+          <select v-model="exposition" :disabled="!expo">
+            <option :value="null">Sélectionnez l'exposition</option>
+            <option v-for="expo in expositions" :key="expo.id">
+              {{ expo.name }}
+            </option>
+          </select>
+        </div>
+
+        <h5 class="subtitle is-5">
+          <label class="checkbox m-t-2m">
+            <input type="checkbox" v-model="haut" />
+            Par hauteur max
+          </label>
+        </h5>
+        <div class="select m-lr-auto">
+          <select v-model="hauteurMax" :disabled="!haut">
+            <option :value="null">Sélectionnez la hauteur</option>
+            <option v-for="hauteur in hauteurs" :key="hauteur.id">
+              {{ hauteur.size }}
+            </option>
+          </select>
+        </div>
+
+        <h5 class="subtitle is-5">
+          <label class="checkbox m-t-2m">
+            <input type="checkbox" v-model="sais" />
+            Par saisons
+          </label>
+        </h5>
+        <div class="flex-raw space-evenly">
+          <div class="flex-column">
+            <label class="checkbox">
+              <input type="checkbox" v-model="ete" :disabled="!sais" />
+              Ete </label
+            ><label class="checkbox">
+              <input type="checkbox" v-model="hiver" :disabled="!sais" />
+              Hiver
+            </label>
+          </div>
+          <div class="flex-column m-l-15p">
+            <label class="checkbox">
+              <input type="checkbox" v-model="printemps" :disabled="!sais" />
+              Printemps </label
+            ><label class="checkbox">
+              <input type="checkbox" v-model="automne" :disabled="!sais" />
+              Automne
+            </label>
+          </div>
         </div>
       </div>
     </div>
+    <filteredList :filter="filteredList" />
   </div>
-  <filteredList :filter="filteredList" />
 </template>
 
 <script>
