@@ -1,11 +1,10 @@
 import axios from "axios";
-const accessToken = localStorage.getItem("accessToken");
-let refreshToken = localStorage.getItem("refreshToken");
 axios.defaults.baseURL = "http://localhost:3000/";
 //axios.defaults.headers.common["authorization"] = `Bearer ${accessToken}`;
 
 axios.interceptors.request.use(
   async (config) => {
+    const accessToken = localStorage.getItem("accessToken");
     config.headers = {
       authorization: `Bearer ${accessToken}`,
       //accept: "application/json",
@@ -27,6 +26,7 @@ axios.interceptors.response.use(
   async (error) => {
     console.log("erreur token");
     console.log(error);
+    const refreshToken = localStorage.getItem("refreshToken");
     const originalRequest = error.config;
     if (
       error.config.url != "refreshToken" &&
@@ -54,7 +54,7 @@ axios.interceptors.response.use(
           })
           .catch((error) => {
             console.log(error.response.status);
-            refreshToken = null;
+            localStorage.setItem("refreshToken", null);
           });
         return axios(originalRequest);
       }

@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     loadUserInfo: function () {
+      console.log();
       axios.get("user").then((res) => {
         //localStorage.setItem("user", JSON.stringify(res.data));
         this.$store.commit("setLogin", res.data);
@@ -71,7 +72,6 @@ export default {
           // ] = `Bearer ${res.data.token.accessToken}`;
           localStorage.setItem("accessToken", res.data.token.accessToken);
           localStorage.setItem("refreshToken", res.data.token.refreshToken);
-
           this.loadUserInfo();
         })
         .catch(() => {

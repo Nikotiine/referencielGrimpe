@@ -1,24 +1,17 @@
 <template>
-  <div v-if="status === 'user'">
+  <div>
     <usercard />
-  </div>
-  <div v-if="status === 'profil'">
-    <userProfil />
   </div>
 </template>
 
 <script>
 //import navbar from "../components/navbar.vue";
-import usercard from "../components/usercard.vue";
-import userProfil from "../components/user/userProfil.vue";
+import usercard from "../components/mainCards/usercard.vue";
+
 export default {
   name: "user",
-  components: { usercard, userProfil },
-  computed: {
-    status() {
-      return this.$store.state.user;
-    },
-  },
+  components: { usercard },
+  computed: {},
 };
 </script>
 

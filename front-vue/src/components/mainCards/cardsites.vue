@@ -3,7 +3,7 @@
     <div class="card" @click="switchToAll">
       <div class="card-image">
         <figure class="image">
-          <img src="../../src/assets/img/site1.png" alt="Placeholder image" />
+          <img src="../../assets/img/site1.png" alt="Placeholder image" />
         </figure>
       </div>
       <div class="card-content">
@@ -24,7 +24,7 @@
     <div class="card" @click="switchToSearch">
       <div class="card-image">
         <figure class="image">
-          <img src="../../src/assets/img/where.png" alt="Placeholder image" />
+          <img src="../../assets/img/ajout.png" alt="Placeholder image" />
         </figure>
       </div>
       <div class="card-content">
@@ -46,7 +46,7 @@
     <div class="card" @click="switchToAdd">
       <div class="card-image">
         <figure class="image">
-          <img src="../../src/assets/img/ajout.png" alt="Placeholder image" />
+          <img src="../../assets/img/where.png" alt="Placeholder image" />
         </figure>
       </div>
       <div class="card-content">
@@ -82,10 +82,10 @@ export default {
       this.$router.push("/site/all");
     },
     switchToAdd: function () {
-      this.$store.commit("setSite", "add");
+      this.$router.push("/site/add");
     },
     switchToSearch: function () {
-      this.$store.commit("setSite", "search");
+      this.$router.push("/site/search");
     },
   },
   computed: {},

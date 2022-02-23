@@ -3,7 +3,7 @@
     <div class="card" @click="switchToProfil">
       <div class="card-image">
         <figure class="image">
-          <img src="../../src/assets/img/site1.png" alt="Placeholder image" />
+          <img src="../../assets/img/where.png" alt="Placeholder image" />
         </figure>
       </div>
       <div class="card-content">
@@ -20,10 +20,10 @@
         </div>
       </div>
     </div>
-    <div class="card" @click="switchToContribution">
+    <div class="card" @click="switchToStat">
       <div class="card-image">
         <figure class="image">
-          <img src="../../src/assets/img/where.png" alt="Placeholder image" />
+          <img src="../../assets/img/ajout.png" alt="Placeholder image" />
         </figure>
       </div>
       <div class="card-content">
@@ -39,10 +39,10 @@
         </div>
       </div>
     </div>
-    <div class="card" @click="switchToStat">
+    <div class="card" @click="switchToContribution">
       <div class="card-image">
         <figure class="image">
-          <img src="../../src/assets/img/ajout.png" alt="Placeholder image" />
+          <img src="../../assets/img/site1.png" alt="Placeholder image" />
         </figure>
       </div>
       <div class="card-content">
@@ -68,13 +68,13 @@ export default {
   name: "usercard",
   methods: {
     switchToProfil: function () {
-      return this.$store.commit("setUser", "profil");
+      this.$router.push("/user/profil");
     },
     switchToStat: function () {
-      this.$store.commit("setUser", "stat");
+      this.$router.push("/user/stats");
     },
     switchToContribution: function () {
-      this.$store.commit("setUser", "contribution");
+      this.$router.push("/user/contributions");
     },
   },
 };

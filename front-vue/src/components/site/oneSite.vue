@@ -155,7 +155,7 @@
         <span> Afficher la carte </span>
       </p>
       <p class="card-footer-item left-border-2sb">
-        <span v-if="isInSearch === 'all'" @click="showNotif">
+        <span v-if="isInSearch === 'all' || isInSearch === 'add'">
           Editer le site</span
         >
         <span v-if="isInSearch === 'search'" @click="backToResult"
